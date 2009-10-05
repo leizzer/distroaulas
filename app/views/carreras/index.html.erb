@@ -1,0 +1,22 @@
+<h1>Listing carreras</h1>
+
+<table>
+  <tr>
+    <th>Codigo</th>
+    <th>Nombre</th>
+  </tr>
+
+<% @carreras.each do |carrera| %>
+  <tr>
+    <td><%=h carrera.codigo %></td>
+    <td><%=h carrera.nombre %></td>
+    <td><%= link_to 'Show', carrera %></td>
+    <td><%= link_to 'Edit', edit_carrera_path(carrera) %></td>
+    <td><%= link_to 'Destroy', carrera, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New carrera', new_carrera_path %>
