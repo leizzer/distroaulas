@@ -1,5 +1,20 @@
-<h1>DistroAulas</h1>
+DistroAulas
 
 This application is for administration purpose on a private institution.
 
 Have a nice day.
+
+--------------------------------------------------------------------------
+TODO
+
+- Crear algunas vistas para usar el controlador calendario
+- Definir como trabajar con el calendario (variable u objeto global, 
+  lecturas  espontaneas u alguna otra forma)
+- Crear un index con links reales a las vistas
+- Diseñar la interface basica
+
+
+Estaria bueno para manejar el calendario que este se carge como objeto
+y permanezca vivo durante la sesion del usuario. Al finalizar la
+sesion se baja el archivo a disco. Pero ahora que lo pienso, la 
+recurrencia nos va dar dolores de cabeza.
