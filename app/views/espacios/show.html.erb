@@ -1,0 +1,23 @@
+<p>
+  <b>Codigo:</b>
+  <%=h @espacio.codigo %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%=h @espacio.descripcion %>
+</p>
+
+<p>
+  <b>Capacidad:</b>
+  <%=h @espacio.capacidad %>
+</p>
+
+<p>
+  <b>Tipo:</b>
+  <%=h @espacio.tipo %>
+</p>
+
+
+<%= link_to 'Edit', edit_espacio_path(@espacio) %> |
+<%= link_to 'Back', espacios_path %>

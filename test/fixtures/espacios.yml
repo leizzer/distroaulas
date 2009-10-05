@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  codigo: MyString
+  descripcion: MyString
+  capacidad: MyString
+  tipo: MyString
+
+two:
+  codigo: MyString
+  descripcion: MyString
+  capacidad: MyString
+  tipo: MyString

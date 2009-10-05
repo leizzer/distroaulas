@@ -1,0 +1,26 @@
+<h1>Listing espacios</h1>
+
+<table>
+  <tr>
+    <th>Codigo</th>
+    <th>Descripcion</th>
+    <th>Capacidad</th>
+    <th>Tipo</th>
+  </tr>
+
+<% @espacios.each do |espacio| %>
+  <tr>
+    <td><%=h espacio.codigo %></td>
+    <td><%=h espacio.descripcion %></td>
+    <td><%=h espacio.capacidad %></td>
+    <td><%=h espacio.tipo %></td>
+    <td><%= link_to 'Show', espacio %></td>
+    <td><%= link_to 'Edit', edit_espacio_path(espacio) %></td>
+    <td><%= link_to 'Destroy', espacio, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New espacio', new_espacio_path %>
