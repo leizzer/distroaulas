@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :materias
+
   map.resources :plans
 
   map.resources :carreras
