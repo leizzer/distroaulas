@@ -1,0 +1,22 @@
+<h1>Listing tipoespacios</h1>
+
+<table>
+  <tr>
+    <th>Nombre</th>
+    <th>Descripcion</th>
+  </tr>
+
+<% @tipoespacios.each do |tipoespacio| %>
+  <tr>
+    <td><%=h tipoespacio.nombre %></td>
+    <td><%=h tipoespacio.descripcion %></td>
+    <td><%= link_to 'Show', tipoespacio %></td>
+    <td><%= link_to 'Edit', edit_tipoespacio_path(tipoespacio) %></td>
+    <td><%= link_to 'Destroy', tipoespacio, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New tipoespacio', new_tipoespacio_path %>
