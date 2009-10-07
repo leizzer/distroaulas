@@ -4,14 +4,27 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Plans: <%= controller.action_name %></title>
+  <title>Distroaulas - Administracion de espacios</title>
   <%= stylesheet_link_tag 'scaffold' %>
 </head>
 <body>
 
-<p style="color: green"><%= flash[:notice] %></p>
+  <div id="info">
+    <% if flash[:notice].nil? == false %>
+    <%= image_tag "atencion.png", :size => "32x32" %>
+    <p style="color: green"><%= flash[:notice] %></p>
+    <% end %>
+  </div>
 
-<%= yield %>
+  <h2>Distroaulas</h2>
+
+  <div id="contenido">
+        <%= yield %>
+  </div>
+
+
+</div>
+
 
 </body>
 </html>
