@@ -1,0 +1,30 @@
+<h1>Listing eventos</h1>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Dtstart</th>
+    <th>Dtend</th>
+    <th>Freq</th>
+    <th>Bydate</th>
+    <th>Interval</th>
+  </tr>
+
+<% @eventos.each do |evento| %>
+  <tr>
+    <td><%=h evento.description %></td>
+    <td><%=h evento.dtstart %></td>
+    <td><%=h evento.dtend %></td>
+    <td><%=h evento.freq %></td>
+    <td><%=h evento.bydate %></td>
+    <td><%=h evento.interval %></td>
+    <td><%= link_to 'Show', evento %></td>
+    <td><%= link_to 'Edit', edit_evento_path(evento) %></td>
+    <td><%= link_to 'Destroy', evento, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New evento', new_evento_path %>
