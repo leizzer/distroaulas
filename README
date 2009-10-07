@@ -7,7 +7,7 @@ Have a nice day.
 --------------------------------------------------------------------------
 TODO
 
-- Crear algunas vistas para usar el controlador calendario
+
 - Definir como trabajar con el calendario (variable u objeto global, 
   lecturas  espontaneas u alguna otra forma)
 - Crear un index con links reales a las vistas
