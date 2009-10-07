@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  description: MyString
+  dtstart: MyString
+  dtend: MyString
+  freq: MyString
+  bydate: MyString
+  interval: MyString
+
+two:
+  description: MyString
+  dtstart: MyString
+  dtend: MyString
+  freq: MyString
+  bydate: MyString
+  interval: MyString

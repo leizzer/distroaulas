@@ -1,0 +1,33 @@
+<p>
+  <b>Description:</b>
+  <%=h @evento.description %>
+</p>
+
+<p>
+  <b>Dtstart:</b>
+  <%=h @evento.dtstart %>
+</p>
+
+<p>
+  <b>Dtend:</b>
+  <%=h @evento.dtend %>
+</p>
+
+<p>
+  <b>Freq:</b>
+  <%=h @evento.freq %>
+</p>
+
+<p>
+  <b>Bydate:</b>
+  <%=h @evento.bydate %>
+</p>
+
+<p>
+  <b>Interval:</b>
+  <%=h @evento.interval %>
+</p>
+
+
+<%= link_to 'Edit', edit_evento_path(@evento) %> |
+<%= link_to 'Back', eventos_path %>
