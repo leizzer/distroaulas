@@ -1,0 +1,19 @@
+<h1>Editing carrera</h1>
+<% form_for(@carrera) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :codigo %><br />
+    <%= f.text_field :codigo %>
+  </p>
+  <p>
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @carrera %> |
+<%= link_to 'Back', carreras_path %>
