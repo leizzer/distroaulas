@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091008140741) do
+ActiveRecord::Schema.define(:version => 20091008142813) do
 
   create_table "carreras", :force => true do |t|
     t.integer  "codigo"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20091008140741) do
   end
 
   create_table "eventos", :force => true do |t|
-    t.string   "description"
+    t.string   "event_data"
     t.string   "dtstart"
     t.string   "dtend"
     t.string   "freq"

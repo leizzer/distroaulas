@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Description</th>
+    <th>event_data</th>
     <th>Dtstart</th>
     <th>Dtend</th>
     <th>Freq</th>
@@ -12,7 +12,7 @@
 
 <% @eventos.each do |evento| %>
   <tr>
-    <td><%=h evento.description %></td>
+    <td><%=h evento.event_data %></td>
     <td><%=h evento.dtstart %></td>
     <td><%=h evento.dtend %></td>
     <td><%=h evento.freq %></td>
