@@ -3,9 +3,6 @@ class CalendarioController < ApplicationController
 
   # GET /calendario/create
   def create
-    calendar = RiCal.Calendar
-      data << calendar.export
-    end 
 
   end
 
@@ -31,5 +28,12 @@ class CalendarioController < ApplicationController
   def save
   end
 
+  #GET /calendario/new
+  def new
+    params.each do |a|
+      p "---> "
+      p a
+    end
+  end
 end
 

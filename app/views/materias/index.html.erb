@@ -3,12 +3,16 @@
 <table>
   <tr>
     <th>Codigo</th>
+    <th>Codigo Carrera</th>
+    <th>Codigo Plan</th>
     <th>Nombre</th>
   </tr>
 
 <% @materias.each do |materia| %>
   <tr>
     <td><%=h materia.codigo %></td>
+    <td><%=h materia.codigo_carrera %></td>
+    <td><%=h materia.codigo_plan %></td>
     <td><%=h materia.nombre %></td>
     <td><%= link_to 'Show', materia %></td>
     <td><%= link_to 'Edit', edit_materia_path(materia) %></td>
@@ -19,4 +23,8 @@
 
 <br />
 
-<%= link_to 'New materia', new_materia_path %>
+<%= link_to 'Nueva materia', new_materia_path %>
+<br>
+<%= link_to 'Volver al indice', root_path %>
+
+

@@ -3,12 +3,14 @@
 <table>
   <tr>
     <th>Codigo</th>
+    <th>Codigo de Carrera</th>
     <th>Nombre</th>
   </tr>
 
 <% @plans.each do |plan| %>
   <tr>
     <td><%=h plan.codigo %></td>
+    <td><%=h plan.codigo_carrera %></td>
     <td><%=h plan.nombre %></td>
     <td><%= link_to 'Show', plan %></td>
     <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
@@ -19,4 +21,5 @@
 
 <br />
 
-<%= link_to 'New plan', new_plan_path %>
+<%= link_to 'Nuevo plan', new_plan_path %><br>
+<%= link_to 'Volver al indice', root_path %>

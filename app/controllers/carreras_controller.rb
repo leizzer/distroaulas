@@ -41,7 +41,6 @@ class CarrerasController < ApplicationController
   # POST /carreras.xml
   def create
     @carrera = Carrera.new(params[:carrera])
-
     respond_to do |format|
       if @carrera.save
         flash[:notice] = 'Carrera was successfully created.'

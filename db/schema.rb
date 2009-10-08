@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091007185809) do
+ActiveRecord::Schema.define(:version => 20091008140741) do
 
   create_table "carreras", :force => true do |t|
     t.integer  "codigo"
@@ -32,10 +32,11 @@ ActiveRecord::Schema.define(:version => 20091007185809) do
     t.string   "dtstart"
     t.string   "dtend"
     t.string   "freq"
-    t.string   "bydate"
+    t.string   "byday"
     t.string   "interval"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "exdates"
   end
 
   create_table "materias", :force => true do |t|
@@ -43,6 +44,8 @@ ActiveRecord::Schema.define(:version => 20091007185809) do
     t.string   "nombre"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "codigo_carrera"
+    t.integer  "codigo_plan"
   end
 
   create_table "plans", :force => true do |t|
@@ -50,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20091007185809) do
     t.string   "nombre"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "codigo_carrera"
   end
 
   create_table "tipoespacios", :force => true do |t|
