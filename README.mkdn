@@ -17,8 +17,9 @@ Have a nice day.
 * = Al terminar estas tareas, ya se podria lanzar una beta o alpha en
     todo caso.
 
-Ahora ya tenemos funcionalidades para mostrar. Nos queda poco.
-
+IDEA: utilizar tambien RDATE para agregar ocurrencias especiales, Ej: hoy no hay la materia x pero
+se recupera la hora tal dia. Ese tal dia lo podemos cargar en RDATE y tambien agregar el dia que no
+hay en EXDATE.
 ----------------------------------------------------------------
 
 ##Groso el magit. Uso:
