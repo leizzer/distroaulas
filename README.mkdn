@@ -8,12 +8,11 @@ Have a nice day.
 ##ToDo
 
 
-*-[done?] Cerrar el diseño del modelo de eventos
-*-[important] Crear una vista acorde al modelo de eventos
-*- Implementar la autenticacion en el application_controller
-  y configrar todo el sitio para que funcione con autenticacion
-- Implementar la renovacion de contraseña
-- Diseñar la interface basica
+	-[done?] Cerrar el diseño del modelo de eventos
+	-[important] Crear una vista acorde al modelo de eventos
+	- Implementar la autenticacion en el application_controllery configrar todo el sitio para que funcione con autenticacion
+	- Implementar la renovacion de contraseña
+	- Diseñar la interface basica
 
 * = Al terminar estas tareas, ya se podria lanzar una beta o alpha en
     todo caso.
