@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091008204207) do
+ActiveRecord::Schema.define(:version => 20091009200224) do
 
   create_table "carreras", :force => true do |t|
     t.integer  "codigo"
@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(:version => 20091008204207) do
   end
 
   create_table "eventos", :force => true do |t|
-    t.string   "dtstart"
-    t.string   "dtend"
+    t.datetime "dtstart",     :limit => 255
+    t.datetime "dtend",       :limit => 255
     t.string   "freq"
     t.string   "byday"
     t.string   "interval"
