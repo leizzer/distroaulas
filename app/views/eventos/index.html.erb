@@ -13,8 +13,8 @@
 <% @eventos.each do |evento| %>
   <tr>
     <td><%=h evento.description %></td>
-    <td><%=h evento.dtstart %></td>
-    <td><%=h evento.dtend %></td>
+    <td><%=h evento.dtstart.to_s[0..15] %></td>
+    <td><%=h evento.dtend.to_s[0..15] %></td>
     <td><%=h evento.freq %></td>
     <td><%=h evento.byday %></td>
     <td><%=h evento.interval %></td>
@@ -28,3 +28,4 @@
 <br />
 
 <%= link_to 'New evento', new_evento_path %>
+<%= link_to 'Volver al indice', root_path %>
