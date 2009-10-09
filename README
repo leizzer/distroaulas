@@ -1,15 +1,15 @@
-DistroAulas
+##DistroAulas
 
 This application is for administration purpose on a private institution.
 
 Have a nice day.
 
 --------------------------------------------------------------------------
-TODO
+##ToDo
 
 
-*- Cerrar el diseño del modelo de eventos
-*- Crear una vista acorde al modelo de eventos
+*-[done?] Cerrar el diseño del modelo de eventos
+*-[important] Crear una vista acorde al modelo de eventos
 *- Implementar la autenticacion en el application_controller
   y configrar todo el sitio para que funcione con autenticacion
 - Implementar la renovacion de contraseña
@@ -19,3 +19,30 @@ TODO
     todo caso.
 
 Ahora ya tenemos funcionalidades para mostrar. Nos queda poco.
+
+----------------------------------------------------------------
+
+##Groso el magit. Uso:
+[nota: M = Alt o ESC, C = Ctrl]
+[nota: letras solas "u" "s"... son estando en la ventana de magit]
+
+
+-uso de la interfase-
+     M-x magit-status: abre la ventana con el magit
+     flechitas: te moves entre los archivos cambiados
+     TAB: expandis el archivo cambiado y te muestra los cambios
+     u: sobre un archivo para que lo ignore en el proximo commit (untrack)
+     s: para meter un archivo ignorado con "u" en el commit (stage)
+
+-pull-
+        f: git remote update
+        F: git pull
+
+-commit-
+        c: abre ventana para poner comentario al commit
+        C-c C-c: commit
+        C-c C-k: cancelas commit
+-push-
+        P: push (te pregunta a donde subir)
+
+[mas info buscar magit en google]
