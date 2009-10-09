@@ -41,7 +41,7 @@ class EventosController < ApplicationController
   # POST /eventos.xml
   def create
     @evento = Evento.new(params[:evento])
-
+    
     respond_to do |format|
       if @evento.save
         flash[:notice] = 'Evento was successfully created.'

@@ -17,11 +17,18 @@
   </p>
   <p>
     <%= f.label :freq %><br />
-    <%= f.text_field :freq %>
+    <%= f.radio_button :freq, "DAILY" %> Diario <br/>
+    <%= f.radio_button :freq, "WEEKLY" %> Semanal
   </p>
   <p>
     <%= f.label :byday %><br />
-    <%= f.text_field :byday %>
+    <%= f.radio_button :byday, "MO" %> Lunes <br/>
+    <%= f.radio_button :byday, "TU" %> Martes <br/>
+    <%= f.radio_button :byday, "WE" %> Miercoles <br/>
+    <%= f.radio_button :byday, "TH" %> Jueves <br/>
+    <%= f.radio_button :byday, "FR" %> Viernes <br/>
+    <%= f.radio_button :byday, "SA" %> Sabado <br/>
+    <%= f.radio_button :byday, "SU" %> Domingo <br/>
   </p>
   <p>
     <%= f.label :interval %><br />
