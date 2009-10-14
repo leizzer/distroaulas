@@ -2,21 +2,34 @@
 acceder a la aplicacion</p>
 <h3>Indice general</h3>
 <h4>ABMs</h4>
-<%= link_to "Carreras", :controller => "carreras", :action => "index" %><br>
-<%= link_to "Planes", :controller => "plans", :action => "index" %><br>
-<%= link_to "Materias", :controller => "materias", :action => "index" %><br>
-<br>
-<%= link_to "Espacios", :controller => "espacios", :action => "index" %><br>
-<%= link_to "Eventos", :controller => "eventos", :action => "index" %><br>
+<%= link_to "Carreras", :controller => "carreras", :action => "index" %><br/>
+<%= link_to "Planes", :controller => "plans", :action => "index" %><br/>
+<%= link_to "Materias", :controller => "materias", :action => "index" %><br/>
+<br/>
+<%= link_to "Espacios", :controller => "espacios", :action => "index" %><br/>
+<%= link_to "Eventos", :controller => "eventos", :action => "index" %><br/>
 <%= link_to "Tipo Espacios", :controller => "tipoespacios", :action => "index" %>
-<br>
-<br>
+<br/>
+<br/>
 <h4>Otros links</h4>
-<%= link_to "Listar usuarios", :controller => "users", :action => "index" %><br>
-<%= link_to "Login", :controller => "sessions", :action => "new" %><br>
-<%= link_to "Registrarse", :controller => "users", :action => "new" %><br>
+<%= link_to "Listar usuarios", :controller => "users", :action => "index" %><br/>
+<%= link_to "Login", :controller => "sessions", :action => "new" %><br/>
+<%= link_to "Registrarse", :controller => "users", :action => "new" %><br/>
 <%= link_to "Desloguearse", :controller => "sessions", :action => "destroy" %>
+<br/>
+<br/>
+<br/>
+<% require 'ri_cal' %>
+<% eve = RiCal.Event %>
+<% cal = RiCal.Calendar %>
+<% Evento.find(:all, :conditions => {:byday => "MO"}).each do |e| %>
+  <% eve.description = e.description %>
+  <% eve.dtstart = e.dtstart %>
+  <% eve.dtend = e.dtend %>
+  <% eve.rrule = "FREQ=" + e.freq + ";BYDAY=" + e.byday + ";INTERVAL=" + e.interval.to_s %>
+  <!-- aca hay que ver como hacemos con el tema del Espacio asignado,
+       si lo metemos dentro del objeto evento del calendario de alguna manera o no !-->
+  <% cal.add_subcomponent eve %>
+<% end %>
 
-
-
-
+<p><%= cal.export %><p/>
