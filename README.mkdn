@@ -4,15 +4,21 @@ This application is for administration purpose on a private institution.
 
 Have a nice day.
 
---------------------------------------------------------------------------
+
 ##ToDo
 
+#Modelo
+- Cerrar el diseÅÒo del modelo de eventos y las paginas corresponientes con el correcto guardado [la "new" en especial]
 
-	-[done?] Cerrar el dise√±o del modelo de eventos
-	-[important] Crear una vista acorde al modelo de eventos
-	- Implementar la autenticacion en el application_controllery configrar todo el sitio para que funcione con autenticacion
-	- Implementar la renovacion de contrase√±a
-	- Dise√±ar la interface basica
+#Busquedas
+- Realizar las busquedas de eventos que sucederan en el dia
+- Realizar busqueda de eventos en un dia arbitrario
+ <No mas busquedas que estas por ahora me parece>	
+
+#Interfaz
+- Implementar la autenticacion en el application_controllery configrar todo el sitio para que funcione con autenticacion
+- Implementar la renovacion de contraseÅÒa
+- DiseÅÒar la interface basica
 
 * = Al terminar estas tareas, ya se podria lanzar una beta o alpha en
     todo caso.
@@ -20,7 +26,7 @@ Have a nice day.
 IDEA: utilizar tambien RDATE para agregar ocurrencias especiales, Ej: hoy no hay la materia x pero
 se recupera la hora tal dia. Ese tal dia lo podemos cargar en RDATE y tambien agregar el dia que no
 hay en EXDATE.
-----------------------------------------------------------------
+
 
 ##Groso el magit. Uso:
 [nota: M = Alt o ESC, C = Ctrl]
