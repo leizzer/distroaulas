@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091014120759) do
+ActiveRecord::Schema.define(:version => 20091014192015) do
 
   create_table "carreras", :force => true do |t|
     t.integer  "codigo"
@@ -38,6 +38,8 @@ ActiveRecord::Schema.define(:version => 20091014120759) do
     t.string   "description"
     t.string   "exdate"
     t.integer  "espacio_id"
+    t.string   "rdate"
+    t.boolean  "reccurrent"
   end
 
   create_table "materias", :force => true do |t|

@@ -5,6 +5,7 @@
     <th>Description</th>
     <th>Dtstart</th>
     <th>Dtend</th>
+    <th>Recurrente?</th>
     <th>Freq</th>
     <th>Bydate</th>
     <th>Interval</th>
@@ -15,6 +16,7 @@
     <td><%=h evento.description %></td>
     <td><%=h evento.dtstart.to_s[0..15] %></td>
     <td><%=h evento.dtend.to_s[0..15] %></td>
+    <td><%=h "SI" if evento.reccurrent%></td>
     <td><%=h evento.freq %></td>
     <td><%=h evento.byday %></td>
     <td><%=h evento.interval %></td>

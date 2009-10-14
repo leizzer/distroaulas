@@ -21,6 +21,10 @@
     <%= f.radio_button :freq, "WEEKLY" %> Semanal
   </p>
   <p>
+    <%= f.label :reccurrent %>
+    <%= f.check_box :reccurrent %>
+  </p>
+  <p>
     <%= f.label :byday %><br />
     <%= f.radio_button :byday, "MO" %> Lunes <br/>
     <%= f.radio_button :byday, "TU" %> Martes <br/>
