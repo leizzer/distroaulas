@@ -37,6 +37,11 @@
   <p>
     <%= f.submit 'Create' %>
   </p>
+
+  <p> Espacios </p>
+  <%= collection_select :espacio, :espacio_id, Espacio.all, :id, :nombre %>
+
+
 <% end %>
 
 <%= link_to 'Back', eventos_path %>
