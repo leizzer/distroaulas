@@ -15,7 +15,7 @@
 
 <p>
   <b>Tipo:</b>
-  <%=h @espacio.tipo %>
+  <%=h Tipoespacio.find(:first, :conditions => {:id => @espacio.tipoespacio_id}).nombre %>
 </p>
 
 

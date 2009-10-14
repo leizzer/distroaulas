@@ -16,8 +16,8 @@
     <%= f.text_field :capacidad %>
   </p>
   <p>
-    <%= f.label :tipo %><br />
-    <%= f.text_field :tipo %>
+    <%= f.label :tipoespacio_id %><br />
+    <%= collection_select :espacio, :tipoespacio_id, Tipoespacio.all, :id, :nombre %>
   </p>
   <p>
     <%= f.submit 'Create' %>
