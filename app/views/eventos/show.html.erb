@@ -33,6 +33,11 @@
   <%=h @evento.interval %>
 </p>
 
+<p>
+  <b>Espacio:</b>
+  <%=h Espacio.find(:first, :conditions => {:id => @evento.espacio_id}).codigo %>
+</p>
+
 
 <%= link_to 'Edit', edit_evento_path(@evento) %> |
 <%= link_to 'Back', eventos_path %>

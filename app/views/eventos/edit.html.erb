@@ -32,6 +32,11 @@
     <%= f.text_field :interval %>
   </p>
   <p>
+    <%= f.label :espacio %><br />
+    <%= collection_select :espacio, :espacio_id, Espacio.all, :id, :codigo %>
+  </p>
+
+  <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>

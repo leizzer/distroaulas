@@ -38,12 +38,14 @@
     <%= f.label :interval %><br />
     <%= f.text_field :interval %>
   </p>
+
+  <p> Espacios </p>
+  <%= collection_select :evento, :espacio_id, Espacio.all, :id, :codigo %>
+
   <p>
     <%= f.submit 'Create' %>
   </p>
 
-  <p> Espacios </p>
-  <%= collection_select :espacio, :espacio_id, Espacio.all, :id, :descripcion %>
 
 
 <% end %>
