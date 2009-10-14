@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091013203924) do
+ActiveRecord::Schema.define(:version => 20091014120759) do
 
   create_table "carreras", :force => true do |t|
     t.integer  "codigo"
@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(:version => 20091013203924) do
     t.string   "codigo"
     t.string   "descripcion"
     t.string   "capacidad"
-    t.string   "tipo"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tipoespacio_id"
   end
 
   create_table "eventos", :force => true do |t|
