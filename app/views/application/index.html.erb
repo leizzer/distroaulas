@@ -20,16 +20,46 @@ acceder a la aplicacion</p>
 <br/>
 <br/>
 <% require 'ri_cal' %>
-<% eve = RiCal.Event %>
 <% cal = RiCal.Calendar %>
-<% Evento.find(:all, :conditions => {:byday => "MO"}).each do |e| %>
+
+
+<% Evento.find(:all, :conditions => {:reccurrent => false}).each do |e| %>
+  <% eve = RiCal.Event %>
+  <% eve.description = e.description %>
+  <% eve.dtstart = e.dtstart %>
+  <% eve.dtend = e.dtend %>
+  <% eve.location = e.espacio_id.to_s %>
+  <% cal.add_subcomponent eve %>
+<% end %>
+
+<% Evento.find(:all, :conditions => {:reccurrent => true}).each do |e| %>
+  <% eve = RiCal.Event %>
   <% eve.description = e.description %>
   <% eve.dtstart = e.dtstart %>
   <% eve.dtend = e.dtend %>
   <% eve.rrule = "FREQ=" + e.freq + ";BYDAY=" + e.byday + ";INTERVAL=" + e.interval.to_s %>
-  <!-- aca hay que ver como hacemos con el tema del Espacio asignado,
-       si lo metemos dentro del objeto evento del calendario de alguna manera o no !-->
+  <% eve.location = e.espacio_id.to_s %>
   <% cal.add_subcomponent eve %>
 <% end %>
 
-<p><%= cal.export %><p/>
+<% dias1 = [] %>
+<% dias2 = [] %>
+<%= cal.export %>
+<hr>
+<% cal.events.each do |event| %>
+  <p>DTSTART: <%= event.dtstart %></p>
+  <p>DTEND: <%= event.dtend %></p>
+  <p>DESC: <%= event.description %></p>
+  <p>Espacio: <%= Espacio.find(:first, :conditions => {:id => event.location}).codigo %>
+  <% event.occurrences(:count => 10).each do |occurrence| %>
+    <% dias1.push(occurrence.dtstart.day) if occurrence.dtstart.month == Time.now.month %>
+    <% dias2.push(occurrence.dtstart.day) if occurrence.dtstart.month == Time.now.month+1 %>
+  <% end %>
+<% end %>
+
+<div style="width: 200px; float: left;">
+  <%= show_calendar :month => Time.now.month, :highlight_today => true, :highlight_dates => dias1 %>
+</div>
+<div style="width: 200px; float: left;">
+  <%= show_calendar :month => Time.now.month+1, :highlight_dates => dias2 %>
+</div>

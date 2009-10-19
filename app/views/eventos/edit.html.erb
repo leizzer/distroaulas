@@ -1,43 +1,43 @@
-<h1>Editing evento</h1>
+<h1>Editar evento</h1>
 
 <% form_for(@evento) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :description %><br />
+    <%= label :evento, :description, "Descripcion" %><br />
     <%= f.text_field :description %>
   </p>
   <p>
-    <%= f.label :dtstart %><br />
+    <%= label :evento, :dtstart, "Hora de inicio del evento" %><br />
     <%= f.text_field :dtstart %>
   </p>
   <p>
-    <%= f.label :dtend %><br />
+    <%= label :evento, :dtend, "Hora de fin" %><br />
     <%= f.text_field :dtend %>
   </p>
   <p>
-    <%= f.label :reccurrent %>
+    <%= label :evento, :reccurrent, "Se repite periodicamente?" %>
     <%= f.check_box :reccurrent %>
   </p>
   <p>
-    <%= f.label :freq %><br />
+    <%= label :evento, :freq, "Frecuencia" %><br />
     <%= f.text_field :freq %>
   </p>
   <p>
-    <%= f.label :byday %><br />
+    <%= label :evento, :byday, "Dia de la semana" %><br />
     <%= f.text_field :byday %>
   </p>
   <p>
-    <%= f.label :interval %><br />
+    <%= label :evento, :interval, "Cantidad de ocurrencias a omitir" %><br />
     <%= f.text_field :interval %>
   </p>
   <p>
-    <%= f.label :espacio %><br />
+    <%= label :evento, :espacio_id, "Espacio asignado" %><br />
     <%= collection_select :espacio, :espacio_id, Espacio.all, :id, :codigo %>
   </p>
 
   <p>
-    <%= f.submit 'Update' %>
+    <%= f.submit 'Actualizar' %>
   </p>
 <% end %>
 

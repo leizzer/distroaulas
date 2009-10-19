@@ -1,49 +1,49 @@
-<h1>New evento</h1>
+<h1>Nuevo evento</h1>
 
 <% form_for(@evento) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
+    <%= label :evento, :description, "Descripcion << Materia" %><br />
+    <%= f.text_field :description %><<
+    <%= select_tag( "lista-materias", options_for_select(['']) + options_for_select(Materia.all.collect {|p| [ p.nombre ]}), {:onchange => "javascript: document.getElementById('evento_description').value=document.getElementById('lista-materias').value;"})%><br />
   <p>
-    <%= f.label :dtstart %><br />
+    <%= label :evento, :dtstart, "Fecha y hora de inicio del evento" %><br />
     <%= f.datetime_select :dtstart %>
+  <p>
+    <%= label :evento, :dtend, "Hora de fin" %><br />
+    <%= f.time_select :dtend %>
   </p>
   <p>
-    <%= f.label :dtend %><br />
-    <%= f.datetime_select :dtend %>
+    <%= label :evento, :reccurrent, "Se repite periodicamente?" %>
+    <%= f.check_box :reccurrent %>
   </p>
   <p>
-    <%= f.label :freq %><br />
+    <%= label :evento, :freq, "Frecuencia" %><br />
     <%= f.radio_button :freq, "DAILY" %> Diario <br/>
     <%= f.radio_button :freq, "WEEKLY" %> Semanal
   </p>
   <p>
-    <%= f.label :reccurrent %>
-    <%= f.check_box :reccurrent %>
+    <%= label :evento, :byday, "Dia de la semana" %><br />
+    <%= f.radio_button :byday, "MO" %> LUN
+    <%= f.radio_button :byday, "TU" %> MAR
+    <%= f.radio_button :byday, "WE" %> MIE
+    <%= f.radio_button :byday, "TH" %> JUE
+    <%= f.radio_button :byday, "FR" %> VIE
+    <%= f.radio_button :byday, "SA" %> SAB
+    <%= f.radio_button :byday, "SU" %> DOM
   </p>
   <p>
-    <%= f.label :byday %><br />
-    <%= f.radio_button :byday, "MO" %> Lunes <br/>
-    <%= f.radio_button :byday, "TU" %> Martes <br/>
-    <%= f.radio_button :byday, "WE" %> Miercoles <br/>
-    <%= f.radio_button :byday, "TH" %> Jueves <br/>
-    <%= f.radio_button :byday, "FR" %> Viernes <br/>
-    <%= f.radio_button :byday, "SA" %> Sabado <br/>
-    <%= f.radio_button :byday, "SU" %> Domingo <br/>
-  </p>
-  <p>
-    <%= f.label :interval %><br />
+    <%= label :evento, :interval, "Cantidad de ocurrencias a omitir" %><br />
     <%= f.text_field :interval %>
   </p>
 
-  <p> Espacios </p>
-  <%= collection_select :evento, :espacio_id, Espacio.all, :id, :codigo %>
-
   <p>
-    <%= f.submit 'Create' %>
+    <%= label :evento, :espacio_id, "Espacio asignado" %><br />
+    <%= collection_select :evento, :espacio_id, Espacio.all, :id, :codigo %>
+  </p>
+  <p>
+    <%= f.submit 'Crear' %>
   </p>
 
 
