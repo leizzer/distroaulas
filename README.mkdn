@@ -8,11 +8,13 @@ Have a nice day.
 #ToDo
 
 	Modelo
-	- Cerrar el diseÅÒo del modelo de eventos y las paginas corresponientes con el correcto guardado [la "new" en especial]
-	- En la vista de nuevo eventos, ver como agregar a que materia pertenece o en caso de que sea un evento especial
+	- [done?] Cerrar el diseÅÒo del modelo de eventos y las paginas corresponientes con el correcto guardado [la "new" en especial]
+	- [done?] En la vista de nuevo eventos, ver como agregar a que materia pertenece o en caso de que sea un evento especial
 	  que el usuario lo especifique: Sugiero poner un text_field y un combo. En el combo poner las materias que hay
 	  cargadas, mas un item que sea "otro". Cuando se selecciona "otro", el valor que va a la base es el del text
 	  field. De otro modo, el dato se toma del combo.
+	- Manejar exepciones
+
 	Busquedas
 	- Realizar las busquedas de eventos que sucederan en el dia
 	- Realizar busqueda de eventos en un dia arbitrario
