@@ -7,6 +7,9 @@ ActionController::Routing::Routes.draw do |map|
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
+
+  map.today '/today', :controller => 'eventos', :action => 'eventos_today'
+
   map.resources :users
 
   map.resource :session
@@ -61,4 +64,5 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
   map.root :controller => 'application', :action => 'index'
+
 end

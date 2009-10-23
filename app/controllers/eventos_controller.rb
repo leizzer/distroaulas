@@ -1,4 +1,7 @@
 class EventosController < ApplicationController
+  require 'ri_cal'
+  require 'simplified_event'
+
   # GET /eventos
   # GET /eventos.xml
   def index
@@ -41,7 +44,7 @@ class EventosController < ApplicationController
   # POST /eventos.xml
   def create
     @evento = Evento.new(params[:evento])
-    
+
     respond_to do |format|
       if @evento.save
         flash[:notice] = 'Evento was successfully created.'
@@ -82,4 +85,39 @@ class EventosController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def eventos_today
+    @events = []
+    @calendar = RiCal.Calendar
+    @events_list = Evento.find(:all, :conditions => {:reccurrent => false}) + Evento.find(:all, :conditions => { :reccurrent => true, :byday => Date.today.strftime("%a").upcase[0..1]})
+    @events_list.each do |event|
+      temp = Event.new
+      new_event = RiCal.Event
+      new_event.description = event.description
+      new_event.dtstart = event.dtstart
+      new_event.dtend = event.dtend
+      new_event.location = event.espacio_id.to_s
+      new_event.rrule = "FREQ=" + event.freq + ";BYDAY=" + event.byday + ";INTERVAL=" + event.interval.to_s if event.reccurrent
+      if event.reccurrent
+        occurrence = new_event.occurrences(:count => 1, :starting => Date.today, :before => Date.today + 1)
+        if occurrence.count > 0
+          @calendar.add_subcomponent new_event
+          temp.starts_at = occurrence[0].dtstart
+          temp.ends_at = occurrence[0].dtend
+          temp.name = event.description
+          temp.original_id = event.id
+          @events.push(temp)
+        end
+      else
+        @calendar.add_subcomponent new_event if (Date.parse (event.dtstart.year.to_s + '/' +  event.dtstart.month.to_s + '/' + event.dtstart.day.to_s)) == Date.today
+        temp.starts_at = new_event.dtstart
+        temp.ends_at = new_event.dtend
+        temp.name = new_event.description
+        temp.original_id = event.id
+        @events.push(temp)
+      end
+    end
+  end
 end
+
+
