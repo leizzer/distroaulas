@@ -12,55 +12,8 @@ acceder a la aplicacion</p>
 <br/>
 <br/>
 <h4>Otros links</h4>
-<%= link_to "Ver eventos de hoy", :controller => "eventos", :action => "eventos_today" %><br/>
+<%= link_to "Revisar eventos por dia", :controller => "eventos", :action => "browse_by_day" %><br/>
 <%= link_to "Listar usuarios", :controller => "users", :action => "index" %><br/>
 <%= link_to "Login", :controller => "sessions", :action => "new" %><br/>
 <%= link_to "Registrarse", :controller => "users", :action => "new" %><br/>
 <%= link_to "Desloguearse", :controller => "sessions", :action => "destroy" %>
-<br/>
-<br/>
-<br/>
-<% require 'ri_cal' %>
-<% cal = RiCal.Calendar %>
-
-
-<% Evento.find(:all, :conditions => {:reccurrent => false}).each do |e| %>
-  <% eve = RiCal.Event %>
-  <% eve.description = e.description %>
-  <% eve.dtstart = e.dtstart %>
-  <% eve.dtend = e.dtend %>
-  <% eve.location = e.espacio_id.to_s %>
-  <% cal.add_subcomponent eve %>
-<% end %>
-
-<% Evento.find(:all, :conditions => {:reccurrent => true}).each do |e| %>
-  <% eve = RiCal.Event %>
-  <% eve.description = e.description %>
-  <% eve.dtstart = e.dtstart %>
-  <% eve.dtend = e.dtend %>
-  <% eve.rrule = "FREQ=" + e.freq + ";BYDAY=" + e.byday + ";INTERVAL=" + e.interval.to_s %>
-  <% eve.location = e.espacio_id.to_s %>
-  <% cal.add_subcomponent eve %>
-<% end %>
-
-<% dias1 = [] %>
-<% dias2 = [] %>
-<%= cal.export %>
-<hr>
-<% cal.events.each do |event| %>
-  <p>DTSTART: <%= event.dtstart %></p>
-  <p>DTEND: <%= event.dtend %></p>
-  <p>DESC: <%= event.description %></p>
-  <p>Espacio: <%= Espacio.find(:first, :conditions => {:id => event.location}).codigo %>
-  <% event.occurrences(:count => 10).each do |occurrence| %>
-    <% dias1.push(occurrence.dtstart.day) if occurrence.dtstart.month == Time.now.month %>
-    <% dias2.push(occurrence.dtstart.day) if occurrence.dtstart.month == Time.now.month+1 %>
-  <% end %>
-<% end %>
-
-<div style="width: 200px; float: left;">
-  <%= show_calendar :month => Time.now.month, :highlight_today => true, :highlight_dates => dias1 %>
-</div>
-<div style="width: 200px; float: left;">
-  <%= show_calendar :month => Time.now.month+1, :highlight_dates => dias2 %>
-</div>

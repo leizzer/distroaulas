@@ -8,22 +8,19 @@ Have a nice day.
 #ToDo
 
 	Modelo
-	- [done?] Cerrar el diseÅÒo del modelo de eventos y las paginas corresponientes con el correcto guardado [la "new" en especial]
-	- [done?] En la vista de nuevo eventos, ver como agregar a que materia pertenece o en caso de que sea un evento especial
-	  que el usuario lo especifique: Sugiero poner un text_field y un combo. En el combo poner las materias que hay
-	  cargadas, mas un item que sea "otro". Cuando se selecciona "otro", el valor que va a la base es el del text
-	  field. De otro modo, el dato se toma del combo.
+	- [] Cerrar el dise√±o del modelo de eventos y las paginas corresponientes con el correcto guardado. En este punto aun faltan retocar las vistas, principalmente el edit.
+	- [done!] En la vista de nuevo eventos, ver como agregar a que materia pertenece o en caso de que sea un evento especial [...]
 	- Manejar exepciones
 
 	Busquedas
-	- Realizar las busquedas de eventos que sucederan en el dia
-	- Realizar busqueda de eventos en un dia arbitrario
+	- [done!] Realizar las busquedas de eventos que sucederan en el dia
+	- Realizar busqueda de eventos en un dia arbitrario 
  	<No mas busquedas que estas por ahora me parece>	
 
 	Interfaz
 	- Implementar la autenticacion en el application_controllery configrar todo el sitio para que funcione con autenticacion
-	- Implementar la renovacion de contraseÅÒa
-	- DiseÅÒar la interface basica
+	- Implementar la renovacion de contrase√±a
+	- Dise√±ar la interface basica
 
 * = Al terminar estas tareas, ya se podria lanzar una beta o alpha en
     todo caso.

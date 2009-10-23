@@ -1,14 +1,14 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :tipoespacios
 
+  map.browse_eventos_by_day '/eventos/browse_by_day', :controller => 'eventos', :action => 'browse_by_day'
+
   map.resources :eventos
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
-
-  map.today '/today', :controller => 'eventos', :action => 'eventos_today'
 
   map.resources :users
 

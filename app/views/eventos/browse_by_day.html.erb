@@ -1,0 +1,29 @@
+<%  weekly_calendar(@events, :date => @search_by_date, :include_24_hours => true) do |w|  %>
+  <%  w.week(:business_hours => params[:business_hours]) do |event,truncate|  %>
+    <%=  event.starts_at.strftime('%I:%M%p')  %>
+    <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>
+  <% end -%>
+<% end -%>
+<br>
+<br>
+
+<p>Buscar por fecha</p>
+<% form_tag :method => :post do  %>
+  <%= select_date @search_by_date %>
+  <%= submit_tag(value = 'Buscar') %>
+<% end %>
+
+<hr>
+
+<%= @calendar.export %>
+<hr>
+<% @calendar.events.each do |event| %>
+  <p>
+  DTSTART: <%= event.dtstart %><br>
+  DTEND: <%= event.dtend %><br>
+  DESC: <%= event.description %><br>
+  RECCURR: <%= event.rrule %><br>
+  Espacio: <%= Espacio.find(:first, :conditions => {:id => event.location}).codigo %></p>
+<% end %>
+
+<%= link_to 'Volver al indice', root_path %>

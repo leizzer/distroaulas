@@ -86,10 +86,19 @@ class EventosController < ApplicationController
     end
   end
 
-  def eventos_today
+  def browse_by_day
+    if params[:date].nil?
+      @search_by_date = Date.today
+    else
+      begin
+        @search_by_date = Date.parse(params[:date][:year] + params[:date][:month] + params[:date][:day])
+      rescue => e
+        @search_by_date = Date.today
+      end
+    end
     @events = []
     @calendar = RiCal.Calendar
-    @events_list = Evento.find(:all, :conditions => {:reccurrent => false}) + Evento.find(:all, :conditions => { :reccurrent => true, :byday => Date.today.strftime("%a").upcase[0..1]})
+    @events_list = Evento.find(:all, :conditions => {:reccurrent => false}) + Evento.find(:all, :conditions => { :reccurrent => true, :byday => @search_by_date.strftime("%a").upcase[0..1]})
     @events_list.each do |event|
       temp = Event.new
       new_event = RiCal.Event
@@ -99,7 +108,7 @@ class EventosController < ApplicationController
       new_event.location = event.espacio_id.to_s
       new_event.rrule = "FREQ=" + event.freq + ";BYDAY=" + event.byday + ";INTERVAL=" + event.interval.to_s if event.reccurrent
       if event.reccurrent
-        occurrence = new_event.occurrences(:count => 1, :starting => Date.today, :before => Date.today + 1)
+        occurrence = new_event.occurrences(:count => 1, :starting => @search_by_date, :before => @search_by_date + 1)
         if occurrence.count > 0
           @calendar.add_subcomponent new_event
           temp.starts_at = occurrence[0].dtstart
@@ -109,7 +118,7 @@ class EventosController < ApplicationController
           @events.push(temp)
         end
       else
-        @calendar.add_subcomponent new_event if (Date.parse (event.dtstart.year.to_s + '/' +  event.dtstart.month.to_s + '/' + event.dtstart.day.to_s)) == Date.today
+        @calendar.add_subcomponent new_event if (Date.parse (event.dtstart.year.to_s + '/' +  event.dtstart.month.to_s + '/' + event.dtstart.day.to_s)) == @search_by_date
         temp.starts_at = new_event.dtstart
         temp.ends_at = new_event.dtend
         temp.name = new_event.description
@@ -117,6 +126,10 @@ class EventosController < ApplicationController
         @events.push(temp)
       end
     end
+  end
+
+  def load_exceptions
+
   end
 end
 

@@ -1,40 +1,58 @@
+<h4>Detalle del evento</h4>
+
 <p>
-  <b>Description:</b>
+  <b>Razon del evento:</b>
   <%=h @evento.description %>
 </p>
 
 <p>
-  <b>Dtstart:</b>
+  <b>Fecha y hora de inicio:</b>
   <%=h @evento.dtstart %>
 </p>
 
 <p>
-  <b>Dtend:</b>
+  <b>Hora de finalizado:</b>
   <%=h @evento.dtend %>
 </p>
 
 <p>
-  <b>Reccurent?</b>
+  <b>Es recurrente?</b>
   <%=h @evento.reccurrent %>
 </p>
 
 <p>
-  <b>Freq:</b>
-  <%=h @evento.freq %>
+  <b>Frecuencia::</b>
+  <% if @evento.freq == "DAILY" %>
+    Diario (se repite todos los dias)
+  <% elsif @evento.freq == "WEEKLY" %>
+    Semanal (se repite cada semana)
+  <% else %>
+    No se repite
+  <% end %>
+
 </p>
 
 <p>
-  <b>Bydate:</b>
-  <%=h @evento.byday %>
+  <b>Dia de recurrencia:</b>
+  <%= case @evento.byday 
+    when "MO" then "Lunes"
+    when "TU" then "Martes"
+    when "WE" then "Miercoles"
+    when "TH" then "Jueves"
+    when "FR" then "Viernes"
+    when "SA" then "Sabado"
+    when "SU" then "Domingo"
+    else "No se repite"
+  end %>
 </p>
 
 <p>
-  <b>Interval:</b>
-  <%=h @evento.interval %>
+  <b>Omisiones (cada X semanas/dias):</b>
+  <%= @evento.interval %>
 </p>
 
 <p>
-  <b>Espacio:</b>
+  <b>Espacio asignado:</b>
   <%=h Espacio.find(:first, :conditions => {:id => @evento.espacio_id}).codigo %>
 </p>
 

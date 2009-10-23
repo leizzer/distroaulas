@@ -4,16 +4,16 @@
   <%= f.error_messages %>
 
   <p>
-    <%= label :evento, :description, "Descripcion" %><br />
-    <%= f.text_field :description %>
-  </p>
+    <%= label :evento, :description, "Descripcion << Materia" %><br />
+    <%= f.text_field :description %><<
+    <%= select_tag( "lista-materias", options_for_select(['']) + options_for_select(Materia.all.collect {|p| [ p.nombre ]}), {:onchange => "javascript: document.getElementById('evento_description').value=document.getElementById('lista-materias').value;"})%><br />  </p>
   <p>
     <%= label :evento, :dtstart, "Hora de inicio del evento" %><br />
-    <%= f.text_field :dtstart %>
+    <%= f.datetime_select :dtstart %>
   </p>
   <p>
     <%= label :evento, :dtend, "Hora de fin" %><br />
-    <%= f.text_field :dtend %>
+    <%= f.time_select :dtend %>
   </p>
   <p>
     <%= label :evento, :reccurrent, "Se repite periodicamente?" %>
@@ -21,11 +21,18 @@
   </p>
   <p>
     <%= label :evento, :freq, "Frecuencia" %><br />
-    <%= f.text_field :freq %>
+    <%= f.radio_button :freq, "DAILY" %> Diario <br/>
+    <%= f.radio_button :freq, "WEEKLY" %> Semanal
   </p>
   <p>
     <%= label :evento, :byday, "Dia de la semana" %><br />
-    <%= f.text_field :byday %>
+    <%= f.radio_button :byday, "MO" %> LUN
+    <%= f.radio_button :byday, "TU" %> MAR
+    <%= f.radio_button :byday, "WE" %> MIE
+    <%= f.radio_button :byday, "TH" %> JUE
+    <%= f.radio_button :byday, "FR" %> VIE
+    <%= f.radio_button :byday, "SA" %> SAB
+    <%= f.radio_button :byday, "SU" %> DOM
   </p>
   <p>
     <%= label :evento, :interval, "Cantidad de ocurrencias a omitir" %><br />
