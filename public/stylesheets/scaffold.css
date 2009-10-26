@@ -22,13 +22,28 @@ a:hover { color: #666666; }
   display: table;
 }
 
+#banner {
+  background-color: #2222CC;
+  color: #FFFFFF;
+  height: 100px;
+}
+
+#banner img {
+  float: left;
+  padding: 8px 0px 0px 40px;
+}
+
+#banner h1 {
+  padding: 40px 0px 0px 170px;
+}
+
 #menu {
   width: 150px;
   background-color: #2222CC;
   float: left;
 }
 
-#menu h3, h4 {
+#menu h1, h2, h3, h4 {
   color: #FFFFFF;
 }
 
@@ -44,9 +59,9 @@ a:hover { color: #666666; }
 }
 
 #contenido {
-  float: left;
+  position: relative;
   width: 800px;
-  margin-left: 155px;
+  margin-left: 160px;
 }
 
 /* ERRORS */
