@@ -7,20 +7,20 @@ Have a nice day.
 
 #ToDo
 
-	Modelo
-	- [] Cerrar el diseño del modelo de eventos y las paginas corresponientes con el correcto guardado. En este punto aun faltan retocar las vistas, principalmente el edit.
-	- Manejar exepciones
+        Modelo
+        - [] Cerrar el diseño del modelo de eventos y las paginas corresponientes con el correcto guardado. En este punto aun faltan retocar las vistas, principalmente el edit.
+        - Manejar exepciones
 
-	Busquedas
-	- [done!] Realizar las busquedas de eventos que sucederan en el dia
-	- Realizar busqueda de eventos en un dia arbitrario 
+        Busquedas
+        - [done!] Realizar las busquedas de eventos que sucederan en el dia
+        - Realizar busqueda de eventos en un dia arbitrario
         - Realizar busqueda de espacios libres para un dia
- 	<No mas busquedas que estas por ahora me parece>	
+        <No mas busquedas que estas por ahora me parece>
 
-	Interfaz
-	- Implementar la autenticacion en el application_controllery configrar todo el sitio para que funcione con autenticacion
-	- Implementar la renovacion de contraseña
-	- Diseñar la interface basica
+        Interfaz
+        - Implementar la autenticacion en el application_controllery configrar todo el sitio para que funcione con autenticacion
+        - Implementar la renovacion de contraseña
+        - Diseñar la interface basica
 
 * = Al terminar estas tareas, ya se podria lanzar una beta o alpha en
     todo caso.
