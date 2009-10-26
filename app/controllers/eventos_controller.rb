@@ -99,6 +99,7 @@ class EventosController < ApplicationController
     @events = []
     @calendar = RiCal.Calendar
     @events_list = Evento.find(:all, :conditions => {:reccurrent => false}) + Evento.find(:all, :conditions => { :reccurrent => true, :byday => @search_by_date.strftime("%a").upcase[0..1]})
+
     @events_list.each do |event|
       temp = Event.new
       new_event = RiCal.Event
@@ -118,7 +119,7 @@ class EventosController < ApplicationController
           @events.push(temp)
         end
       else
-        @calendar.add_subcomponent new_event if (Date.parse (event.dtstart.year.to_s + '/' +  event.dtstart.month.to_s + '/' + event.dtstart.day.to_s)) == @search_by_date
+        @calendar.add_subcomponent new_event if (Date.parse(event.dtstart.year.to_s + '/' +  event.dtstart.month.to_s + '/' + event.dtstart.day.to_s)) == @search_by_date
         temp.starts_at = new_event.dtstart
         temp.ends_at = new_event.dtend
         temp.name = new_event.description
