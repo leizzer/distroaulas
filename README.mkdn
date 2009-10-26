@@ -9,12 +9,12 @@ Have a nice day.
 
 	Modelo
 	- [] Cerrar el diseño del modelo de eventos y las paginas corresponientes con el correcto guardado. En este punto aun faltan retocar las vistas, principalmente el edit.
-	- [done!] En la vista de nuevo eventos, ver como agregar a que materia pertenece o en caso de que sea un evento especial [...]
 	- Manejar exepciones
 
 	Busquedas
 	- [done!] Realizar las busquedas de eventos que sucederan en el dia
 	- Realizar busqueda de eventos en un dia arbitrario 
+        - Realizar busqueda de espacios libres para un dia
  	<No mas busquedas que estas por ahora me parece>	
 
 	Interfaz

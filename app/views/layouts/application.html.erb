@@ -18,6 +18,48 @@
     <% end %>
   </div>
 
+  <div id="menu">
+    <h3>Indice general</h3>
+    <h4>ABMs</h4>
+    <div id="item">
+    <%= link_to "Carreras", {:controller => "carreras", :action => "index"}, :id => "item" %><br/>
+    </div>
+    <div id="item">
+    <%= link_to "Planes", {:controller => "plans", :action => "index"}, :id => "item" %><br/>
+    </div>
+    <div id="item">
+    <%= link_to "Materias", {:controller => "materias", :action => "index"}, :id => "item" %><br/>
+    </div>
+    <br/>
+    <div id="item">
+    <%= link_to "Espacios", {:controller => "espacios", :action => "index"}, :id => "item" %><br/>
+    </div>
+    <div id="item">
+    <%= link_to "Eventos", {:controller => "eventos", :action => "index"}, :id => "item" %><br/>
+    </div>
+    <div id="item">
+    <%= link_to "Tipo Espacios", {:controller => "tipoespacios", :action => "index"}, :id => "item" %>
+    </div>
+    <br/>
+
+    <h4>Otros links</h4>
+    <div id="item">
+    <%= link_to "Eventos del Dia", {:controller => "eventos", :action => "browse_by_day"}, :id => "item" %><br/>
+    </div>
+    <div id="item">
+    <%= link_to "Listar usuarios", {:controller => "users", :action => "index"}, :id => "item" %><br/>
+    </div>
+    <div id="item">
+    <%= link_to "Login", {:controller => "sessions", :action => "new"}, :id => "item" %><br/>
+    </div>
+    <div id="item">
+    <%= link_to "Registrarse", {:controller => "users", :action => "new"}, :id => "item" %><br/>
+    </div>
+    <div id="item">
+    <%= link_to "Desloguearse", {:controller => "sessions", :action => "destroy"}, :id => "item" %>
+    </div>
+  </div>
+
   <h2>Distroaulas</h2>
 
   <div id="contenido">
