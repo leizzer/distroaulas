@@ -5,42 +5,61 @@
 
   <p>
     <%= label :evento, :description, "Descripcion << Materia" %><br />
-    <%= f.text_field :description %><<
-    <%= select_tag( "lista-materias", options_for_select(['']) + options_for_select(Materia.all.collect {|p| [ p.nombre ]}), {:onchange => "javascript: document.getElementById('evento_description').value=document.getElementById('lista-materias').value;"})%><br />  </p>
-  <p>
-    <%= label :evento, :dtstart, "Hora de inicio del evento" %><br />
-    <%= f.datetime_select :dtstart %>
+    <%= @evento.description %>
   </p>
-  <p>
-    <%= label :evento, :dtend, "Hora de fin" %><br />
-    <%= f.time_select :dtend %>
-  </p>
-  <p>
-    <%= label :evento, :reccurrent, "Se repite periodicamente?" %>
-    <%= f.check_box :reccurrent %>
-  </p>
-  <p>
-    <%= label :evento, :freq, "Frecuencia" %><br />
-    <%= f.radio_button :freq, "DAILY" %> Diario <br/>
-    <%= f.radio_button :freq, "WEEKLY" %> Semanal
-  </p>
-  <p>
-    <%= label :evento, :byday, "Dia de la semana" %><br />
-    <%= f.radio_button :byday, "MO" %> LUN
-    <%= f.radio_button :byday, "TU" %> MAR
-    <%= f.radio_button :byday, "WE" %> MIE
-    <%= f.radio_button :byday, "TH" %> JUE
-    <%= f.radio_button :byday, "FR" %> VIE
-    <%= f.radio_button :byday, "SA" %> SAB
-    <%= f.radio_button :byday, "SU" %> DOM
-  </p>
-  <p>
-    <%= label :evento, :interval, "Cantidad de ocurrencias a omitir" %><br />
-    <%= f.text_field :interval %>
-  </p>
+
   <p>
     <%= label :evento, :espacio_id, "Espacio asignado" %><br />
     <%= collection_select :espacio, :espacio_id, Espacio.all, :id, :codigo %>
+  </p>
+
+  <p>
+    <%= label :evento, :exdate, "Agreagar Ocaciones Especiales" %><br />
+    <%= select_date Date.today %> <br />
+    <%= button_to_function "Agregar Exepcion", "document.getElementById('evento_exdate').value=document.getElementById('evento_exdate').value + document.getElementById('date_year').value + document.getElementById('date_month').value + document.getElementById('date_day').value + ',';" %>
+    <%= f.text_field :exdate %> <br />
+
+    <%= button_to_function "Agregar Ocurrencia", "document.getElementById('evento_rdate').value=document.getElementById('evento_rdate').value + document.getElementById('date_year').value + document.getElementById('date_month').value + document.getElementById('date_day').value + ',';" %>
+    <%= f.text_field :rdate %>
+  </p>
+
+  <hr />
+
+  <p>
+    <%= label :evento, :dtstart, "Hora de inicio del evento" %><br />
+    <%= @evento.dtstart %>
+  </p>
+
+  <p>
+    <%= label :evento, :dtend, "Hora de fin" %><br />
+    <%= @evento.dtend %>
+  </p>
+
+  <p>
+    <%= label :evento, :reccurrent, "Se repite periodicamente?" %>
+    <%= @evento.reccurrent %>
+  </p>
+
+  <p>
+    <%= label :evento, :freq, "Frecuencia" %><br />
+    <%= f.radio_button :freq, "DAILY", {:disabled => true} %> Diario <br/>
+    <%= f.radio_button :freq, "WEEKLY", {:disabled => true} %> Semanal
+  </p>
+
+  <p>
+    <%= label :evento, :byday, "Dia de la semana" %><br />
+    <%= f.radio_button :byday, "MO", {:disabled => true} %> LUN
+    <%= f.radio_button :byday, "TU", {:disabled => true} %> MAR
+    <%= f.radio_button :byday, "WE", {:disabled => true} %> MIE
+    <%= f.radio_button :byday, "TH", {:disabled => true} %> JUE
+    <%= f.radio_button :byday, "FR", {:disabled => true} %> VIE
+    <%= f.radio_button :byday, "SA", {:disabled => true} %> SAB
+    <%= f.radio_button :byday, "SU", {:disabled => true} %> DOM
+  </p>
+
+  <p>
+    <%= label :evento, :interval, "Cantidad de ocurrencias a omitir" %><br />
+    <%= f.text_field :interval, {:disabled => true} %>
   </p>
 
   <p>

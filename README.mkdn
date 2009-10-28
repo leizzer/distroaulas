@@ -8,8 +8,8 @@ Have a nice day.
 #ToDo
 
         Modelo
-        - [] Cerrar el diseño del modelo de eventos y las paginas corresponientes con el correcto guardado. En este punto aun faltan retocar las vistas, principalmente el edit.
-        - Manejar exepciones
+        - [] Hacer los checkeos en las cargas de datos.
+        - [done?] Manejar exepciones
 
         Busquedas
         - [done!] Realizar las busquedas de eventos que sucederan en el dia
@@ -21,13 +21,6 @@ Have a nice day.
         - Implementar la autenticacion en el application_controllery configrar todo el sitio para que funcione con autenticacion
         - Implementar la renovacion de contraseña
         - Diseñar la interface basica
-
-* = Al terminar estas tareas, ya se podria lanzar una beta o alpha en
-    todo caso.
-
-IDEA: utilizar tambien RDATE para agregar ocurrencias especiales, Ej: hoy no hay la materia x pero
-se recupera la hora tal dia. Ese tal dia lo podemos cargar en RDATE y tambien agregar el dia que no
-hay en EXDATE.
 
 
 #Groso el magit. Uso:
