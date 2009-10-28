@@ -87,7 +87,11 @@ class EventosController < ApplicationController
 
   def browse_by_day
     if params[:date].nil?
-      @search_by_date = Date.today
+      if params[:start_date].nil?
+        @search_by_date = Date.today
+      else
+        @search_by_date = params[:start_date].to_date
+      end
     else
       if @search_by_date.nil?
         begin
