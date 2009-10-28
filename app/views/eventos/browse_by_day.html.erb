@@ -6,9 +6,12 @@
 <% end -%>
 <br>
 <br>
-
+<p>En este momento los siguientes espacios estan libres: </p>
+<% @free_spaces.each do |space| %>
+  <%= space.codigo + ' - ' + space.descripcion %>
+<% end %>
 <p>Buscar por fecha</p>
-<% form_tag :method => :post do  %>
+<% form_tag do %>
   <%= select_date @search_by_date %>
   <%= submit_tag(value = 'Buscar') %>
 <% end %>

@@ -4,3 +4,4 @@ tmp/**/*
 *.cal
 \#*#
 typescript
+*.save

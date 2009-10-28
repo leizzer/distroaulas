@@ -15,8 +15,8 @@
 <% @eventos.each do |evento| %>
   <tr>
     <td><%=h evento.description %></td>
-    <td><%=h evento.dtstart.to_s[0..15] %></td>
-    <td><%=h evento.dtend.to_s[0..15] %></td>
+    <td><%=h evento.dtstart.to_s %></td>
+    <td><%=h evento.dtend.to_s %></td>
     <td><%=h "SI" if evento.reccurrent%></td>
     <td><%=h evento.freq %></td>
     <td><%=h evento.byday %></td>

@@ -90,15 +90,17 @@ class EventosController < ApplicationController
     if params[:date].nil?
       @search_by_date = Date.today
     else
-      begin
-        @search_by_date = Date.parse(params[:date][:year] + params[:date][:month] + params[:date][:day])
-      rescue => e
-        @search_by_date = Date.today
+      if @search_by_date.nil?
+        begin
+          @search_by_date = Date.parse(params[:date][:year] + params[:date][:month] + params[:date][:day])
+        rescue => e
+          @search_by_date = Date.today
+        end
       end
     end
     @events = []
     @calendar = RiCal.Calendar
-    @events_list = Evento.find(:all, :conditions => {:reccurrent => false}) + Evento.find(:all, :conditions => { :reccurrent => true, :byday => @search_by_date.strftime("%a").upcase[0..1]})
+    @events_list = Evento.find(:all, :conditions => "dtstart > '#{@search_by_date}' AND '#{@search_by_date + 1.day}' > dtstart AND reccurrent = 'f'") + Evento.find(:all, :conditions => { :reccurrent => true, :byday => @search_by_date.strftime("%a").upcase[0..1]})
 
     @events_list.each do |event|
       temp = Event.new
@@ -126,6 +128,10 @@ class EventosController < ApplicationController
         temp.original_id = event.id
         @events.push(temp)
       end
+    end
+    @free_spaces = Espacio.all
+    @calendar.events.each do |event|
+      @free_spaces.delete_at event.location.to_i if DateTime.now < event.finish_time
     end
   end
 
