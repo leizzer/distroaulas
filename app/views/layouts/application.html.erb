@@ -19,13 +19,26 @@
   </div>
 
   <div id="banner">
-	<%= image_tag "ucse.jpg" %>
-  	<h1>Universidad Catolica de Santiago del Estero</h1>
+        <%= image_tag "ucse.jpg" %>
+        <h1>Universidad Catolica de Santiago del Estero</h1>
   </div>
 
   <div id="menu">
     <h2>Distroaulas</h2>
     <h4>ABMs</h4>
+    <div id="item">
+    <%= link_to "Eventos", {:controller => "eventos", :action => "index"}, :id => "item" %><br/>
+    </div>
+    <br />
+
+    <div id="item">
+    <%= link_to "Espacios", {:controller => "espacios", :action => "index"}, :id => "item" %><br/>
+    </div>
+    <div id="item">
+    <%= link_to "Tipo Espacios", {:controller => "tipoespacios", :action => "index"}, :id => "item" %>
+    </div>
+    <br />
+
     <div id="item">
     <%= link_to "Carreras", {:controller => "carreras", :action => "index"}, :id => "item" %><br/>
     </div>
@@ -35,17 +48,6 @@
     <div id="item">
     <%= link_to "Materias", {:controller => "materias", :action => "index"}, :id => "item" %><br/>
     </div>
-    <br/>
-    <div id="item">
-    <%= link_to "Espacios", {:controller => "espacios", :action => "index"}, :id => "item" %><br/>
-    </div>
-    <div id="item">
-    <%= link_to "Eventos", {:controller => "eventos", :action => "index"}, :id => "item" %><br/>
-    </div>
-    <div id="item">
-    <%= link_to "Tipo Espacios", {:controller => "tipoespacios", :action => "index"}, :id => "item" %>
-    </div>
-    <br/>
 
     <h4>Otros links</h4>
     <div id="item">
