@@ -61,7 +61,6 @@ class EventosController < ApplicationController
   # PUT /eventos/1.xml
   def update
     @evento = Evento.find(params[:id])
-
     respond_to do |format|
       if @evento.update_attributes(params[:evento])
         flash[:notice] = 'Evento was successfully updated.'
