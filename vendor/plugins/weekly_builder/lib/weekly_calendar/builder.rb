@@ -7,13 +7,16 @@ class WeeklyCalendar::Builder
   end
   
   def days      
+    day_names = ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado', 'Domingo']
+    month_names = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
+
     concat(tag("div", :id => "days"))
-      concat(content_tag("div", "Weekly View", :id => "placeholder"))
+      concat(content_tag("div", "Eventos", :id => "placeholder"))
       for day in @start_date..@end_date        
         concat(tag("div", :id => "day"))
-        concat(content_tag("b", day.strftime('%A')))
+        concat(content_tag("b", day_names[day.wday - 1] + ' ' + day.day.to_s))
         concat(tag("br"))
-        concat(day.strftime('%B %d'))
+        concat(month_names[day.month - 1])
         concat("</div>")
       end
     concat("</div>")      

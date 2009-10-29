@@ -7,9 +7,11 @@
 <br>
 <br>
 <p>En este momento los siguientes espacios estan libres: </p>
+<ul>
 <% @free_spaces.each do |space| %>
-  <%= space.codigo + ' - ' + space.descripcion %>
+ <li> <%= link_to space.codigo + ' - ' + space.descripcion, '/eventos/new?espacio_id=' + space.id.to_s  %></li>
 <% end %>
+</ul>
 <p>Buscar por fecha</p>
 <% form_tag do %>
   <%= select_date @search_by_date %>

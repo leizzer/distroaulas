@@ -1,27 +1,33 @@
 <h1>Listing eventos</h1>
 
-<table>
+<table id="event-list">
   <tr>
-    <th>Description</th>
-    <th>Dtstart</th>
-    <th>Dtend</th>
-    <th>Recurrente?</th>
-    <th>Freq</th>
-    <th>Bydate</th>
-    <th>Interval</th>
+    <th>Asunto</th>
+    <th>Inicio</th>
+    <th>Fin</th>
+    <th>Recurr?</th>
+    <th>Frecuencia</th>
+    <th>Dia</th>
+    <th>Cada...</th>
     <th>Espacio</th>
   </tr>
 
 <% @eventos.each do |evento| %>
   <tr>
     <td><%=h evento.description %></td>
-    <td><%=h evento.dtstart.to_s %></td>
-    <td><%=h evento.dtend.to_s %></td>
-    <td><%=h "SI" if evento.reccurrent%></td>
+    <td><%=h evento.dtstart.to_s[0..15] %></td>
+    <td><%=h evento.dtend.to_s[0..15] %></td>
+    <td><%=h "SI" if evento.reccurrent %>
+        <%=h "NO" if not evento.reccurrent %></td>
     <td><%=h evento.freq %></td>
     <td><%=h evento.byday %></td>
     <td><%=h evento.interval %></td>
-    <td><%=h Espacio.find(:first, :conditions => {:id => evento.espacio_id}).codigo %></td>
+    <td>
+    <% begin %>
+      <%=h Espacio.find(:first, :conditions => {:id => evento.espacio_id}).codigo %>
+    <% rescue => e %>
+      N/D
+    <% end %></td>
     <td><%= link_to 'Show', evento %></td>
     <td><%= link_to 'Edit', edit_evento_path(evento) %></td>
     <td><%= link_to 'Destroy', evento, :confirm => 'Are you sure?', :method => :delete %></td>

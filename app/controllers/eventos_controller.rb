@@ -28,7 +28,7 @@ class EventosController < ApplicationController
   # GET /eventos/new.xml
   def new
     @evento = Evento.new
-
+    @evento.espacio_id = params[:espacio_id].to_i if not params[:espacio_id].nil?
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @evento }
@@ -106,7 +106,7 @@ class EventosController < ApplicationController
     @events_list = Evento.find(:all, :conditions => "dtstart > '#{@search_by_date}' AND '#{@search_by_date + 1.day}' > dtstart AND reccurrent = 'f'") + Evento.find(:all, :conditions => { :reccurrent => true, :byday => @search_by_date.strftime("%a").upcase[0..1]})
 
     @events_list.each do |event|
-      temp = Event.new
+      temp = SimpEvent.new
       new_event = RiCal.Event
       new_event.description = event.description
       new_event.dtstart = event.dtstart
@@ -115,6 +115,7 @@ class EventosController < ApplicationController
       new_event.rrule = "FREQ=" + event.freq + ";BYDAY=" + event.byday + ";INTERVAL=" + event.interval.to_s if event.reccurrent
       #new_event.exdate
       #new_event.rdate
+      codigo_espacio = Espacio.find :first, :conditions => {:id => event.espacio_id}
       #Occurrences te va a manejar automaticamente las exdates y rdates, no tenes que hacer ningun otro calculo mas que cargarlos al evento.
       #Creo que son las primeras lineas de comentario en TODA la aplicacion XD Mal
       if event.reccurrent
@@ -123,7 +124,7 @@ class EventosController < ApplicationController
           @calendar.add_subcomponent new_event
           temp.starts_at = occurrence[0].dtstart
           temp.ends_at = occurrence[0].dtend
-          temp.name = event.description
+          temp.name = event.description + ' - ' + codigo_espacio.codigo
           temp.original_id = event.id
           @events.push temp
         end
@@ -131,14 +132,15 @@ class EventosController < ApplicationController
         @calendar.add_subcomponent new_event if (Date.parse(event.dtstart.year.to_s + '/' +  event.dtstart.month.to_s + '/' + event.dtstart.day.to_s)) == @search_by_date
         temp.starts_at = new_event.dtstart
         temp.ends_at = new_event.dtend
-        temp.name = new_event.description
+        temp.name = new_event.description + ' - ' + codigo_espacio.codigo
         temp.original_id = event.id
         @events.push temp 
       end
     end
     @free_spaces = Espacio.all
     @calendar.events.each do |event|
-      @free_spaces.delete_at event.location.to_i if DateTime.now < event.finish_time
+      debugger
+      @free_spaces.delete(Espacio.find_by_id event.location.to_i) if DateTime.now.between? event.dtstart, event.dtend
     end
   end
 

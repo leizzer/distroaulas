@@ -26,6 +26,7 @@ class Evento < ActiveRecord::Base
    else
      temp += self.dtend.min.to_s
    end
+   temp += '-0300'
    self.dtend = DateTime.parse(temp)
  end
 end

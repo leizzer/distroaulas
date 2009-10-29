@@ -1,4 +1,4 @@
-class Event
+class SimpEvent
   def starts_at
     @starts_at
   end
@@ -29,6 +29,14 @@ class Event
 
   def original_id=(data)
     @original_id = data
+  end
+
+  def location
+    @location
+  end
+
+  def location=(data)
+    @location = data
   end
 
 
