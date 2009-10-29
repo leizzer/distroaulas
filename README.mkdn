@@ -43,7 +43,12 @@ Have a nice day.
         c: abre ventana para poner comentario al commit
         C-c C-c: commit
         C-c C-k: cancelas commit
+
 -push-
         P: push (te pregunta a donde subir)
+
+-reset-
+        x: soft reset
+        X: hard reset
 
 [mas info buscar magit en google]
