@@ -15,7 +15,7 @@ module WeeklyCalendar
     concat("</div>")
     
     if options[:include_24_hours] == true
-      concat("<b><a href='?business_hours=true&start_date=#{start_date}'>Business Hours</a> | <a href='?business_hours=false&start_date=#{start_date}'>24-Hours</a></b>") # start_date=#{start_date}
+      concat("<b><a href='?business_hours=true&start_date=#{start_date}'>Turno Tarde</a> | <a href='?business_hours=false&start_date=#{start_date}'>24 horas</a></b>") # start_date=#{start_date}
     end
   end
   

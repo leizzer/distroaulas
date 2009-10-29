@@ -1,0 +1,22 @@
+es:
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      short: "%e. %b"
+      long: "%e. %B %Y"
+      
+    day_names: [Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo]
+    abbr_day_names: [Lu, Ma, Mi, Ju, Vi, Sa, Do]
+    month_names: [~, Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre]
+    abbr_month_names: [~, Ene, Feb, Mar, Abr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    order: [:day, :month, :year]
+  
+  time:
+    formats:
+      default: "%A, %e. %B %Y, %H:%M Uhr"
+      time: "%H:%M Uhr"
+      short: "%e.%m., %H:%M Uhr"
+      long: "%A, %e. %B %Y, %H:%M Uhr"
+    
+    am: ""
+    pm: ""
