@@ -10,7 +10,7 @@
 
   <p>
     <%= label :evento, :espacio_id, "Espacio asignado" %><br />
-    <%= collection_select :espacio, :espacio_id, Espacio.all, :id, :codigo %>
+    <%= collection_select :evento, :espacio_id, Espacio.all, :id, :codigo %>
   </p>
 
   <p>
