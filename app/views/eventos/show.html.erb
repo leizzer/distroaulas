@@ -7,12 +7,12 @@
 
 <p>
   <b>Fecha y hora de inicio:</b>
-  <%=h @evento.dtstart %>
+  <%=h @evento.dtstart.to_s[0..15] %>
 </p>
 
 <p>
   <b>Hora de finalizado:</b>
-  <%=h @evento.dtend %>
+  <%=h @evento.dtend.to_s[0..15] %>
 </p>
 
 <p>
@@ -21,7 +21,7 @@
 </p>
 
 <p>
-  <b>Frecuencia::</b>
+  <b>Frecuencia:</b>
   <% if @evento.freq == "DAILY" %>
     Diario (se repite todos los dias)
   <% elsif @evento.freq == "WEEKLY" %>

@@ -109,12 +109,12 @@ class EventosController < ApplicationController
       temp = SimpEvent.new
       new_event = RiCal.Event
       new_event.description = event.description
-      new_event.dtstart = event.dtstart
-      new_event.dtend = event.dtend
+      new_event.dtstart = event.dtstart.strftime '%Y%m%dT%H%M00'
+      new_event.dtend = event.dtend.strftime '%Y%m%dT%H%M00'
       new_event.location = event.espacio_id.to_s
       new_event.rrule = "FREQ=" + event.freq + ";BYDAY=" + event.byday + ";INTERVAL=" + event.interval.to_s if event.reccurrent
-      #new_event.exdate
-      #new_event.rdate
+      new_event.exdates = event.exdate.to_a
+      new_event.rdates = event.rdate.to_a
       codigo_espacio = Espacio.find :first, :conditions => {:id => event.espacio_id}
       #Occurrences te va a manejar automaticamente las exdates y rdates, no tenes que hacer ningun otro calculo mas que cargarlos al evento.
       #Creo que son las primeras lineas de comentario en TODA la aplicacion XD Mal
@@ -139,8 +139,7 @@ class EventosController < ApplicationController
     end
     @free_spaces = Espacio.all
     @calendar.events.each do |event|
-      debugger
-      @free_spaces.delete(Espacio.find_by_id event.location.to_i) if DateTime.now.between? event.dtstart, event.dtend
+      @free_spaces.delete(Espacio.find_by_id event.location.to_i) if DateTime.now.strftime('%H%M').to_i.between? event.dtstart.strftime('%H%M').to_i, event.dtend.strftime('%H%M').to_i
     end
   end
 
