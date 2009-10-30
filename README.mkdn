@@ -8,20 +8,19 @@ Have a nice day.
 #ToDo
 
         Modelo
-        - [] Hacer los checkeos en las cargas de datos.
-        - [done?] Manejar exepciones
+        - [] Hacer los checkeos en las cargas de datos. agregar Comprobaciones de que no se pisen eventos en el mismo espacio.
+        - [done!] Manejar exepciones
+	- Hacer que el combo de nuevo evento que trae materias este filtrado por carrera
 
         Busquedas
-        - [done!] Realizar las busquedas de eventos que sucederan en el dia
           * Realizar las busquedas de eventos por la Carrera y año de la materia
-        - [done!] Realizar busqueda de eventos en un dia arbitrario
-        - Realizar busqueda de espacios libres para un dia
-        <No mas busquedas que estas por ahora me parece>
 
         Interfaz
         - Implementar la autenticacion en el application_controllery configrar todo el sitio para que funcione con autenticacion
         - Implementar la renovacion de contraseña
         - Diseñar la interface basica
+	- Hacer una vista de eventos en general. Dario sugiere filtrarlos por espacio (que parece la posta) y
+	  mostrar todos los espacios.
 
 
 #Groso el magit. Uso:

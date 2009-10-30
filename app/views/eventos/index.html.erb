@@ -1,4 +1,4 @@
-<h1>Listing eventos</h1>
+<h1>Lista de eventos</h1>
 
 <table id="event-list">
   <tr>
@@ -28,14 +28,14 @@
     <% rescue => e %>
       N/D
     <% end %></td>
-    <td><%= link_to 'Show', evento %></td>
-    <td><%= link_to 'Edit', edit_evento_path(evento) %></td>
-    <td><%= link_to 'Destroy', evento, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Detalle', evento %></td>
+    <td><%= link_to 'Editar', edit_evento_path(evento) %></td>
+    <td><%= link_to 'Eliminar', evento, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New evento', new_evento_path %>
+<%= link_to 'Nuevo evento', new_evento_path %>
 <%= link_to 'Volver al indice', root_path %>

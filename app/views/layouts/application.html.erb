@@ -11,13 +11,6 @@
 </head>
 <body>
 
-  <div id="info">
-    <% if flash[:notice].nil? == false %>
-    <%= image_tag "atencion.png", :size => "32x32" %>
-    <p style="color: green"><%= flash[:notice] %></p>
-    <% end %>
-  </div>
-
   <div id="banner">
         <%= image_tag "ucse.jpg" %>
         <h1>Universidad Catolica de Santiago del Estero</h1>
@@ -68,7 +61,14 @@
   </div>
 
   <div id="contenido">
-        <%= yield %>
+      <div id="info">
+        <% if flash[:notice].nil? == false %>
+        <%= image_tag "atencion.png", :size => "32x32" %>
+        <p style="color: green"><%= flash[:notice] %></p>
+        <% end %>
+      </div>
+ 
+     <%= yield %>
   </div>
 
 

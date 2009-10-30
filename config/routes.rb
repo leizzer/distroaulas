@@ -10,6 +10,8 @@ ActionController::Routing::Routes.draw do |map|
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
 
+  map.import '/import', :controller => 'import', :action => 'import'
+
   map.resources :users
 
   map.resource :session

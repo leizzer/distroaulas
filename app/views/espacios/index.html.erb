@@ -1,4 +1,4 @@
-<h1>Listing espacios</h1>
+<h1>Lista de espacios</h1>
 
 <table>
   <tr>
@@ -14,9 +14,9 @@
     <td><%=h espacio.descripcion %></td>
     <td><%=h espacio.capacidad %></td>
     <td><%=h Tipoespacio.find(:first, :conditions => {:id => espacio.tipoespacio_id}).nombre %></td>
-    <td><%= link_to 'Show', espacio %></td>
-    <td><%= link_to 'Edit', edit_espacio_path(espacio) %></td>
-    <td><%= link_to 'Destroy', espacio, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Detalle', espacio %></td>
+    <td><%= link_to 'Editar', edit_espacio_path(espacio) %></td>
+    <td><%= link_to 'Eliminar', espacio, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

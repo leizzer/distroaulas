@@ -1,4 +1,4 @@
-<h1>Listing tipoespacios</h1>
+<h1>Lista de tipos de espacios</h1>
 
 <table>
   <tr>
@@ -10,16 +10,16 @@
   <tr>
     <td><%=h tipoespacio.nombre %></td>
     <td><%=h tipoespacio.descripcion %></td>
-    <td><%= link_to 'Show', tipoespacio %></td>
-    <td><%= link_to 'Edit', edit_tipoespacio_path(tipoespacio) %></td>
-    <td><%= link_to 'Destroy', tipoespacio, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Detalle', tipoespacio %></td>
+    <td><%= link_to 'Editar', edit_tipoespacio_path(tipoespacio) %></td>
+    <td><%= link_to 'Elminar', tipoespacio, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'Nuevo tipo', new_tipoespacio_path %><br>
+<%= link_to 'Nuevo tipo', new_tipoespacio_path %> | 
 <%= link_to 'Volver al indice', root_path %>
 
 

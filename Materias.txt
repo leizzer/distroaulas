@@ -1,0 +1,336 @@
+101;1;1;INTRODUCCION AL DERECHO                                     
+101;1;2;DERECHO CIVIL I                                             
+101;1;3;DERECHO ROMANO                                              
+101;1;4;INTRODUCCION A LA SOCIOLOGIA                                
+101;1;5;INTRODUCCION A LA FILOSOFIA                                 
+101;1;6;HIST.DEL PENSAM.JURID.Y POL.                                
+101;1;7;DERECHO CIVIL II                                            
+101;1;8;DERECHO PENAL I                                             
+101;1;9;INTROD.A LAS CS.POLITICAS                                   
+101;1;10;DERECHO CONSTITUCIONAL                                      
+101;1;11;INTRODUCCION A LA ECONOMIA                                  
+101;1;12;TEOLOGIA                                                    
+101;1;13;TEORIA GRAL.DEL PROCESO                                     
+101;1;14;DERECHO CIVIL III                                           
+101;1;15;DERECHO PENAL II                                            
+101;1;16;DERECHO COMERCIAL I                                         
+101;1;17;DERECHO PROCESAL PENAL                                      
+101;1;18;DCHO.INTERNACIONAL PUBLICO                                  
+101;1;19;DOCTRINA SOCIAL DE LA IGLESIA                               
+101;1;20;DERECHO CIVIL IV                                            
+101;1;21;DCHO.PROCESAL CIVIL                                         
+101;1;22;DCHO.COMERCIAL II                                           
+101;1;23;DCHO.ADMINISTRATIVO                                         
+101;1;24;DCHO.DEL TRABAJO Y SEG.SOCIAL                               
+101;1;25;DCHO.DE REC.NAT.Y MEDIO AMB.                                
+101;1;26;PRACTICA I                                                  
+101;1;27;SEMINARIO                                                   
+101;1;28;FINANZAS Y DCHO.TRIBUTARIO                                  
+101;1;29;CRIMINOLOGIA                                                
+101;1;30;DCHO.DEL USUARIO Y CONSUMIDOR                               
+101;1;31;DERECHO EMPRESARIO                                          
+101;1;32;DERECHO CIVIL V                                             
+101;1;33;DERECHO COMERCIAL III                                       
+101;1;34;DERECHO INTERNACIONAL PRIVADO                               
+101;1;35;FILOSOFIA DEL DERECHO                                       
+101;1;36;PRACTICA II                                                 
+101;1;37;METODOLOGIA DE LA INV. SOCIAL                               
+101;1;38;SEMINARIO DE ÉTICA Y PROFESION                              
+101;1;39;DERECHO PENAL ECONÓMICO                                     
+101;1;41;DERECHO PÚBLICO PROVINCIAL Y MUNICIPAL                      
+101;1;42;DERECHO DE TRANSPORTE                                       
+101;1;43;DERECHO PRIVADO PROFUNDIZADO                                
+101;1;44;INGLES NIVEL I
+101;1;45;INGLES Nivel  II                                            
+101;1;46;INFORMATICA                                                 
+101;1;51;DERECHO BANCARIO
+101;2;12;TEOLOGIA                                                    
+101;2;19;DOCTRINA SOCIAL DE LA IGLESIA                               
+101;2;61;INTRODUCCION A LA SOCIOLOGIA                                
+101;2;62;HIST.UNIV.DE LAS IDEAS E I.POL                              
+101;2;63;DERECHO ROMANO                                              
+101;2;64;DERECHO CIVIL I                                             
+101;2;65;DERECHO PENAL I                                             
+101;2;66;INTRODUCCION A LA POLITICA                                  
+101;2;67;INTRODUCCION A LA ECONOMIA                                  
+101;2;68;DERECHO CIVIL II                                            
+101;2;69;DERECHO PENAL II                                            
+101;2;70;DERECHO CONSTITUCIONAL                                      
+101;2;71;FINANZAS Y DCHO.TRIBUTARIO                                  
+101;2;72;DCHO.INTERNACIONAL PUBLICO                                  
+101;2;73;DERECHO CIVIL III                                           
+101;2;74;DERECHO COMERCIAL I                                         
+101;2;75;DCHO.PUBLICO PCIAL.Y MUNIC.                                 
+101;2;76;TEORIA GRAL.DEL PROCESO                                     
+101;2;77;DCHO.DEL TRABAJO Y SEG.SOCIAL                               
+101;2;78;DERECHO CIVIL IV                                            
+101;2;79;DERECHO COMERCIAL II                                        
+101;2;80;DCHO.AGRARIO Y RECURSOS NATUR.                              
+101;2;81;DERECHO PROCESAL CIVIL                                      
+101;2;82;DERECHO ADMINISTRATIVO                                      
+101;2;83;DERECHO CIVIL V                                             
+101;2;84;DERECHO COMERCIAL III                                       
+101;2;85;DCHO INTERNACIONAL PRIVADO                                  
+101;2;86;FILOSOFIA JURIDICA                                          
+101;2;87;INTEGRAC.Y PRACTICA PROCESAL                                
+101;2;88;DERECHO PROCESAL PENAL                                      
+101;2;89;INTRODUCCION A LA FILOSOFIA                                 
+201;95;12;TEOLOGIA                                                    
+201;95;19;DOCTRINA SOCIAL DE LA IGLESIA                               
+201;95;2000;CONTABILIDAD I                                              
+201;95;2001;CONTABILIDAD II                                             
+201;95;2002;CONTABILIDAD III                                            
+201;95;2003;ORGANIZACION DE EMPRESAS                                    
+201;95;2004;COSTOS                                                      
+201;95;2005;ANALISIS DE ESTADOS CONTABLES                               
+201;95;2006;AUDITORIA                                                   
+201;95;2007;TEORIA Y TECNICA IMPOSITIVA I                               
+201;95;2008;TEORIA Y TECNICA IMPOSITIVA II                              
+201;95;2009;TEORIA Y TECNIC.IMPOSITIVA III                              
+201;95;2010;ADMINISTRACION GENERAL                                      
+201;95;2011;ADMINISTRACION FINANCIERA                                   
+201;95;2012;SISTEMAS Y PROCES. DE DATOS                                 
+201;95;2013;INTRODUCCION A LA ECONOMIA                                  
+201;95;2014;ECONOMIA I                                                  
+201;95;2015;ECONOMIA II                                                 
+201;95;2016;HACIENDA PUBLICA                                            
+201;95;2017;PRINCIPIOS DE DERECHO                                       
+201;95;2018;DERECHO DEL TRABAJO                                         
+201;95;2019;DERECHO COMERCIAL                                           
+201;95;2020;SOCIEDADES Y ASOCIACIONES                                   
+201;95;2021;DERECHO CONCURSAL                                           
+201;95;2022;MATEMATICA                                                  
+201;95;2023;ESTADISTICA                                                 
+201;95;2024;CALCULO FINANCIERO                                          
+201;95;2025;FILOSOFIA                                                   
+202;95;12;TEOLOGIA                                                    
+202;95;19;DOCTRINA SOCIAL DE LA IGLESIA                               
+202;95;2050;CONTABILIDAD I                                              
+202;95;2051;ORGANIZACION DE EMPRESAS                                    
+202;95;2052;COSTOS                                                      
+202;95;2053;IMPUESTOS                                                   
+202;95;2054;ADMINISTRACION DE PERSONAL                                  
+202;95;2055;ADMINISTRACION GENERAL                                      
+202;95;2056;ADMINISTRACION FINANCIERA                                   
+202;95;2057;PLANEAM.Y CONT. DE LA PRODUCC.                              
+202;95;2058;SISTEMAS Y PROCESAM. DE DATOS                               
+202;95;2059;INTRODUCCION A LA ECONOMIA                                  
+202;95;2060;COMERCIALIZACION                                            
+202;95;2061;ECONOMIA I                                                  
+202;95;2062;ECONOMIA II                                                 
+202;95;2063;HACIENDA PUBLICA                                            
+202;95;2064;GESTION Y CONTROL DEL NEGOCIO                               
+202;95;2065;PRINCIPIOS DE DERECHO                                       
+202;95;2066;DERECHO COMERCIAL                                           
+202;95;2067;MATEMATICA                                                  
+202;95;2068;ESTADISTICA                                                 
+202;95;2069;CALCULO FINANCIERO                                          
+202;95;2070;INVESTIGACION OPERATIVA                                     
+202;95;2071;ESTADISTICA I                                               
+202;95;2072;SEMINARIO                                                   
+202;95;2073;FILOSOFIA                                                   
+204;25;2703;INFORMATICA PARA LA GESTION                                 
+204;25;2704;ADMINISTRACION GENERAL                                      
+204;25;2716;ETICA Y PROFESION                                           
+206;25;12;TEOLOGIA                                                    
+206;25;19;DOCTRINA SOCIAL DE LA IGLESIA                               
+206;25;2150;SISTEMA DE INFORM.CTBLE.                                    
+206;25;2151;ADMINISTRACION DE PERSONAL                                  
+206;25;2152;ADMINISTRACION GENERAL                                      
+206;25;2153;INTRODUCCION A LA ECONOMIA
+206;25;2154;ESTADISTICA                                                 
+206;25;2155;RECURSOS TERRITORIALES TURIST.                              
+206;25;2156;POLITICA Y LEG.TURIST.Y HOTEL.                              
+206;25;2157;INGLES: NIVEL 1                                             
+206;25;2158;ORG.Y GESTION DE EMP.DE SERV.                               
+206;25;2159;ESTRUCTURA DEL MERCADO TURIST.                              
+206;25;2160;APRECIACION ARTISTICA                                       
+206;25;2161;ANTROPOLOGIA                                                
+206;25;2162;INGLES: NIVEL II                                            
+206;25;2163;PATRIMONIO ARTIST.Y CULTURAL                                
+206;25;2164;INFORMATICA                                                 
+206;25;2165;DESARROLLO TURIST.SUSTENTABLE                               
+206;25;2166;PSICOLOGIA SOCIAL                                           
+206;25;2167;MARKET.E INVEST.DE MERC.TURIST                              
+206;25;2168;RELACIONES PUBLICAS                                         
+206;25;2169;"ELECTIVA I:""""ORG.TURISTICA""""                                "
+206;25;2170;2 IDIOMA: NIVEL I                                           
+206;25;2171;FORMUL.Y EVAL.DE PROY.TURIST.                               
+206;25;2172;SERVICIO COMUNITARIO                                        
+206;25;2173;SOCIOLOGIA TURISTICA                                        
+206;25;2174;ELECTIVA II                                                 
+206;25;2175;OPTATIVA I:DISEÑO DE CIRC. TUR.                             
+206;25;2176;OPTATIVA II
+206;25;2177;2 IDIOMA: NIVEL II                                          
+206;25;2178;SEMIN.DE INTEG.Y ENTR.PROFES.                               
+206;25;2179;FUNDAMENTOS DE MARKETING                                    
+206;25;2180;ETICA Y PROFESION                                           
+206;25;2181;FILOSOFIA                                                   
+301;2;12;TEOLOGIA                                                    
+301;2;3000;INTROD.A LOS EST.COMUNICAC.                                 
+301;2;3001;SEMIOTICA I                                                 
+301;2;3002;PERIODISMO                                                  
+301;2;3003;ANTROP.FILOS.Y CULTURAL                                     
+301;2;3004;SOCIOLOGIA                                                  
+301;2;3005;PSICOLOGIA SOCIAl                                           
+301;2;3007;EXPRESION ORAL Y ESCRITA                                    
+301;2;3008;IMAGEN FOTOGRAFICA                                          
+301;2;3009;DISEÑO GRAFICO I                                            
+301;2;3010;TALLER INTEGRAL I                                           
+310;95;12;TEOLOGIA                                                    
+310;95;19;DOCTRINA SOCIAL DE LA IGLESIA                               
+310;95;3100;INTRODUCCION A LA PSICOLOGIA                                
+310;95;3101;PSICOFISIOLOGIA                                             
+310;95;3102;PERFILES ANTROP.EN PSICOLOGIA                               
+310;95;3103;FUND.EPISTEM.EN PSICOLOGIA                                  
+310;95;3104;DIRECCIONES CONT.EN PSICOLOGIA                              
+310;95;3105;PSICOLOGIA EVOLUTIVA I                                      
+310;95;3106;PSICOLOGIA SOCIAL                                           
+310;95;3107;PSICOESTADISTICA APLICADA                                   
+310;95;3108;LOGICA                                                      
+310;95;3109;PSICOLOGIA PROFUNDA                                         
+310;95;3110;PSICOLOGIA DE LA PERSONALIDAD                               
+310;95;3111;PSICOLOGIA EVOLUTIVA II                                     
+310;95;3112;PSICOPATOLOGIA I                                            
+310;95;3113;TEORIA Y TECNICA DE GRUPO                                   
+310;95;3114;MET.Y TEC.DE EXPLOR.PSICOLOG.I                              
+310;95;3115;PSICOLOGIA Y RELIGION                                       
+310;95;3116;METODOS DE INVESTIGACION I                                  
+310;95;3117;MET.Y TEC.DE EXPL.PSICOLOG.II                               
+310;95;3118;PSICOPATOLOGIA II                                           
+310;95;3119;METODOS DE INVESTIGACION II                                 
+310;95;3120;PSICOLOGIA CLINICA I                                        
+310;95;3121;PSICOLOGIA SANITARIA                                        
+310;95;3122;INTRODUCCION AL DERECHO                                     
+310;95;3123;PSICOFARMACOLOGIA                                           
+310;95;3124;PSICOLOGIA LABORAL                                          
+310;95;3125;DEONTOLOGIA Y LEG.PROFESIONAL                               
+310;95;3126;ORIENTACION VOCAC.Y PROFES.                                 
+310;95;3127;INTEGRACION DIAGNOSTICA                                     
+310;95;3128;MET.Y TEC.PSICOTERAPEUTICAS                                 
+310;95;3129;PICOLOGIA CLINICA II                                        
+310;95;3130;PSICOLOGIA JURIDICA                                         
+310;95;3131;PERICIA PSICOL.Y ASES.DCHO.PYP                              
+310;95;3132;ORIENT.PROFESIONAL Y OCUPAC.                                
+310;95;3133;LEGISLACION LABORAL                                         
+310;95;3134;SEMINARIO DE RORSCHACH                                      
+310;95;3135;SEMINARIO DE INFORMATICA                                    
+310;95;3136;TRABAJO FINAL DE GRADO                                      
+310;95;3137;PRACTICANTADO MENOR
+310;95;3138;PRACTICANTADO MAYOR JURIDICO
+310;95;4542;TALLER DE INTEGRACION I
+310;95;4543;TALLER DE INTEGRACION II
+310;95;4548;PRACTICANTADO MAYOR LBORAL
+323;2;12;TEOLOGIA                                                    
+323;2;19;DOCTRINA SOCIAL DE LA IGLESIA                               
+323;2;3000;INTROD.A LOS EST.COMUNICAC.                                 
+323;2;3001;SEMIOTICA I                                                 
+323;2;3002;PERIODISMO                                                  
+323;2;3003;ANTROP.FILOS.Y CULTURAL                                     
+323;2;3005;PSICOLOGIA SOCIAl                                           
+323;2;3007;EXPRESION ORAL Y ESCRITA                                    
+323;2;3008;IMAGEN FOTOGRAFICA                                          
+323;2;3009;DISEÑO GRAFICO I                                            
+323;2;3010;TALLER INTEGRAL I                                           
+323;2;3011;TEORIA DE LA COMUNIC.I                                      
+323;2;3012;SEMIOTICA II                                                
+323;2;3013;PUBLICIDAD I                                                
+323;2;3014;PENS.POLIT.                                                 
+323;2;3015;HIST.SOC.Y POLIT.LATINOAM.                                  
+323;2;3017;PUBLICIDAD II                                               
+323;2;3018;RADIO                                                       
+323;2;3019;DISEÑO GRAFICO II                                           
+323;2;3020;IMAGEN EN MOVIMIENTO I                                      
+323;2;3021;TALLER INTEGRAL II                                          
+323;2;3022;HIST.SOC.Y POL.ARGENTINA                                    
+323;2;3023;TEORIA DE LA COMUNICAC.II                                   
+323;2;3024;INTROD.A LA INVESTIGACION                                   
+323;2;3031;DISEÑO GRAFICO III                                          
+323;2;3032;DISEÑO MULTIMEDIAL                                          
+323;2;3033;DISEÑO TRIDIMENSIONAL                                       
+323;2;3034;TECNOLOGIAS DE DISEÑO                                       
+323;2;3035;TALLER INTEGRAL DE DISEÑO                                   
+323;2;3036;PASANTIA Tec. DISEÑO                                        
+324;2;3013;PUBLICIDAD I                                                
+324;2;3015;HIST.SOC.Y POLIT.LATINOAM.                                  
+324;2;3017;PUBLICIDAD II                                               
+324;2;3019;DISEÑO GRAFICO II                                           
+324;2;3022;HIST.SOC.Y POL.ARGENTINA                                    
+324;2;3023;TEORIA DE LA COMUNICAC.II                                   
+324;2;3024;INTROD.A LA INVESTIGACION                                   
+324;2;3037;PERIODISMO GRAFICO                                          
+324;2;3038;PERIODISMO AUDIOVISUAL                                      
+324;2;3039;PERIODISMO RADIOFONICO                                      
+324;2;3040;LEGISLACION PERIODISTICA                                    
+324;2;3041;TALLER INTEGRAL DE PERIODISMO                               
+332;2;19;DOCTRINA SOCIAL DE LA IGLESIA                               
+332;2;3043;ECONOM.Y POLIT.DE LA COMUNIC.                               
+332;2;3044;ETICA                                                       
+332;2;3045;ESTADISTICA                                                 
+332;2;3046;EPISTEMOLOGIA                                               
+332;2;3047;METODOLOGIA DE LA INVESTIG.                                 
+332;2;3049;SEMINARIO 1                                                 
+332;2;3050;SEMINARIO 2                                                 
+332;2;3051;SEMINARIO 3        
+333;2;3043;ECONOM.Y POLIT.DE LA COMUNIC.                               
+333;2;3044;ETICA                                                       
+333;2;3045;ESTADISTICA                                                 
+333;2;3046;EPISTEMOLOGIA                                               
+333;2;3047;METODOLOGIA DE LA INVESTIG.                                 
+333;2;3048;SEMINARIO TALLER TRAB.FINAL                                 
+333;2;3049;SEMINARIO 1                                                 
+333;2;3050;SEMINARIO 2                                                 
+333;2;3051;SEMINARIO 3        
+442;96;4135;PROGRAMACION APLICADA (Tecnico)                             
+443;96;4134;PROGRAMACION APLICADA (Analista)                            
+444;28;12;TEOLOGIA                                                    
+444;28;19;DOCTRINA SOCIAL DE LA IGLESIA                               
+444;28;4500;FILOSOFIA                                                   
+444;28;4501;FUNDAMENTOS DE INFORMATICA                                  
+444;28;4502;ALGEBRA Y GEOMETRIA ANALITICA                               
+444;28;4503;CALCULO I                                                   
+444;28;4504;QUIMICA                                                     
+444;28;4505;ALGEBRA LINEAL                                              
+444;28;4506;CALCULO II                                                  
+444;28;4507;FISICA I                                                    
+444;28;4508;ARQUITECTURA DE COMPUTADORES                                
+444;28;4510;PROGRAMACION  I                                             
+444;28;4511;CALCULO III                                                 
+444;28;4512;FISICA II                                                   
+444;28;4513;ESTRUCTURA DE DATOS                                         
+444;28;4514;SISTEMAS OPERATIVOS I                                       
+444;28;4515;FISICA III                                                  
+444;28;4516;MATEMATICA DISCRETA                                         
+444;28;4517;INGLES TECNICO                                              
+444;28;4519;REDES DE COMPUTADORAS                                       
+444;28;4520;PROGRAMACION II                                             
+444;28;4521;SISTEMAS OPERATIVOS II                                      
+444;28;4522;SISTEMAS DE INFORMACION I                                   
+444;28;4523;PROBABILIDAD Y ESTADISTICA                                  
+444;28;4524;ORGANIZACION EMPRESARIAL                                    
+444;28;4525;BASES DE DATOS I                                            
+444;28;4526;ANALISIS NUMERICO                                           
+444;96;12;TEOLOGIA                                                    
+444;96;19;DOCTRINA SOCIAL DE LA IGLESIA                               
+444;96;4103;FILOSOFIA                                                   
+444;96;4106;ANALISIS MATEMATICO II                                      
+444;96;4107;ESTRUCTURA DE DATOS                                         
+444;96;4113;SISTEMAS OPERATIVOS                                         
+444;96;4115;PROCESAMIENTO DE ARCHIVOS                                   
+444;96;4116;ECONOMIA DE LAS ORGANIZAC.                                  
+444;96;4117;REDES DE COMPUTADORAS                                       
+444;96;4118;SISTEMAS DE INFORMACION I                                   
+444;96;4119;PROBABILIDAD Y ESTADISTICA                                  
+444;96;4120;LOGICA Y SEMANTICA FORMALES                                 
+444;96;4121;INVESTIGACION OPERATIVA                                     
+444;96;4122;COMPILADORES E INTERPRETES                                  
+444;96;4123;SISTEMAS DE INFORMACION II                                  
+444;96;4124;GESTION DE BASE DE DATOS                                    
+444;96;4125;METODOLOGIA DE LA INVESTIGAC.                               
+444;96;4126;METODOS NUMERICOS                                           
+444;96;4127;ADMINISTRACION DE PROYECTOS                                 
+444;96;4128;SIMULACION                                                  
+444;96;4129;SISTEMAS DE INFORMACION III                                 
+444;96;4130;TOPICOS ESPECIALES I                                        
+444;96;4131;INTELIGENCIA ARTIFICIAL                                     
+444;96;4585;Topicos Esp. II: LEGISLACION Y GESTION AMBIENTAL

@@ -6,7 +6,7 @@
 <% end -%>
 <br>
 <br>
-<p>En este momento los siguientes espacios estan libres: </p>
+<p>Espacios libres en la hora actual: </p>
 <ul>
 <% @free_spaces.each do |space| %>
  <li> <%= link_to space.codigo + ' - ' + space.descripcion, '/eventos/new?espacio_id=' + space.id.to_s  %></li>
@@ -15,11 +15,10 @@
 <p>Buscar por fecha</p>
 <% form_tag do %>
   <%= select_date @search_by_date %>
-  <%= submit_tag(value = 'Buscar') %>
+  <%= submit_tag(value = 'Buscar') %> <%= link_to 'Ir a hoy', '/eventos/browse_by_day?start_day=' + Time.now.strftime('%Y-%m-%d') %>
 <% end %>
-
 <hr>
-
+<!--
 <%= @calendar.export %>
 <hr>
 <% @calendar.events.each do |event| %>
@@ -30,5 +29,5 @@
   RECCURR: <%= event.rrule %><br>
   Espacio: <%= Espacio.find(:first, :conditions => {:id => event.location}).codigo %></p>
 <% end %>
-
+-->
 <%= link_to 'Volver al indice', root_path %>

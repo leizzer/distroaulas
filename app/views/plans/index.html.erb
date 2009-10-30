@@ -1,4 +1,4 @@
-<h1>Listing plans</h1>
+<h1>Lista de plans</h1>
 
 <table>
   <tr>
@@ -12,9 +12,9 @@
     <td><%=h plan.codigo %></td>
     <td><%=h plan.codigo_carrera %></td>
     <td><%=h plan.nombre %></td>
-    <td><%= link_to 'Show', plan %></td>
-    <td><%= link_to 'Edit', edit_plan_path(plan) %></td>
-    <td><%= link_to 'Destroy', plan, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Detalle', plan %></td>
+    <td><%= link_to 'Editar', edit_plan_path(plan) %></td>
+    <td><%= link_to 'Eliminar', plan, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
