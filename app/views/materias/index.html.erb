@@ -6,6 +6,7 @@
     <th>Codigo Carrera</th>
     <th>Codigo Plan</th>
     <th>Nombre</th>
+    <th>Año</th>
   </tr>
 
 <% @materias.each do |materia| %>
@@ -14,6 +15,7 @@
     <td><%=h materia.codigo_carrera %></td>
     <td><%=h materia.codigo_plan %></td>
     <td><%=h materia.nombre %></td>
+    <td><%=h materia.anio %></td>
     <td><%= link_to 'Show', materia %></td>
     <td><%= link_to 'Edit', edit_materia_path(materia) %></td>
     <td><%= link_to 'Destroy', materia, :confirm => 'Are you sure?', :method => :delete %></td>
