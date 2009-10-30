@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091014192015) do
+ActiveRecord::Schema.define(:version => 20091030134910) do
 
   create_table "carreras", :force => true do |t|
     t.integer  "codigo"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(:version => 20091014192015) do
     t.datetime "updated_at"
     t.integer  "codigo_carrera"
     t.integer  "codigo_plan"
+    t.integer  "anio"
   end
 
   create_table "plans", :force => true do |t|

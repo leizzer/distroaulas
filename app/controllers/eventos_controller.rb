@@ -142,10 +142,6 @@ class EventosController < ApplicationController
       @free_spaces.delete(Espacio.find_by_id event.location.to_i) if DateTime.now.strftime('%H%M').to_i.between? event.dtstart.strftime('%H%M').to_i, event.dtend.strftime('%H%M').to_i
     end
   end
-
-  def load_exceptions
-
-  end
 end
 
 
