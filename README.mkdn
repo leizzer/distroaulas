@@ -13,6 +13,7 @@ Have a nice day.
 
         Busquedas
         - [done!] Realizar las busquedas de eventos que sucederan en el dia
+          * Realizar las busquedas de eventos por la Carrera y año de la materia
         - [done!] Realizar busqueda de eventos en un dia arbitrario
         - Realizar busqueda de espacios libres para un dia
         <No mas busquedas que estas por ahora me parece>
