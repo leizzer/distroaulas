@@ -29,6 +29,7 @@ class EventosController < ApplicationController
   def new
     @evento = Evento.new
     @evento.espacio_id = params[:espacio_id].to_i if not params[:espacio_id].nil?
+    @lista_materias = Materia.all
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @evento }
@@ -140,6 +141,15 @@ class EventosController < ApplicationController
     @free_spaces = Espacio.all
     @calendar.events.each do |event|
       @free_spaces.delete(Espacio.find_by_id event.location.to_i) if DateTime.now.strftime('%H%M').to_i.between? event.dtstart.strftime('%H%M').to_i, event.dtend.strftime('%H%M').to_i
+    end
+    return @events
+  end
+
+  def get_materias
+
+    @lista_materias = Materia.find :all, :conditions => {:codigo_carrera => params[:carrera_id]}
+    render :update do |page|
+      page.replace_html 'materias', :partial => 'materias', :object => @lista_materias
     end
   end
 end

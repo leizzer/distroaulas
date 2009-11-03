@@ -1,12 +1,15 @@
-<h1>Nuevo evento</h1>
-
 <% form_for(@evento) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= label :evento, :description, "Descripcion << Materia" %><br />
-    <%= f.text_field :description %><<
-    <%= select_tag( "lista-materias", options_for_select(['']) + options_for_select(Materia.all.collect {|p| [ p.nombre ]}), {:onchange => "javascript: document.getElementById('evento_description').value=document.getElementById('lista-materias').value;"})%><br />
+    <%= label :evento, :description, "Descripcion" %><br />
+    <%= f.text_field :description %><br>
+    Carrera
+    <div id="carrera"><%= select_tag( "lista_carreras", options_for_select(['']) + options_for_select(Carrera.all.collect {|p| [ p.nombre, p.codigo ]}), :onchange => " #{remote_function(:url  => {:action => :get_materias}, :with => "'carrera_id='+value")}")%></div>
+    <br>  
+    Materia 
+    <div id="materias"><%= render :partial => 'materias', :object => @lista_materias %></div>
+  </p>
   <p>
     <%= label :evento, :dtstart, "Fecha y hora de inicio del evento" %><br />
     <%= f.datetime_select :dtstart %>

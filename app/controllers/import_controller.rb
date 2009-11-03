@@ -8,7 +8,6 @@ class ImportController < ApplicationController
       nueva_carrera = Carrera.new
       nueva_carrera.codigo = line[0..-2].split(';').collect[0]
       nueva_carrera.nombre = line[0..-2].split(';').collect[1]
-      debugger
       nueva_carrera.save!
     end
 

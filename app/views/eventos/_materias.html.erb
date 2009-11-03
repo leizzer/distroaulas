@@ -1,0 +1,2 @@
+<%= select_tag( "lista_materias", options_for_select(['']) + options_for_select(@lista_materias.collect {|p| [p.nombre.strip]}), 
+              {:onchange => "javascript: document.getElementById('evento_description').value=document.getElementById('lista_materias').value;"})%><br /> 

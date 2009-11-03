@@ -6,7 +6,7 @@
 <% end -%>
 <br>
 <br>
-<p>Espacios libres en la hora actual: </p>
+<p>Espacios libres a las <%= Time.now.strftime '%H:%M' %>: </p>
 <ul>
 <% @free_spaces.each do |space| %>
  <li> <%= link_to space.codigo + ' - ' + space.descripcion, '/eventos/new?espacio_id=' + space.id.to_s  %></li>
