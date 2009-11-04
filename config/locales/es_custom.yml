@@ -1,4 +1,38 @@
 es_custom:
+  activerecord:
+    errors:
+      template:
+        header:
+          one: "Se encontro 1 error en el {{model}} y no se pudo guardar"
+          other: "Se encontraron {{count}} errores en el {{model}} y no se pudo guardar"
+        body: "los siguientes campos contienen errores:" 
+
+      messages:
+        inclusion: "no esta incluido en la lista"
+        exclusion: "es reservado"
+        invalid: "es invalido"
+        confirmation: "no coincide la confirmacion"
+        accepted: "debe ser aceptado"
+        empty: "no puede ser vacio"
+        blank: "no puede estar en blanco"
+        too_long: "demasiado largo (el maximo son {{count}} caracteres)"
+        too_short: "demasiado corto (el minimo son {{count}} caracteres)"
+        wrong_length: "longitud inadecuada (deben ser {{count}} caracteres)"
+        taken: "ya esta existe"
+        not_a_number: "no es numerico"
+        greater_than: "debe ser mayor a {{count}}"
+        greater_than_or_equal_to: "debe ser mayor o igual a {{count}}"
+        equal_to: "debe ser igual a {{count}}"
+        less_than: "debe ser menor a {{count}}"
+        less_than_or_equal_to: "debe ser menor o igual a  {{count}}"
+        odd: "debe ser impar"
+        even: "debe ser par"
+        record_invalid: "Fallo la validacion: {{errors}}"
+        bad_email_message: "debe tener formato de e-mail"
+        # Append your own errors here or at the model/attributes scope.
+
+      full_messages:
+        format: "{{attribute}} {{message}}"
   date:
     formats:
       default: "%Y-%m-%d"
