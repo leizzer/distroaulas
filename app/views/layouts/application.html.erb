@@ -15,9 +15,10 @@
         <%= image_tag "ucse.jpg" %>
         <h1>Universidad Catolica de Santiago del Estero</h1>
   </div>
-
   <div id="menu">
     <h2>Distroaulas</h2>
+  <% if not current_user.nil? %>
+
     <h4>ABMs</h4>
     <div id="item">
     <%= link_to "Eventos", {:controller => "eventos", :action => "index"}, :id => "item" %><br/>
@@ -61,6 +62,7 @@
     <div id="item">
     <%= link_to "Desloguearse", {:controller => "sessions", :action => "destroy"}, :id => "item" %>
     </div>
+  <% end %>
   </div>
 
   <div id="contenido">

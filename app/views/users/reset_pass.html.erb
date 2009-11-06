@@ -1,0 +1,21 @@
+<%= error_messages_for :user %>  
+  
+<% form_for :user do |f| -%>  
+  <p>  
+     RESETEO DE CONTRASEÑA  
+  </p>  
+  
+  <p>  
+    <label for="password">Contraseña</label><br />  
+    <%= f.password_field :password %>  
+  </p>  
+  
+  <p>  
+    <label for="password">Confirmacion de Contraseña</label><br />  
+    <%= f.password_field :password_confirmation %>  
+  </p>  
+  <%= hidden_field :user, :id %>
+  <p>  
+    <%= submit_tag 'Reset' %>  
+  </p>  
+<% end -%>  

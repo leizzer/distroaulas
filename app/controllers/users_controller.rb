@@ -28,4 +28,19 @@ class UsersController < ApplicationController
       render :action => 'new'
     end
   end
+
+  def reset_pass
+    @user = User.find(:first, :conditions => {:id => params[:user_id]}) || User.find(:first, :conditions => {:id => params[:user][:id]})
+    
+    if request.post?
+      if @user.update_attributes(:password => params[:user][:password], :password_confirmation => params[:user][:password_confirmation])
+        flash[:notice] = "Se actualizo correctamente la contraseña"
+        redirect_to root_url
+      else
+        flash[:notice] = "Fallo la actualizacion"
+      end
+    else
+      render :action => :reset_pass
+    end
+  end
 end

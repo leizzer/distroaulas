@@ -5,6 +5,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.browse_eventos_by_space '/eventos/browse_by_space', :controller => 'eventos', :action => 'browse_by_space'
 
+  map.user_reset_pass '/users/reset_pass', :controller => 'users', :action => 'reset_pass'
+
   map.resources :eventos
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'

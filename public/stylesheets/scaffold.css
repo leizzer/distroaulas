@@ -1,4 +1,10 @@
-body { background-color: #fff; color: #333; }
+body { 
+  background-color: #fff; 
+  color: #333; 
+  margin:0;
+  padding:0;
+  height:100%; 
+}
 
 body, p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
@@ -41,6 +47,7 @@ a:hover { color: #666666; }
   width: 150px;
   background-color: #2222CC;
   float: left;
+  height: 100%;
 }
 
 #menu h1, h2, h3, h4 {
@@ -62,6 +69,7 @@ a:hover { color: #666666; }
   position: relative;
   width: 800px;
   margin-left: 160px;
+  height: 100%;
 }
 
 /* ERRORS */
