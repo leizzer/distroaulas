@@ -96,7 +96,7 @@ class EventosController < ApplicationController
     else
       if @search_by_date.nil?
         begin
-          @search_by_date = Date.parse(params[:date][:year] + params[:date][:month] + params[:date][:day])
+          @search_by_date = Date.parse(params[:date][:year] + '-' + params[:date][:month] + '-' + params[:date][:day])
         rescue => e
           @search_by_date = Date.today
         end
@@ -151,6 +151,10 @@ class EventosController < ApplicationController
     render :update do |page|
       page.replace_html 'materias', :partial => 'materias', :object => @lista_materias
     end
+  end
+
+  def browse_by_space
+
   end
 end
 

@@ -33,8 +33,9 @@ class Evento < ActiveRecord::Base
    end
  
   def validate
+    set_dates
     calendar = RiCal.Calendar
-    events = Evento.find(:all, :conditions => "dtstart > '#{self.dtstart.to_date}' AND '#{self.dtstart.to_date + 1.day}' > dtstart AND reccurrent = 'f'") + Evento.find(:all, :conditions => { :reccurrent => true, :byday => self.dtstart.strftime("%a").upcase[0..1]})
+    events = Evento.find(:all, :conditions => "dtstart > '#{self.dtstart.to_date}' AND '#{self.dtstart.to_date + 1.day}' > dtstart AND reccurrent = 'f' AND espacio_id = #{self.espacio_id}") + Evento.find(:all, :conditions => { :reccurrent => true, :byday => self.dtstart.strftime("%a").upcase[0..1], :espacio_id => self.espacio_id})
 
     events.each do |event|
       temp = SimpEvent.new
@@ -58,13 +59,17 @@ class Evento < ActiveRecord::Base
         calendar.add_subcomponent new_event if (Date.parse(event.dtstart.year.to_s + '/' +  event.dtstart.month.to_s + '/' + event.dtstart.day.to_s)) == self.dtstart.to_date
       end
     end
+
     calendar.events.each do |event|
 
       if self.dtstart.between? event.dtstart, event.dtend
-        errors.add('Inicio: ', "Sobrecarga -> #{Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo} - #{event.description} - de #{event.dtstart.strftime('%H:%M')} a #{event.dtend.strftime('%H:%M')}")
+        errors.add('Inicio: ',  "Conflicto con #{event.description} en #{Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo} de #{event.dtstart.strftime('%H:%M')} a #{event.dtend.strftime('%H:%M')}")
       end
       if self.dtend.between? event.dtstart, event.dtend
-        errors.add('Finalizacion: ', "Sobrecarga -> #{Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo} - #{event.description} - de #{event.dtstart.strftime('%H:%M')} a #{event.dtend.strftime('%H:%M')}")
+        errors.add('Finalizacion: ', "Conflicto con #{event.description} en #{Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo} de #{event.dtstart.strftime('%H:%M')} a #{event.dtend.strftime('%H:%M')}")
+      end
+      if event.dtstart.between? self.dtstart, self.dtend or event.dtend.between? self.dtstart, self.dtend
+        errors.add('Inicio y finalizacion: ', "Conflicto con #{event.description} en #{Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo} de #{event.dtstart.strftime('%H:%M')} a #{event.dtend.strftime('%H:%M')}")
       end
     end
   end
