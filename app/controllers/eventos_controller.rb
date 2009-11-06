@@ -112,7 +112,7 @@ class EventosController < ApplicationController
       temp.starts_at = event.dtstart
       temp.ends_at = event.dtend
       temp.name = event.description + ' - ' +  Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo
-      temp.original_id = event.id
+      temp.original_id = event.comment[0].to_i
       @events.push temp
 
       @free_spaces.delete(Espacio.find_by_id event.location.to_i) if DateTime.now.strftime('%H%M').to_i.between? event.dtstart.strftime('%H%M').to_i, event.dtend.strftime('%H%M').to_i
@@ -134,7 +134,7 @@ class EventosController < ApplicationController
       temp.starts_at = event.dtstart
       temp.ends_at = event.dtend
       temp.name = event.description + ' - ' +  Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo
-      temp.original_id = event.id
+      temp.original_id = event.comment[0].to_i
       temp.location = event.location.to_i
       @events.push temp
     end
@@ -156,6 +156,7 @@ class EventosController < ApplicationController
       new_event.rrule = "FREQ=" + event.freq + ";BYDAY=" + event.byday + ";INTERVAL=" + event.interval.to_s if event.reccurrent
       new_event.exdates = event.exdate.to_a
       new_event.rdates = event.rdate.to_a
+      new_event.comment = event.id.to_s
       #Occurrences te va a manejar automaticamente las exdates y rdates, no tenes que hacer ningun otro calculo mas que cargarlos al evento.
       #Creo que son las primeras lineas de comentario en TODA la aplicacion XD Mal
       if event.reccurrent
