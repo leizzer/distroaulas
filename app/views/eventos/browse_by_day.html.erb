@@ -1,6 +1,5 @@
 <%  weekly_calendar(@events, :date => @search_by_date, :include_24_hours => true) do |w|  %>
   <%  w.week(:business_hours => params[:business_hours]) do |event,truncate|  %>
-    <%=  event.starts_at.strftime('%I:%M%p')  %>
     <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>
   <% end -%>
 <% end -%>
