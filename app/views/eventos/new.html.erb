@@ -6,8 +6,8 @@
     <%= f.text_field :description %><br>
     Carrera
     <div id="carrera"><%= select_tag( "lista_carreras", options_for_select(['']) + options_for_select(Carrera.all.collect {|p| [ p.nombre, p.codigo ]}), :onchange => " #{remote_function(:url  => {:action => :get_materias}, :with => "'carrera_id='+value")}")%></div>
-    <br>  
-    Materia 
+    <br>
+    Materia
     <div id="materias"><%= render :partial => 'materias', :object => @lista_materias %></div>
   </p>
   <p>
@@ -19,22 +19,42 @@
   </p>
   <p>
     <%= label :evento, :reccurrent, "Se repite periodicamente?" %>
-    <%= f.check_box :reccurrent %>
+    <%= f.check_box :reccurrent, :onchange => "if (document.getElementById('evento_reccurrent').checked == true){
+                                                  document.getElementById('evento_freq_daily').disabled = false;
+                                                  document.getElementById('evento_freq_weekly').disabled = false;
+                                                  document.getElementById('evento_byday_mo').disabled = false;
+                                                  document.getElementById('evento_byday_tu').disabled = false;
+                                                  document.getElementById('evento_byday_we').disabled = false;
+                                                  document.getElementById('evento_byday_th').disabled = false;
+                                                  document.getElementById('evento_byday_fr').disabled = false;
+                                                  document.getElementById('evento_byday_sa').disabled = false;
+                                                  document.getElementById('evento_byday_su').disabled = false;
+                                               }else{
+                                                  document.getElementById('evento_freq_daily').disabled = true;
+                                                  document.getElementById('evento_freq_weekly').disabled = true;
+                                                  document.getElementById('evento_byday_mo').disabled = true;
+                                                  document.getElementById('evento_byday_tu').disabled = true;
+                                                  document.getElementById('evento_byday_we').disabled = true;
+                                                  document.getElementById('evento_byday_th').disabled = true;
+                                                  document.getElementById('evento_byday_fr').disabled = true;
+                                                  document.getElementById('evento_byday_sa').disabled = true;
+                                                  document.getElementById('evento_byday_su').disabled = true;
+                                               }" %>
   </p>
   <p>
-    <%= label :evento, :freq, "Frecuencia" %><br />
-    <%= f.radio_button :freq, "DAILY" %> Diario <br/>
-    <%= f.radio_button :freq, "WEEKLY" %> Semanal
+    <%= label :evento, :freq, "Frecuencia", :disabled => "true" %><br />
+    <%= f.radio_button :freq, "DAILY", :disabled => "true" %> Diario <br/>
+    <%= f.radio_button :freq, "WEEKLY", :disabled => "true" %> Semanal
   </p>
   <p>
     <%= label :evento, :byday, "Dia de la semana" %><br />
-    <%= f.radio_button :byday, "MO" %> LUN
-    <%= f.radio_button :byday, "TU" %> MAR
-    <%= f.radio_button :byday, "WE" %> MIE
-    <%= f.radio_button :byday, "TH" %> JUE
-    <%= f.radio_button :byday, "FR" %> VIE
-    <%= f.radio_button :byday, "SA" %> SAB
-    <%= f.radio_button :byday, "SU" %> DOM
+    <%= f.radio_button :byday, "MO", :disabled => "true" %> LUN
+    <%= f.radio_button :byday, "TU", :disabled => "true" %> MAR
+    <%= f.radio_button :byday, "WE", :disabled => "true" %> MIE
+    <%= f.radio_button :byday, "TH", :disabled => "true" %> JUE
+    <%= f.radio_button :byday, "FR", :disabled => "true" %> VIE
+    <%= f.radio_button :byday, "SA", :disabled => "true" %> SAB
+    <%= f.radio_button :byday, "SU", :disabled => "true" %> DOM
   </p>
   <p>
     Repetir cada: <%= select :evento, :interval, [1,2,3,4,5] %> dias/semanas
@@ -42,7 +62,7 @@
 
   <p>
     <%= label :evento, :espacio_id, "Espacio asignado" %><br />
-    <%= collection_select :evento, :espacio_id, Espacio.all, :id, :codigo %>
+    <%= collection_select :evento, :espacio_id, Espacio.all, :id, :codigo, :disabled => "true" %>
   </p>
   <p>
     <%= f.submit 'Crear' %>
