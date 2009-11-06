@@ -1,4 +1,7 @@
-<h1>Listing espacios</h1>
+<h1>Lista de usuarios registrados</h1>
+<p>Los administradores gozaran del privilegio de resetear la contraseña de cualquier
+usuario, eliminarlo o crear nuevos, mientras que los usuarios comunes solo podran
+resetear su propia contraseña</p>
 
 <table>
   <tr>
@@ -12,8 +15,14 @@
     <td><%=h user.login %></td>
     <td><%=h user.email %></td>
     <td><%=h user.created_at %></td>
-    <% if user.id == current_user.id %>
-      <td><%= link_to 'Reset Pass', '/users/reset_pass?user_id=' + user.id.to_s %></td>
+    <% if user.id == current_user.id and current_user.tipo == "u" %>
+      <td><%= link_to 'Reestablecer mi contraseña', '/users/reset_pass?user_id=' + user.id.to_s %></td>
+    <% else %>
+      <% if current_user.tipo == "a" %>
+        <td><%= link_to 'Reset Pass', '/users/reset_pass?user_id=' + user.id.to_s %></td>
+        <td><%= link_to 'Eliminar', :controller => :users, :action => :destroy, :user_id => user.id %></td>
+
+      <% end %>
     <% end %>
   </tr>
 <% end %>
@@ -21,4 +30,8 @@
 
 <br />
 
-<%= link_to 'Nuevo usuario', :controller => 'users', :action => 'new' %>
+<% if current_user.tipo == "a" %>
+
+  <%= link_to 'Nuevo usuario', :controller => 'users', :action => 'new' %>
+
+<% end %>

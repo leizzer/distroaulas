@@ -12,7 +12,6 @@ class UsersController < ApplicationController
   end
  
   def create
-    logout_keeping_session!
     @user = User.new(params[:user])
     success = @user && @user.save
     if success && @user.errors.empty?
@@ -20,13 +19,22 @@ class UsersController < ApplicationController
       # protection if visitor resubmits an earlier form using back
       # button. Uncomment if you understand the tradeoffs.
       # reset session
-      self.current_user = @user # !! now logged in
-      redirect_back_or_default('/')
-      flash[:notice] = "Thanks for signing up!  We're sending you an email with your activation code."
+      # self.current_user = @user # !! now logged in
+      redirect_back_or_default('/users')
+      flash[:notice] = "Registracion exitosa! Ahora puede loguearse."
     else
-      flash[:error]  = "We couldn't set up that account, sorry.  Please try again, or contact an admin (link is above)."
+      flash[:error]  = "Hubo un problema durante la registracion, intente de nuevo o contacte a un administrador."
       render :action => 'new'
     end
+  end
+
+  def show
+    destroy
+  end
+
+  def destroy
+    User.delete(User.find :first, :conditions => {:id => params[:user_id]}) if current_user.tipo == "a"
+    redirect_back_or_default('/users')
   end
 
   def reset_pass
