@@ -3,6 +3,8 @@ ActionController::Routing::Routes.draw do |map|
 
   map.browse_eventos_by_day '/eventos/browse_by_day', :controller => 'eventos', :action => 'browse_by_day'
 
+  map.browse_eventos_by_space '/eventos/browse_by_space', :controller => 'eventos', :action => 'browse_by_space'
+
   map.resources :eventos
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'

@@ -1,9 +1,9 @@
 class WeeklyCalendar::Builder
   include ::ActionView::Helpers::TagHelper
 
-  def initialize(objects, template, options, start_date, end_date)
+  def initialize(objects, template, options, start_date, end_date, title)
     raise ArgumentError, "WeeklyBuilder expects an Array but found a #{objects.inspect}" unless objects.is_a? Array
-    @objects, @template, @options, @start_date, @end_date = objects, template, options, start_date, end_date
+    @objects, @template, @options, @start_date, @end_date, @title = objects, template, options, start_date, end_date, title
   end
   
   def days      
@@ -11,7 +11,7 @@ class WeeklyCalendar::Builder
     month_names = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre']
 
     concat(tag("div", :id => "days"))
-      concat(content_tag("div", "Eventos", :id => "placeholder"))
+      concat(content_tag("div", @title, :id => "placeholder"))
       for day in @start_date..@end_date        
         concat(tag("div", :id => "day"))
         concat(content_tag("b", day_names[day.wday - 1] + ' ' + day.day.to_s))

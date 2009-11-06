@@ -7,10 +7,11 @@ module WeeklyCalendar
     date = options[:date] || Time.now
     start_date = Date.new(date.year, date.month, date.day)
     end_date = Date.new(date.year, date.month, date.day) # + 6 #Max days to show on the render
+    title = options[:title] || "Eventos"
     
     concat(tag("div", :id => "week"))
   
-      yield WeeklyCalendar::Builder.new(objects || [], self, options, start_date, end_date)
+      yield WeeklyCalendar::Builder.new(objects || [], self, options, start_date, end_date, title)
       
     concat("</div>")
     

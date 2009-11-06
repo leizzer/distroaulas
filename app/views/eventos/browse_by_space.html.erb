@@ -1,0 +1,25 @@
+<% Espacio.all.each do |espacio| %>
+  <%  weekly_calendar(@events.find_all{|e| e.location == espacio.id}, :date => Date.today, :include_24_hours => false, :title => espacio.codigo) do |w|  %>
+    <%  w.week(:business_hours => params[:business_hours]) do |event,truncate|  %>
+      <!-- <%=  event.starts_at.strftime('%I:%M%p') %> -->
+     <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>
+     <% end -%>
+  <% end -%>
+  <hr>
+<% end %>
+<br>
+<br>
+<hr>
+<!--
+<%= @calendar.export %>
+<hr>
+<% @calendar.events.each do |event| %>
+  <p>
+  DTSTART: <%= event.dtstart %><br>
+  DTEND: <%= event.dtend %><br>
+  DESC: <%= event.description %><br>
+  RECCURR: <%= event.rrule %><br>
+  Espacio: <%= Espacio.find(:first, :conditions => {:id => event.location}).codigo %></p>
+<% end %>
+-->
+<%= link_to 'Volver al indice', root_path %>
