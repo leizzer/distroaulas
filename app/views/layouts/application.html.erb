@@ -51,16 +51,10 @@
     <%= link_to "Eventos por espacio", {:controller => "eventos", :action => "browse_by_space"}, :id => "item" %><br/>
     </div>
     <div id="item">
-    <%= link_to "Listar usuarios", {:controller => "users", :action => "index"}, :id => "item" %><br/>
+    <%= link_to "Admin usuarios", {:controller => "users", :action => "index"}, :id => "item" %><br/>
     </div>
     <div id="item">
-    <%= link_to "Login", {:controller => "sessions", :action => "new"}, :id => "item" %><br/>
-    </div>
-    <div id="item">
-    <%= link_to "Registrarse", {:controller => "users", :action => "new"}, :id => "item" %><br/>
-    </div>
-    <div id="item">
-    <%= link_to "Desloguearse", {:controller => "sessions", :action => "destroy"}, :id => "item" %>
+    <%= link_to "Salir", {:controller => "sessions", :action => "destroy"}, :id => "item" %>
     </div>
   <% end %>
   </div>
@@ -68,8 +62,7 @@
   <div id="contenido">
       <div id="info">
         <% if flash[:notice].nil? == false %>
-        <%= image_tag "atencion.png", :size => "32x32" %>
-        <p style="color: green"><%= flash[:notice] %></p>
+        <p style="color: green; background-color: #FFFB99; text-align:center;"><%= flash[:notice] %></p>
         <% end %>
       </div>
  
