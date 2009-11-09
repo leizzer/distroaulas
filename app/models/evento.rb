@@ -28,8 +28,9 @@ class Evento < ActiveRecord::Base
     else
       temp += self.dtend.min.to_s
     end
-    temp += '-0300'
+    # temp += '-0300'
     self.dtend = DateTime.parse(temp)
+    self.dtstart = DateTime.parse(self.dtstart.strftime '%Y-%m-%d %H:%M:%S')
    end
  
   def validate
@@ -40,7 +41,7 @@ class Evento < ActiveRecord::Base
     events.each do |event|
       temp = SimpEvent.new
       new_event = RiCal.Event
-      new_event.description = event.description
+      new_event.description = event.description || ''
       new_event.dtstart = event.dtstart #.strftime '%Y%m%dT%H%M00'
       new_event.dtend = event.dtend #.strftime '%Y%m%dT%H%M00'
       new_event.location = event.espacio_id.to_s

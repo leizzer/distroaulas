@@ -2,8 +2,8 @@ class CreateEventos < ActiveRecord::Migration
   def self.up
     create_table :eventos do |t|
       t.string :description
-      t.string :dtstart
-      t.string :dtend
+      t.datetime :dtstart
+      t.datetime :dtend
       t.string :freq
       t.string :bydate
       t.string :interval

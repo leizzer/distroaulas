@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(:version => 20091106161143) do
   end
 
   create_table "eventos", :force => true do |t|
-    t.datetime "dtstart",     :limit => 255
-    t.datetime "dtend",       :limit => 255
+    t.datetime "dtstart"
+    t.datetime "dtend"
     t.string   "freq"
     t.string   "byday"
     t.string   "interval"

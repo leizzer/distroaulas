@@ -26,6 +26,8 @@ class SessionsController < ApplicationController
       note_failed_signin
       @login       = params[:login]
       @remember_me = params[:remember_me]
+      flash[:notice] = "Los datos no son correctos."
+      redirect_back_or_default('/')
     end
   end
 

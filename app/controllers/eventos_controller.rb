@@ -147,9 +147,10 @@ class EventosController < ApplicationController
     else
       events_list = Evento.find(:all, :conditions => "dtstart > '#{date}' AND '#{date + 1.day}' > dtstart AND reccurrent = 'f' AND espacio_id = #{space}") + Evento.find(:all, :conditions => { :reccurrent => true, :byday => date.strftime("%a").upcase[0..1], :espacio_id => space})
     end
+
     events_list.each do |event|
       new_event = RiCal.Event
-      new_event.description = event.description
+      new_event.description = event.description || ''
       new_event.dtstart = event.dtstart.strftime '%Y%m%dT%H%M00'
       new_event.dtend = event.dtend.strftime '%Y%m%dT%H%M00'
       new_event.location = event.espacio_id.to_s
