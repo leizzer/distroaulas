@@ -28,8 +28,8 @@ ActiveRecord::Schema.define(:version => 20091110180642) do
   end
 
   create_table "eventos", :force => true do |t|
-    t.datetime "dtstart",        :limit => 255
-    t.datetime "dtend",          :limit => 255
+    t.datetime "dtstart",     :limit => 255
+    t.datetime "dtend",       :limit => 255
     t.string   "freq"
     t.string   "byday"
     t.string   "interval"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20091110180642) do
     t.integer  "espacio_id"
     t.string   "rdate"
     t.boolean  "reccurrent"
-    t.integer  "codigo_materia"
+    t.integer  "materia_id"
   end
 
   create_table "materias", :force => true do |t|
