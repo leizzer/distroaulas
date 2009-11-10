@@ -103,7 +103,7 @@ class EventosController < ApplicationController
       end
     end
     @events = []
-    @calendar = get_calendar(@search_by_date, nil)
+    @calendar = get_calendar :date => @search_by_date
 
     @free_spaces = Espacio.all
     @calendar.events.each do |event|
@@ -128,7 +128,7 @@ class EventosController < ApplicationController
 
   def browse_by_space
     @events = []
-    @calendar = get_calendar(Date.today, nil)
+    @calendar = get_calendar :date => Date.today
     @calendar.events.each do |event|
       temp = SimpEvent.new
       temp.starts_at = event.dtstart
@@ -140,12 +140,12 @@ class EventosController < ApplicationController
     end
   end
 
-  def get_calendar(date, space)
+  def get_calendar opt = {}
     calendar = RiCal.Calendar
-    if space.nil?
-      events_list = Evento.find(:all, :conditions => "dtstart > '#{date}' AND '#{date + 1.day}' > dtstart AND reccurrent = 'f'") + Evento.find(:all, :conditions => { :reccurrent => true, :byday => date.strftime("%a").upcase[0..1]})
+    if opt[:space].nil?
+      events_list = Evento.find(:all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f'") + Evento.find(:all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1]})
     else
-      events_list = Evento.find(:all, :conditions => "dtstart > '#{date}' AND '#{date + 1.day}' > dtstart AND reccurrent = 'f' AND espacio_id = #{space}") + Evento.find(:all, :conditions => { :reccurrent => true, :byday => date.strftime("%a").upcase[0..1], :espacio_id => space})
+      events_list = Evento.find(:all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f' AND espacio_id = #{opt[:space]}") + Evento.find(:all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1], :espacio_id => opt[:space]})
     end
 
     events_list.each do |event|
@@ -161,12 +161,12 @@ class EventosController < ApplicationController
       #Occurrences te va a manejar automaticamente las exdates y rdates, no tenes que hacer ningun otro calculo mas que cargarlos al evento.
       #Creo que son las primeras lineas de comentario en TODA la aplicacion XD Mal
       if event.reccurrent
-        occurrence = new_event.occurrences :count => 1, :starting => date, :before => date + 1
+        occurrence = new_event.occurrences :count => 1, :starting => opt[:date], :before => opt[:date] + 1
         if occurrence.count > 0
           calendar.add_subcomponent occurrence[0] #new_event
         end
       else
-        calendar.add_subcomponent new_event if (Date.parse(event.dtstart.year.to_s + '/' +  event.dtstart.month.to_s + '/' + event.dtstart.day.to_s)) == date
+        calendar.add_subcomponent new_event if (Date.parse(event.dtstart.year.to_s + '/' +  event.dtstart.month.to_s + '/' + event.dtstart.day.to_s)) == opt[:date]
       end
     end
     return calendar

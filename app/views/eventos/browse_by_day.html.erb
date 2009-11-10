@@ -16,6 +16,7 @@
 <p>Buscar por fecha</p>
 <% form_tag do %>
   <%= select_date @search_by_date %>
+  <%= collection_select :carrera, :carrera_id, Carrera.all, :codigo, :nombre %>
   <%= submit_tag(value = 'Buscar') %> <%= link_to 'Ir a hoy', '/eventos/browse_by_day?start_day=' + Time.now.strftime('%Y-%m-%d') %>
 <% end %>
 <hr>
