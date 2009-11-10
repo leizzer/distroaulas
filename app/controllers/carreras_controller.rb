@@ -43,7 +43,7 @@ class CarrerasController < ApplicationController
     @carrera = Carrera.new(params[:carrera])
     respond_to do |format|
       if @carrera.save
-        flash[:notice] = 'Carrera was successfully created.'
+        flash[:notice] = 'Se creo la carrera satisfactoriamente.'
         format.html { redirect_to(@carrera) }
         format.xml  { render :xml => @carrera, :status => :created, :location => @carrera }
       else
@@ -60,7 +60,7 @@ class CarrerasController < ApplicationController
 
     respond_to do |format|
       if @carrera.update_attributes(params[:carrera])
-        flash[:notice] = 'Carrera was successfully updated.'
+        flash[:notice] = 'Carrera actualizada correctamente.'
         format.html { redirect_to(@carrera) }
         format.xml  { head :ok }
       else

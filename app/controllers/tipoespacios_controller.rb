@@ -44,7 +44,7 @@ class TipoespaciosController < ApplicationController
 
     respond_to do |format|
       if @tipoespacio.save
-        flash[:notice] = 'Tipoespacio was successfully created.'
+        flash[:notice] = 'Tipo creado satisfactoriamente.'
         format.html { redirect_to(@tipoespacio) }
         format.xml  { render :xml => @tipoespacio, :status => :created, :location => @tipoespacio }
       else
@@ -61,7 +61,7 @@ class TipoespaciosController < ApplicationController
 
     respond_to do |format|
       if @tipoespacio.update_attributes(params[:tipoespacio])
-        flash[:notice] = 'Tipoespacio was successfully updated.'
+        flash[:notice] = 'Tipo actualizado correctamente.'
         format.html { redirect_to(@tipoespacio) }
         format.xml  { head :ok }
       else

@@ -44,7 +44,7 @@ class EspaciosController < ApplicationController
 
     respond_to do |format|
       if @espacio.save
-        flash[:notice] = 'Espacio was successfully created.'
+        flash[:notice] = 'Se creo el espacio satisfactoriamente.'
         format.html { redirect_to(@espacio) }
         format.xml  { render :xml => @espacio, :status => :created, :location => @espacio }
       else
@@ -61,7 +61,7 @@ class EspaciosController < ApplicationController
 
     respond_to do |format|
       if @espacio.update_attributes(params[:espacio])
-        flash[:notice] = 'Espacio was successfully updated.'
+        flash[:notice] = 'Espacio actualizado correctamente.'
         format.html { redirect_to(@espacio) }
         format.xml  { head :ok }
       else

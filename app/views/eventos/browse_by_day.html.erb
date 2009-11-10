@@ -1,8 +1,10 @@
+<div id="week-container">
 <%  weekly_calendar(@events, :date => @search_by_date, :include_24_hours => true) do |w|  %>
   <%  w.week(:business_hours => params[:business_hours]) do |event,truncate|  %>
     <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>
   <% end -%>
 <% end -%>
+</div>
 <br>
 <br>
 <p>Espacios libres a las <%= Time.now.strftime '%H:%M' %>: </p>

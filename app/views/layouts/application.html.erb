@@ -11,12 +11,14 @@
 </head>
 <body>
 
-  <div id="banner">
-        <%= image_tag "ucse.jpg" %>
-        <h1>Universidad Catolica de Santiago del Estero</h1>
-  </div>
+
+
   <div id="menu">
+    <div id="logo">
+      <%= image_tag "ucse.jpg" %>
+    </div>
     <h2>Distroaulas</h2>
+
   <% if not current_user.nil? %>
 
     <h4>ABMs</h4>
@@ -58,6 +60,11 @@
     </div>
   <% end %>
   </div>
+
+  <div id="banner">
+        <h1>Universidad Catolica de Santiago del Estero</h1>
+  </div>
+
 
   <div id="contenido">
       <div id="info">

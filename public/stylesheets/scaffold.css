@@ -32,6 +32,8 @@ a:hover { color: #666666; }
   background-color: #2222CC;
   color: #FFFFFF;
   height: 100px;
+  margin: 0;
+  padding: 1px;
 }
 
 #banner img {
@@ -68,8 +70,12 @@ a:hover { color: #666666; }
 
 #contenido {
   position: relative;
-  width: 800px;
+  min-width: 800px;
   margin-left: 160px;
+}
+
+table, td, th {
+  border: 1px dotted #AAF;
 }
 
 /* ERRORS */
@@ -103,3 +109,7 @@ a:hover { color: #666666; }
   list-style: square;
 }
 
+#logo {
+  text-align: center;
+  margin: 10px;
+}

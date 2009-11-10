@@ -1,3 +1,4 @@
+<div id="week-container">
 <% Espacio.all.each do |espacio| %>
   <%  weekly_calendar(@events.find_all{|e| e.location == espacio.id}, :date => Date.today, :include_24_hours => false, :title => espacio.codigo) do |w|  %>
     <%  w.week(:business_hours => params[:business_hours]) do |event,truncate|  %>
@@ -7,6 +8,7 @@
   <% end -%>
   <hr>
 <% end %>
+</div>
 <br>
 <br>
 <hr>

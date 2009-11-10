@@ -19,9 +19,22 @@
     <td><%=h evento.dtend.strftime '%d-%m-%Y %H:%M'  %></td>
     <td><%=h "SI" if evento.reccurrent %>
         <%=h "NO" if not evento.reccurrent %></td>
-    <td><%=h evento.freq %></td>
+    <td><% if evento.reccurrent %>
+          <% if evento.freq == 'WEEKLY' %>
+            <%=h 'Semanal' %>
+          <% else %>
+            <%=h 'Diario' %>
+          <% end %>
+        <% else %>
+          <%=h 'Ninguno' %>
+        <% end %></td>
     <td><%=h evento.byday %></td>
-    <td><%=h evento.interval %></td>
+    <td><%=h evento.interval %>
+        <% if evento.freq == 'WEEKLY' %>
+          <%= ' Semana/s' %>
+        <% else %>
+          <%= ' Dia/s' %>
+        <% end %></td>
     <td>
     <% begin %>
       <%=h Espacio.find(:first, :conditions => {:id => evento.espacio_id}).codigo %>

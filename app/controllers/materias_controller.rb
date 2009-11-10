@@ -44,7 +44,7 @@ class MateriasController < ApplicationController
 
     respond_to do |format|
       if @materia.save
-        flash[:notice] = 'Materia was successfully created.'
+        flash[:notice] = 'Materia creada satisfactoriamente.'
         format.html { redirect_to(@materia) }
         format.xml  { render :xml => @materia, :status => :created, :location => @materia }
       else
@@ -61,7 +61,7 @@ class MateriasController < ApplicationController
 
     respond_to do |format|
       if @materia.update_attributes(params[:materia])
-        flash[:notice] = 'Materia was successfully updated.'
+        flash[:notice] = 'Materia actualizada correctamente.'
         format.html { redirect_to(@materia) }
         format.xml  { head :ok }
       else
