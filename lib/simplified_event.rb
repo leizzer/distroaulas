@@ -39,5 +39,6 @@ class SimpEvent
     @location = data
   end
 
+  attr_accessor :anio
 
 end

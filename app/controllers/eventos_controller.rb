@@ -103,19 +103,21 @@ class EventosController < ApplicationController
       end
     end
     @events = []
-    @calendar = get_calendar :date => @search_by_date
+    6.times do |an|
+      @calendar = get_calendar :date => @search_by_date, :career => params[:carrera_carrera_id], :year => an
+      @free_spaces = Espacio.all
+      @calendar.events.each do |event|
 
-    @free_spaces = Espacio.all
-    @calendar.events.each do |event|
+        temp = SimpEvent.new
+        temp.starts_at = event.dtstart
+        temp.ends_at = event.dtend
+        temp.name = event.description + ' - ' +  Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo
+        temp.original_id = event.comment[0].to_i
+        temp.anio = an
+        @events.push temp
 
-      temp = SimpEvent.new
-      temp.starts_at = event.dtstart
-      temp.ends_at = event.dtend
-      temp.name = event.description + ' - ' +  Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo
-      temp.original_id = event.comment[0].to_i
-      @events.push temp
-
-      @free_spaces.delete(Espacio.find_by_id event.location.to_i) if DateTime.now.strftime('%H%M').to_i.between? event.dtstart.strftime('%H%M').to_i, event.dtend.strftime('%H%M').to_i
+        @free_spaces.delete(Espacio.find_by_id event.location.to_i) if DateTime.now.strftime('%H%M').to_i.between? event.dtstart.strftime('%H%M').to_i, event.dtend.strftime('%H%M').to_i
+      end
     end
   end
 
@@ -142,8 +144,14 @@ class EventosController < ApplicationController
 
   def get_calendar opt = {}
     calendar = RiCal.Calendar
+    subjects = []
+    events_list = []
     if opt[:space].nil?
-      events_list = Evento.find(:all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f'") + Evento.find(:all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1]})
+      Materia.find(:all, :conditions => {:codigo_carrera => opt[:career], :anio => opt[:year]}).each do |m|
+        subjects << m.id
+      end
+      events_list = Evento.find(:all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f'") if opt[:year] == 0
+      events_list += Evento.find(:all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1]})
     else
       events_list = Evento.find(:all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f' AND espacio_id = #{opt[:space]}") + Evento.find(:all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1], :espacio_id => opt[:space]})
     end
@@ -158,8 +166,7 @@ class EventosController < ApplicationController
       new_event.exdates = event.exdate.to_a
       new_event.rdates = event.rdate.to_a
       new_event.comment = event.id.to_s
-      #Occurrences te va a manejar automaticamente las exdates y rdates, no tenes que hacer ningun otro calculo mas que cargarlos al evento.
-      #Creo que son las primeras lineas de comentario en TODA la aplicacion XD Mal
+
       if event.reccurrent
         occurrence = new_event.occurrences :count => 1, :starting => opt[:date], :before => opt[:date] + 1
         if occurrence.count > 0

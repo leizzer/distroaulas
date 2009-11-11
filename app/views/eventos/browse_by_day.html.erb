@@ -1,10 +1,57 @@
 <div id="week-container">
-<%  weekly_calendar(@events, :date => @search_by_date, :include_24_hours => true) do |w|  %>
+<h3>Extra</h3>
+<%  weekly_calendar(@events.reject { |e| e.anio != 0}, :date => @search_by_date, :include_24_hours => true) do |w|  %>
   <%  w.week(:business_hours => params[:business_hours]) do |event,truncate|  %>
     <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>
   <% end -%>
 <% end -%>
 </div>
+
+<div id="week-container">
+<h3>#1 :Primer Año</h3>
+<%  weekly_calendar(@events.reject { |e| e.anio != 1}, :date => @search_by_date, :include_24_hours => true) do |w|  %>
+  <%  w.week(:business_hours => params[:business_hours]) do |event,truncate|  %>
+    <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>
+  <% end -%>
+<% end -%>
+</div>
+
+<div id="week-container">
+<h3>#2 :Segundo Año</h3>
+<%  weekly_calendar(@events.reject { |e| e.anio != 2}, :date => @search_by_date, :include_24_hours => true) do |w|  %>
+  <%  w.week(:business_hours => params[:business_hours]) do |event,truncate|  %>
+    <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>
+  <% end -%>
+<% end -%>
+</div>
+
+<div id="week-container">
+<h3>#3 :Tercer Año</h3>
+<%  weekly_calendar(@events.reject { |e| e.anio != 3}, :date => @search_by_date, :include_24_hours => true) do |w|  %>
+  <%  w.week(:business_hours => params[:business_hours]) do |event,truncate|  %>
+    <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>
+  <% end -%>
+<% end -%>
+</div>
+
+<div id="week-container">
+<h3>#4 :Cuarto Año</h3>
+<%  weekly_calendar(@events.reject { |e| e.anio != 4}, :date => @search_by_date, :include_24_hours => true) do |w|  %>
+  <%  w.week(:business_hours => params[:business_hours]) do |event,truncate|  %>
+    <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>
+  <% end -%>
+<% end -%>
+</div>
+
+<div id="week-container">
+<h3>#5 :Quinto Año</h3>
+<%  weekly_calendar(@events.reject { |e| e.anio != 5}, :date => @search_by_date, :include_24_hours => true) do |w|  %>
+  <%  w.week(:business_hours => params[:business_hours]) do |event,truncate|  %>
+    <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>
+  <% end -%>
+<% end -%>
+</div>
+
 <br>
 <br>
 <p>Espacios libres a las <%= Time.now.strftime '%H:%M' %>: </p>
