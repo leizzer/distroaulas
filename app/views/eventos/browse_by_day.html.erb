@@ -1,5 +1,6 @@
 <div id="week-container">
 <h3>Extra</h3>
+<!-- Existe un calendario para cada año de la carrera, por eso se rechaza de la lista events todos los que no sean correspondientes al año !-->
 <%  weekly_calendar(@events.reject { |e| e.anio != 0}, :date => @search_by_date, :include_24_hours => true) do |w|  %>
   <%  w.week(:business_hours => params[:business_hours]) do |event,truncate|  %>
     <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>

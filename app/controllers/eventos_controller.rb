@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class EventosController < ApplicationController
   require 'ri_cal'
   require 'simplified_event'
@@ -103,6 +104,9 @@ class EventosController < ApplicationController
       end
     end
     @events = []
+    #busqueda de los eventos por año, los del año "0" son los eventos no recurrentes en este momento, pero eso esta mal, deberian ser los que no estan
+    #  asignados a una materia. Lo de que sean recurrentes o no recurrentes, ya no es tan asi en esta busqueda y debemos cambiarlo, pero me termino de avivar recien
+    #  y ya es tarde
     6.times do |an|
       @calendar = get_calendar :date => @search_by_date, :career => params[:carrera_carrera_id], :year => an
       @free_spaces = Espacio.all
@@ -147,9 +151,12 @@ class EventosController < ApplicationController
     subjects = []
     events_list = []
     if opt[:space].nil?
+      #Crea la lista de id's de materias que corresponden a la carrera en un año dado
       Materia.find(:all, :conditions => {:codigo_carrera => opt[:career], :anio => opt[:year]}).each do |m|
         subjects << m.id
       end
+      #Lo de buscar no reccurrentes diferenciando de los recurrentes es algo que quedo de la vieja busqueda y deberia ser adaptado todo
+      #  al nuevo objetivo de esta busqueda. Deberia verse que no pertenece a ninguna materia.
       events_list = Evento.find(:all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f'") if opt[:year] == 0
       events_list += Evento.find(:all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1]})
     else
