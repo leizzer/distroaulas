@@ -2,7 +2,7 @@ class Evento < ActiveRecord::Base
   require 'ri_cal'
 
   validates_numericality_of :interval
-  before_save :set_dates
+  before_save :set_dates, :set_materia_id
 
   belongs_to :espacio
 
@@ -74,4 +74,12 @@ class Evento < ActiveRecord::Base
       end
     end
   end
+
+  def set_materia_id
+    debugger
+    if materia = Materia.find(:first, :conditions =>  {:codigo => self.description.split(' ')[0]})
+      self.materia_id = materia.codigo
+    end
+  end
 end
+
