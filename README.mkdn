@@ -13,7 +13,7 @@ Have a nice day.
         - [done!]Hacer que el combo de nuevo evento que trae materias este filtrado por carrera
 
         Busquedas
-          [obsoleto]*[a mi me parece mas util que el otro] Realizar las busquedas de eventos por la Carrera y año de la materia
+        -[50%] Realizar las busquedas de eventos por la Carrera y año de la materia
 
         Interfaz
         - [done!] Implementar la autenticacion en el application_controllery configrar todo el sitio para que funcione con autenticacion
