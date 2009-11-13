@@ -108,6 +108,7 @@ class EventosController < ApplicationController
     #  asignados a una materia. Lo de que sean recurrentes o no recurrentes, ya no es tan asi en esta busqueda y debemos cambiarlo, pero me termino de avivar recien
     #  y ya es tarde
     6.times do |an|
+      @calendar = nil
       @calendar = get_calendar :date => @search_by_date, :career => (params.include? :carrera) ? params[:carrera][:carrera_id] : nil, :year => an
       @free_spaces = Espacio.all
       @calendar.events.each do |event|
@@ -123,7 +124,7 @@ class EventosController < ApplicationController
         @free_spaces.delete(Espacio.find_by_id event.location.to_i) if DateTime.now.strftime('%H%M').to_i.between? event.dtstart.strftime('%H%M').to_i, event.dtend.strftime('%H%M').to_i
       end
     end
-  end
+ end
 
   def get_materias
     @lista_materias = Materia.find :all, :conditions => {:codigo_carrera => params[:carrera_id]}
@@ -134,7 +135,7 @@ class EventosController < ApplicationController
 
   def browse_by_space
     @events = []
-    @calendar = get_calendar :date => Date.today
+    @calendar = get_calendar :date => Date.today, :all => true
     @calendar.events.each do |event|
       temp = SimpEvent.new
       temp.starts_at = event.dtstart
@@ -153,13 +154,18 @@ class EventosController < ApplicationController
     if opt[:space].nil?
       #Crea la lista de id's de materias que corresponden a la carrera en un año dado
       Materia.find(:all, :conditions => {:codigo_carrera => opt[:career], :anio => opt[:year]}).each do |m|
-        subjects << m.codigo
+        subjects << m.codigo.to_i
       end
-debugger
+#debugger
       #Lo de buscar no reccurrentes diferenciando de los recurrentes es algo que quedo de la vieja busqueda y deberia ser adaptado todo
       #  al nuevo objetivo de esta busqueda. Deberia verse que no pertenece a ninguna materia.
-      events_list = Evento.find :all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f'" if opt[:year] == 0
-      events_list += Evento.find :all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1]}
+      if opt[:all]
+        events_list = Evento.find :all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f'"
+        events_list += Evento.find :all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1]}
+      else
+        events_list = Evento.find :all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f'" if opt[:year] == 0
+        events_list += Evento.find :all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1]}
+      end
     else
       events_list = Evento.find(:all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f' AND espacio_id = #{opt[:space]}") + Evento.find(:all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1], :espacio_id => opt[:space]})
     end
@@ -178,10 +184,18 @@ debugger
       if event.reccurrent
         occurrence = new_event.occurrences :count => 1, :starting => opt[:date], :before => opt[:date] + 1
         if occurrence.count > 0
-          calendar.add_subcomponent occurrence[0] #new_event
+          if event.materia_id.nil? or opt[:all]
+            calendar.add_subcomponent occurrence[0] #new_event
+          else
+            calendar.add_subcomponent occurrence[0] if subjects.include? event.materia_id #new_event
+          end
         end
       else
-        calendar.add_subcomponent new_event if Date.parse(event.dtstart.year.to_s + '/' +  event.dtstart.month.to_s + '/' + event.dtstart.day.to_s) == opt[:date]
+        if event.materia_id.nil? or opt[:all]
+          calendar.add_subcomponent new_event if Date.parse(event.dtstart.year.to_s + '/' + event.dtstart.month.to_s + '/' + event.dtstart.day.to_s) == opt[:date]
+        else
+          calendar.add_subcomponent new_event if Date.parse(event.dtstart.year.to_s + '/' +  event.dtstart.month.to_s + '/' + event.dtstart.day.to_s) == opt[:date] and subjects.include? event.materia_id
+        end
       end
     end
     return calendar

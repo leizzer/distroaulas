@@ -12,7 +12,6 @@
 <body>
 
 
-
   <div id="menu">
     <div id="logo">
       <%= image_tag "ucse.jpg" %>
@@ -21,14 +20,26 @@
 
   <% if not current_user.nil? %>
 
-    <h4>ABMs</h4>
     <div id="item">
     <%= link_to "Eventos", {:controller => "eventos", :action => "index"}, :id => "item" %><br/>
     </div>
+    <div id="item">
+    <%= link_to "Nuevo Evento", {:controller => "eventos", :action => "new"}, :id => "item" %><br/>
+    </div>
+    <div id="item">
+    <%= link_to "Eventos del Dia", {:controller => "eventos", :action => "browse_by_day"}, :id => "item" %><br/>
+    </div>
+    <div id="item">
+    <%= link_to "Eventos por espacio", {:controller => "eventos", :action => "browse_by_space"}, :id => "item" %><br/>
+    </div>
+
     <br />
 
     <div id="item">
     <%= link_to "Espacios", {:controller => "espacios", :action => "index"}, :id => "item" %><br/>
+    </div>
+    <div id="item">
+    <%= link_to "Nuevo espacio", {:controller => "espacios", :action => "new"}, :id => "item" %><br/>
     </div>
     <div id="item">
     <%= link_to "Tipo Espacios", {:controller => "tipoespacios", :action => "index"}, :id => "item" %>
@@ -46,12 +57,6 @@
     </div>
 
     <h4>Otros links</h4>
-    <div id="item">
-    <%= link_to "Eventos del Dia", {:controller => "eventos", :action => "browse_by_day"}, :id => "item" %><br/>
-    </div>
-    <div id="item">
-    <%= link_to "Eventos por espacio", {:controller => "eventos", :action => "browse_by_space"}, :id => "item" %><br/>
-    </div>
     <div id="item">
     <%= link_to "Admin usuarios", {:controller => "users", :action => "index"}, :id => "item" %><br/>
     </div>
