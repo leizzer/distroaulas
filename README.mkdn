@@ -22,6 +22,16 @@ Have a nice day.
         - [done?] Hacer una vista de eventos en general. Dario sugiere filtrarlos por espacio (que parece la posta) y
           mostrar todos los espacios.
 
+	- Testeo
+		> Testear la validacion de eventos
+		> Testear los browse_by_day y browse_by_space, que muestren bien los eventos
+		> Testear que las ocurrencias y excepciones funcionen
+		> Examinar potenciales riesgos de seguridad
+		> Testear bien las busquedas
+		> Buscar un beta tester
+
+	- Deploy: donde mocos vamos a poner esto? Necesitamos PostgreSQL y un servidor web que corra Rails. Bajo windows no es posible, 
+	  podemos armar una maquina con lo que necesitamos sobre un linux o largarnos a llorar.
 
 #Groso el magit. Uso:
 [nota: M = Alt o ESC, C = Ctrl]
