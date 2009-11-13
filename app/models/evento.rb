@@ -19,10 +19,10 @@ class Evento < ActiveRecord::Base
       temp += self.dtstart.day.to_s
     end
     if self.dtend.hour.to_s.length == 1
-      temp += "0" + self.dtend.hour.to_s 
-    else 
-      temp += self.dtend.hour.to_s 
-    end 
+      temp += "0" + self.dtend.hour.to_s
+    else
+      temp += self.dtend.hour.to_s
+    end
     if self.dtend.min.to_s.length == 1
       temp += "0" + self.dtend.min.to_s
     else
@@ -32,7 +32,7 @@ class Evento < ActiveRecord::Base
     self.dtend = DateTime.parse(temp)
     self.dtstart = DateTime.parse(self.dtstart.strftime '%Y-%m-%d %H:%M:%S')
    end
- 
+
   def validate
     set_dates
     calendar = RiCal.Calendar
@@ -76,7 +76,6 @@ class Evento < ActiveRecord::Base
   end
 
   def set_materia_id
-    debugger
     if materia = Materia.find(:first, :conditions =>  {:codigo => self.description.split(' ')[0]})
       self.materia_id = materia.codigo
     end

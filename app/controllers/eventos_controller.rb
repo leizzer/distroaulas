@@ -108,7 +108,7 @@ class EventosController < ApplicationController
     #  asignados a una materia. Lo de que sean recurrentes o no recurrentes, ya no es tan asi en esta busqueda y debemos cambiarlo, pero me termino de avivar recien
     #  y ya es tarde
     6.times do |an|
-      @calendar = get_calendar :date => @search_by_date, :career => params[:carrera_carrera_id], :year => an
+      @calendar = get_calendar :date => @search_by_date, :career => (params.include? :carrera) ? params[:carrera][:carrera_id] : nil, :year => an
       @free_spaces = Espacio.all
       @calendar.events.each do |event|
 
@@ -153,12 +153,13 @@ class EventosController < ApplicationController
     if opt[:space].nil?
       #Crea la lista de id's de materias que corresponden a la carrera en un año dado
       Materia.find(:all, :conditions => {:codigo_carrera => opt[:career], :anio => opt[:year]}).each do |m|
-        subjects << m.id
+        subjects << m.codigo
       end
+debugger
       #Lo de buscar no reccurrentes diferenciando de los recurrentes es algo que quedo de la vieja busqueda y deberia ser adaptado todo
       #  al nuevo objetivo de esta busqueda. Deberia verse que no pertenece a ninguna materia.
-      events_list = Evento.find(:all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f'") if opt[:year] == 0
-      events_list += Evento.find(:all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1]})
+      events_list = Evento.find :all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f'" if opt[:year] == 0
+      events_list += Evento.find :all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1]}
     else
       events_list = Evento.find(:all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f' AND espacio_id = #{opt[:space]}") + Evento.find(:all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1], :espacio_id => opt[:space]})
     end
@@ -180,7 +181,7 @@ class EventosController < ApplicationController
           calendar.add_subcomponent occurrence[0] #new_event
         end
       else
-        calendar.add_subcomponent new_event if (Date.parse(event.dtstart.year.to_s + '/' +  event.dtstart.month.to_s + '/' + event.dtstart.day.to_s)) == opt[:date]
+        calendar.add_subcomponent new_event if Date.parse(event.dtstart.year.to_s + '/' +  event.dtstart.month.to_s + '/' + event.dtstart.day.to_s) == opt[:date]
       end
     end
     return calendar
