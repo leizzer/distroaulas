@@ -156,7 +156,6 @@ class EventosController < ApplicationController
       Materia.find(:all, :conditions => {:codigo_carrera => opt[:career], :anio => opt[:year]}).each do |m|
         subjects << m.codigo.to_i
       end
-#debugger
       #Lo de buscar no reccurrentes diferenciando de los recurrentes es algo que quedo de la vieja busqueda y deberia ser adaptado todo
       #  al nuevo objetivo de esta busqueda. Deberia verse que no pertenece a ninguna materia.
       if opt[:all]

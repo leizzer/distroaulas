@@ -62,7 +62,7 @@
 
   <p>
     <%= label :evento, :espacio_id, "Espacio asignado" %><br />
-    <%= collection_select :evento, :espacio_id, Espacio.all, :id, :codigo, :disabled => "true" %>
+    <%= collection_select :evento, :espacio_id, Espacio.all, :id, :descripcion, :disabled => "true" %>
   </p>
   <p>
     <%= f.submit 'Crear' %>
