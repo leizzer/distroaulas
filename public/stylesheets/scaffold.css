@@ -57,7 +57,7 @@ a:hover { color: #666666; }
   color: #FFFFFF;
 }
 
-#item {
+.item {
   background-color: #87CEEB;
   margin: 1px 1px 1px 1px;
   width: 143px;

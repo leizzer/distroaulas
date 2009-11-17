@@ -20,47 +20,50 @@
 
   <% if not current_user.nil? %>
 
-    <div id="item">
+    <div class="item">
     <%= link_to "Eventos", {:controller => "eventos", :action => "index"}, :id => "item" %><br/>
     </div>
-    <div id="item">
+    <div class="item">
     <%= link_to "Nuevo Evento", {:controller => "eventos", :action => "new"}, :id => "item" %><br/>
     </div>
-    <div id="item">
+    <div class="item">
     <%= link_to "Eventos del Dia", {:controller => "eventos", :action => "browse_by_day"}, :id => "item" %><br/>
     </div>
-    <div id="item">
+    <div class="item">
     <%= link_to "Eventos por espacio", {:controller => "eventos", :action => "browse_by_space"}, :id => "item" %><br/>
     </div>
 
     <br />
 
-    <div id="item">
+    <div class="item">
     <%= link_to "Espacios", {:controller => "espacios", :action => "index"}, :id => "item" %><br/>
     </div>
-    <div id="item">
+    <div class="item">
     <%= link_to "Nuevo espacio", {:controller => "espacios", :action => "new"}, :id => "item" %><br/>
     </div>
-    <div id="item">
+    <div class="item">
     <%= link_to "Tipo Espacios", {:controller => "tipoespacios", :action => "index"}, :id => "item" %>
     </div>
     <br />
 
-    <div id="item">
+    <div class="item">
     <%= link_to "Carreras", {:controller => "carreras", :action => "index"}, :id => "item" %><br/>
     </div>
-    <div id="item">
+    <div class="item">
     <%= link_to "Planes", {:controller => "plans", :action => "index"}, :id => "item" %><br/>
     </div>
-    <div id="item">
+    <div class="item">
     <%= link_to "Materias", {:controller => "materias", :action => "index"}, :id => "item" %><br/>
     </div>
 
     <h4>Otros links</h4>
-    <div id="item">
+    <div class="item">
     <%= link_to "Admin usuarios", {:controller => "users", :action => "index"}, :id => "item" %><br/>
     </div>
-    <div id="item">
+    <div class="item">
+    <%= link_to "Importar datos", '/import', :confirm => "¿Esta seguro de querer ejecutar la importacion ahora?", :action => "import"  %><br/>
+    </div>
+    <div class="item">
     <%= link_to "Salir", {:controller => "sessions", :action => "destroy"}, :id => "item" %>
     </div>
   <% end %>
