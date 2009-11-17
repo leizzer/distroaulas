@@ -37,6 +37,7 @@ class Evento < ActiveRecord::Base
     set_dates
     calendar = RiCal.Calendar
     events = Evento.find(:all, :conditions => "dtstart > '#{self.dtstart.to_date}' AND '#{self.dtstart.to_date + 1.day}' > dtstart AND reccurrent = 'f' AND espacio_id = #{self.espacio_id}") + Evento.find(:all, :conditions => { :reccurrent => true, :byday => self.dtstart.strftime("%a").upcase[0..1], :espacio_id => self.espacio_id})
+    events.delete self
 
     events.each do |event|
       temp = SimpEvent.new
@@ -47,7 +48,7 @@ class Evento < ActiveRecord::Base
       new_event.location = event.espacio_id.to_s
       new_event.rrule = "FREQ=" + event.freq + ";BYDAY=" + event.byday + ";INTERVAL=" + event.interval.to_s if event.reccurrent
       new_event.exdates = event.exdate.to_a
-      new_event.rdates = event.rdate.to_a,
+      new_event.rdates = event.rdate.to_a
 
       #Occurrences te va a manejar automaticamente las exdates y rdates, no tenes que hacer ningun otro calculo mas que cargarlos al evento.
       #Creo que son las primeras lineas de comentario en TODA la aplicacion XD Mal
@@ -62,15 +63,14 @@ class Evento < ActiveRecord::Base
     end
 
     calendar.events.each do |event|
-
       if self.dtstart.between? event.dtstart, event.dtend
-        errors.add('Inicio: ',  "Conflicto con #{event.description} en #{Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo} de #{event.dtstart.strftime('%H:%M')} a #{event.dtend.strftime('%H:%M')}")
+        errors.add('Inicio: ',  "Conflicto con #/{event.description} en #/{Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo} de #/{event.dtstart.strftime('%H:%M')} a #/{event.dtend.strftime('%H:%M')}")
       end
       if self.dtend.between? event.dtstart, event.dtend
-        errors.add('Finalizacion: ', "Conflicto con #{event.description} en #{Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo} de #{event.dtstart.strftime('%H:%M')} a #{event.dtend.strftime('%H:%M')}")
+        errors.add('Finalizacion: ', "Conflicto con #/{event.description} en #/{Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo} de #/{event.dtstart.strftime('%H:%M')} a #/{event.dtend.strftime('%H:%M')}")
       end
       if event.dtstart.between? self.dtstart, self.dtend or event.dtend.between? self.dtstart, self.dtend
-        errors.add('Inicio y finalizacion: ', "Conflicto con #{event.description} en #{Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo} de #{event.dtstart.strftime('%H:%M')} a #{event.dtend.strftime('%H:%M')}")
+        errors.add('Inicio y finalizacion: ', "Conflicto con #/{event.description} en #/{Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo} de #/{event.dtstart.strftime('%H:%M')} a #/{event.dtend.strftime('%H:%M')}")
       end
     end
   end
