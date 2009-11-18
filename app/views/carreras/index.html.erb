@@ -11,8 +11,10 @@
     <td><%=h carrera.codigo %></td>
     <td><%=h carrera.nombre %></td>
     <td><%= link_to 'Detalle', carrera %></td>
-    <td><%= link_to 'Editar', edit_carrera_path(carrera) %></td>
-    <td><%= link_to 'Eliminar', carrera, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% if current_user.tipo == 'a' %>
+      <td><%= link_to 'Editar', edit_carrera_path(carrera) %></td>
+      <td><%= link_to 'Eliminar', carrera, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

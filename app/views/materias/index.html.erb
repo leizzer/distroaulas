@@ -16,9 +16,11 @@
     <td><%=h materia.codigo_plan %></td>
     <td><%=h materia.nombre %></td>
     <td><%=h materia.anio %></td>
-    <td><%= link_to 'Show', materia %></td>
-    <td><%= link_to 'Edit', edit_materia_path(materia) %></td>
-    <td><%= link_to 'Destroy', materia, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Detalle', materia %></td>
+    <% if current_user.tipo == 'a' %>
+      <td><%= link_to 'Editar', edit_materia_path(materia) %></td>
+      <td><%= link_to 'Eliminar', materia, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

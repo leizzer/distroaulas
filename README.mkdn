@@ -21,6 +21,7 @@ Have a nice day.
         - Diseñar la interface basica
         - [done?] Hacer una vista de eventos en general. Dario sugiere filtrarlos por espacio (que parece la posta) y
           mostrar todos los espacios.
+	- Definir politicas de seguridad
 
 	- Testeo
 		> Testear la validacion de eventos

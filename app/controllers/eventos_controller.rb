@@ -87,7 +87,11 @@ class EventosController < ApplicationController
     end
   end
 
+  # Busqueda de eventos por dia y carrera
   def browse_by_day
+    # Checkeo de parametros. El parametro date contiene la fecha seleccionada, pero puede venir tambien star_date,
+    # con el mismo uso. Hay dos, porque el weekly_viewer usa start_date, pero habria que unificarlo.
+    # Si hay algo en esos parametros se usa eso, y si no se usa la fecha de hoy.
     if params[:date].nil?
       if params[:start_date].nil?
         @search_by_date = Date.today
@@ -104,9 +108,10 @@ class EventosController < ApplicationController
       end
     end
     @events = []
-    #busqueda de los eventos por año, los del año "0" son los eventos no recurrentes en este momento, pero eso esta mal, deberian ser los que no estan
-    #  asignados a una materia. Lo de que sean recurrentes o no recurrentes, ya no es tan asi en esta busqueda y debemos cambiarlo, pero me termino de avivar recien
-    #  y ya es tarde
+
+    # busqueda de los eventos por año, los del año "0" son los eventos no recurrentes en este momento, pero eso esta mal, deberian ser los que no estan
+    # asignados a una materia. Lo de que sean recurrentes o no recurrentes, ya no es tan asi en esta busqueda y debemos cambiarlo, pero me termino de avivar recien
+    # y ya es tarde
     6.times do |an|
       @calendar = nil
       @calendar = get_calendar :date => @search_by_date, :career => (params.include? :carrera) ? params[:carrera][:carrera_id] : nil, :year => an
@@ -126,6 +131,8 @@ class EventosController < ApplicationController
     end
  end
 
+  
+  # Busca las materias de una carrera para ofrecerla en un combo en el new de eventos
   def get_materias
     @lista_materias = Materia.find :all, :conditions => {:codigo_carrera => params[:carrera_id]}
     render :update do |page|
@@ -133,8 +140,11 @@ class EventosController < ApplicationController
     end
   end
 
+  # Busqueda de de eventos por espacio asignado
   def browse_by_space
     @events = []
+
+    # get_calendar obtiene un calendario para un dia dado. El parametro all hace que no discrimine por materias
     @calendar = get_calendar :date => Date.today, :all => true
     @calendar.events.each do |event|
       temp = SimpEvent.new
@@ -147,6 +157,8 @@ class EventosController < ApplicationController
     end
   end
 
+  # Obtiene un calendario segun los parametros que recibe
+  # parametros: all = buscar todos, date = fecha a filtrar, space = espacio a filtrar
   def get_calendar opt = {}
     calendar = RiCal.Calendar
     subjects = []
@@ -166,9 +178,11 @@ class EventosController < ApplicationController
         events_list += Evento.find :all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1]}
       end
     else
+      # Buscar eventos segun un espacio
       events_list = Evento.find(:all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f' AND espacio_id = #{opt[:space]}") + Evento.find(:all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1], :espacio_id => opt[:space]})
     end
 
+    # Carga al calendario
     events_list.each do |event|
       new_event = RiCal.Event
       new_event.description = event.description || ''
@@ -180,19 +194,24 @@ class EventosController < ApplicationController
       new_event.rdates = event.rdate.to_a
       new_event.comment = event.id.to_s
 
+      # Analisis de ocurrencia
       if event.reccurrent
         occurrence = new_event.occurrences :count => 1, :starting => opt[:date], :before => opt[:date] + 1
         if occurrence.count > 0
           if event.materia_id.nil? or opt[:all]
-            calendar.add_subcomponent occurrence[0] #new_event
+            # Agregar el evento sin materia
+            calendar.add_subcomponent occurrence[0]
           else
+            # Agregar el evento si coincide con alguna materia en subjects
             calendar.add_subcomponent occurrence[0] if subjects.include? event.materia_id #new_event
           end
         end
       else
         if event.materia_id.nil? or opt[:all]
+          # Agregar el evento sin discriminarlo
           calendar.add_subcomponent new_event if Date.parse(event.dtstart.year.to_s + '/' + event.dtstart.month.to_s + '/' + event.dtstart.day.to_s) == opt[:date]
         else
+          # Agregar el evento si coincide con alguna materia en subjets
           calendar.add_subcomponent new_event if Date.parse(event.dtstart.year.to_s + '/' +  event.dtstart.month.to_s + '/' + event.dtstart.day.to_s) == opt[:date] and subjects.include? event.materia_id
         end
       end

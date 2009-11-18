@@ -13,8 +13,10 @@
     <td><%=h plan.codigo_carrera %></td>
     <td><%=h plan.nombre %></td>
     <td><%= link_to 'Detalle', plan %></td>
-    <td><%= link_to 'Editar', edit_plan_path(plan) %></td>
-    <td><%= link_to 'Eliminar', plan, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% if current_user.tipo == 'a' %>
+      <td><%= link_to 'Editar', edit_plan_path(plan) %></td>
+      <td><%= link_to 'Eliminar', plan, :confirm => 'Are you sure?', :method => :delete %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

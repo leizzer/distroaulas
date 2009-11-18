@@ -20,7 +20,7 @@ resetear su propia contraseña</p>
     <% else %>
       <% if current_user.tipo == "a" %>
         <td><%= link_to 'Reset Pass', '/users/reset_pass?user_id=' + user.id.to_s %></td>
-        <td><%= link_to 'Eliminar', :controller => :users, :action => :destroy, :user_id => user.id %></td>
+        <td><%= link_to 'Eliminar', "/users/destroy?user_id=#{user.id}", :confirm => '¿Esta seguro?' %></td>
 
       <% end %>
     <% end %>
