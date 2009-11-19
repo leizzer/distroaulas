@@ -7,14 +7,19 @@ resetear su propia contraseña</p>
   <tr>
     <th>Login</th>
     <th>Mail</th>
-    <th>Created at</th>
+    <th>Creado el</th>
+    <th>Tipo</th>
   </tr>
 
 <% User.all.each do |user| %>
   <tr>
     <td><%=h user.login %></td>
     <td><%=h user.email %></td>
-    <td><%=h user.created_at %></td>
+    <td><%=h user.created_at.strftime '%d-%m-%Y %H:%M' %></td>
+    <td>
+      <%=h "Administrador" if user.tipo == 'a' %>
+      <%=h "Usuario" if user.tipo == 'u' %>
+    </td>
     <% if user.id == current_user.id and current_user.tipo == "u" %>
       <td><%= link_to 'Reestablecer mi contraseña', '/users/reset_pass?user_id=' + user.id.to_s %></td>
     <% else %>

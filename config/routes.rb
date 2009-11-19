@@ -9,12 +9,17 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :eventos
 
-  map.resources :administration
-
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
   map.login '/login', :controller => 'sessions', :action => 'new'
   map.register '/register', :controller => 'users', :action => 'create'
   map.signup '/signup', :controller => 'users', :action => 'new'
+
+  map.clean_events '/administration/clean_events', :controller => 'administration', :action => 'clean_events'
+  map.destroy_subjects '/administration/destroy_subjects', :controller => 'administration', :action => 'destroy_subjects'
+  map.destroy_plans '/administration/destroy_plans', :controller => 'administration', :action => 'destroy_plans'
+  map.destroy_careers '/administration/destroy_careers', :controller => 'administration', :action => 'destroy_careers'
+  map.destroy_extdb '/administration/destroy_extdb', :controller => 'administration', :action => 'destroy_extdb'
+  map.destroy_all '/administration/destroy_all', :controller => 'administration', :action => 'destroy_all'
 
   map.import '/import', :controller => 'import', :action => 'import'
 
@@ -71,7 +76,6 @@ ActionController::Routing::Routes.draw do |map|
   # consider removing or commenting them out if you're using named routes and resources.
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
-  map.concect ':controller/:action'
-  map.root :controller => 'application', :action => 'index'
+  map.root :controller => 'eventos', :action => 'browse_by_space'
 
 end

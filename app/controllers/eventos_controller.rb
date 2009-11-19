@@ -143,7 +143,7 @@ class EventosController < ApplicationController
   # Busqueda de de eventos por espacio asignado
   def browse_by_space
     @events = []
-
+    @free_spaces = Espacio.all
     # get_calendar obtiene un calendario para un dia dado. El parametro all hace que no discrimine por materias
     @calendar = get_calendar :date => Date.today, :all => true
     @calendar.events.each do |event|
@@ -154,6 +154,7 @@ class EventosController < ApplicationController
       temp.original_id = event.comment[0].to_i
       temp.location = event.location.to_i
       @events.push temp
+      @free_spaces.delete(Espacio.find_by_id event.location.to_i) if DateTime.now.strftime('%H%M').to_i.between? event.dtstart.strftime('%H%M').to_i, event.dtend.strftime('%H%M').to_i
     end
   end
 

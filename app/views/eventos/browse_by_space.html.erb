@@ -1,3 +1,6 @@
+<div id="free-spaces-block">
+  <%= render :partial => "free_spaces", :object => @free_spaces %>
+</div>
 <div id="week-container">
 <% Espacio.all.each do |espacio| %>
   <%  weekly_calendar(@events.find_all{|e| e.location == espacio.id}, :date => Date.today, :include_24_hours => false, :title => espacio.codigo) do |w|  %>

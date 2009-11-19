@@ -97,7 +97,7 @@ class Evento < ActiveRecord::Base
 
   # set_materia_id obtiene el codigo al inicio de la descripcion, si esta contiene una materia cargada en el sistema
   def set_materia_id
-    if materia == Materia.find(:first, :conditions =>  {:codigo => self.description.split(' ')[0]})
+    if materia = Materia.find(:first, :conditions =>  {:codigo => self.description.split(' ')[0]})
       self.materia_id = materia.codigo
     end
   end

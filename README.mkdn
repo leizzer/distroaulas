@@ -8,19 +8,14 @@ Have a nice day.
 #ToDo
 
         Modelo
-        - [done!] Hacer los checkeos en las cargas de datos. agregar Comprobaciones de que no se pisen eventos en el mismo espacio.
-        - [done!] Manejar exepciones
-        - [done!]Hacer que el combo de nuevo evento que trae materias este filtrado por carrera
+        - [] Hacer los checkeos en las cargas de datos. agregar Comprobaciones de que no se pisen eventos en el mismo espacio.
+        - [] Manejar exepciones
 
         Busquedas
         -[50%] Realizar las busquedas de eventos por la Carrera y año de la materia
 
         Interfaz
-        - [done!] Implementar la autenticacion en el application_controllery configrar todo el sitio para que funcione con autenticacion
-        - [done!] Implementar la renovacion de contraseña
         - Diseñar la interface basica
-        - [done?] Hacer una vista de eventos en general. Dario sugiere filtrarlos por espacio (que parece la posta) y
-          mostrar todos los espacios.
 	- Definir politicas de seguridad
 
 	- Testeo

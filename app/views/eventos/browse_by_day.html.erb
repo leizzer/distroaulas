@@ -56,12 +56,7 @@
 
 <br>
 <br>
-<p>Espacios libres a las <%= Time.now.strftime '%H:%M' %>: </p>
-<ul>
-<% @free_spaces.each do |space| %>
- <li> <%= link_to space.codigo + ' - ' + space.descripcion, '/eventos/new?espacio_id=' + space.id.to_s  %></li>
-<% end %>
-</ul>
+<%= render :partial => 'free_spaces', :object => @free_spaces %>
 <hr>
 <!--
 <%= @calendar.export %>

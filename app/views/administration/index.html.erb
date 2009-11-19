@@ -6,19 +6,22 @@ usuarios privilegiados, podran tomar accion efectiva en la aplicacion.</p>
 <ul>
   <li>Cantidad de eventos cargados: <%= Evento.all.count %></li>
   <li>Cantidad de eventos no recurrentes: <%= Evento.find(:all, :conditions => {:reccurrent => false}).count %></li>
-  <li>Eventos caducados (solo eventos no recurrentes): <%= Evento.find(:all, :conditions => "dtstart < #{Date.today} AND reccurrent = 'f'").count %></li>  
+  <li>Eventos caducados (solo eventos no recurrentes): <%= Evento.find(:all, :conditions => "dtstart < '#{Date.today}' AND reccurrent = 'f'").count %></li>  
+</ul>
+<h3>Informacion sobre base de datos externa (extdb)</h3>
+<ul>
+  <li>Carreras existentes: <%= Carrera.all.count %></li>
+  <li>Planes existentes: <%= Plan.all.count %></li>
+  <li>Materias existentes: <%= Materia.all.count %></li>
 </ul>
 
 <h3>Acciones</h3>
-<%= link_to 'Administracion de usuarios', '/users' %> <br />
+<%= link_to 'Ver lista de usuarios', '/users' if current_user.tipo == 'u'%> <br />
+<%= link_to 'Administrar usuarios', '/users' if current_user.tipo == 'a'%> <br />
 <%= link_to 'Limpiar eventos caducados', '/administration/clean_events', :confirm => "Se borraran todos los eventos no recurrentes que se dieron desde hoy hacia atras. \n¿Esta seguro de proceder?" if current_user.tipo == 'a' %> <br />
 <%= link_to 'Destruir todas las materias', '/administration/destroy_subjects', :confirm => "¿Esta seguro?" if current_user.tipo == 'a' %> <br />
 <%= link_to 'Destruir todos los planes', '/administration/destroy_plans' , :confirm => "¿Esta seguro?" if current_user.tipo == 'a' %> <br />
 <%= link_to 'Destruir todas las carreras', '/administration/destroy_careers' , :confirm => "¿Esta seguro?" if current_user.tipo == 'a' %> <br />
 <%= link_to '*DESTRUIR BASE DE DATOS EXTERNA*', '/administration/destroy_extdb' , :confirm => "¿Esta seguro?" if current_user.tipo == 'a' %> <br />
-<%= link_to '***DESTRUIR BASE DE DATOS***', '/administration/destroy_all' , :confirm => "Esta accion eliminara toda la base de datos, incluyendo los usuarios, a excepcion del usuario que inicio sesion. Todo lo demas se perdera sin recuperacion ¿Proceder?" if current_user.tipo == 'a' %> <br /><br />
 <%= link_to 'Importar base de datos externa', '/import' , :confirm => "¿Esta seguro?" if current_user.tipo == 'a' %> <br />
-<%= link_to 'Importar solo materias', '/import?db=subjects' , :confirm => "¿Esta seguro?" if current_user.tipo == 'a' %> <br />
-<%= link_to 'Importar solo planes', '/import?db=plans' , :confirm => "¿Esta seguro?" if current_user.tipo == 'a' %> <br />
-<%= link_to 'Importar solo carreras', '/import?db=careers' , :confirm => "¿Esta seguro?" if current_user.tipo == 'a' %> <br />
 
