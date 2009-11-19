@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Evento < ActiveRecord::Base
   require 'ri_cal'
 
@@ -62,13 +63,13 @@ class Evento < ActiveRecord::Base
       new_event.dtend = event.dtend #.strftime '%Y%m%dT%H%M00'
       new_event.location = event.espacio_id.to_s
       new_event.rrule = "FREQ=" + event.freq + ";BYDAY=" + event.byday + ";INTERVAL=" + event.interval.to_s if event.reccurrent
-      new_event.exdates = event.exdate.to_a
-      new_event.rdates = event.rdate.to_a
+      new_event.exdates = event.exdate || ''
+      new_event.rdates = event.rdate || ''
 
       #Occurrences te va a manejar automaticamente las exdates y rdates, no tenes que hacer ningun otro calculo mas que cargarlos al evento.
       #Creo que son las primeras lineas de comentario en TODA la aplicacion XD Mal
       if event.reccurrent
-        occurrence = new_event.occurrences :count => 1, :starting => self.dtstart.to_date, :before => self.dtstart.to_date + 1
+        occurrence = new_event.occurrences :count => 1, :starting => self.dtstart.to_date, :before => self.dtstart.to_date + 1.day
         if occurrence.count > 0
           # La ocurrencia es un evento tambien, asi que puede agregarse al calendario como cualquier evento
           # Si hay una ocurrencia en el dia de self.dtstart, la agrego
@@ -96,7 +97,7 @@ class Evento < ActiveRecord::Base
 
   # set_materia_id obtiene el codigo al inicio de la descripcion, si esta contiene una materia cargada en el sistema
   def set_materia_id
-    if materia = Materia.find(:first, :conditions =>  {:codigo => self.description.split(' ')[0]})
+    if materia == Materia.find(:first, :conditions =>  {:codigo => self.description.split(' ')[0]})
       self.materia_id = materia.codigo
     end
   end
