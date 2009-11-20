@@ -69,8 +69,8 @@ class Evento < ActiveRecord::Base
     self_event.dtend = self.dtend #.strftime '%Y%m%dT%H%M00'
     self_event.location = self.espacio_id.to_s
     self_event.rrule = "FREQ=" + self.freq + ";BYDAY=" + self.byday + ";INTERVAL=" + self.interval.to_s if self.reccurrent
-    self_event.exdates = self.exdate || ''
-    self_event.rdates = self.rdate || ''
+    self_event.exdate = self.exdate || ''
+    self_event.rdate = self.rdate || ''
 
 
     # Saco la lista de ocurrencias del evento actual en los proximos 60
@@ -79,7 +79,7 @@ class Evento < ActiveRecord::Base
       list_occu << o.dtstart
       list_occu << o.dtend
     end
-
+    puts list_occu
     # Carga al calendario
     events.each do |event|
       new_event = RiCal.Event
@@ -88,15 +88,18 @@ class Evento < ActiveRecord::Base
       new_event.dtend = event.dtend #.strftime '%Y%m%dT%H%M00'
       new_event.location = event.espacio_id.to_s
       new_event.rrule = "FREQ=" + event.freq + ";BYDAY=" + event.byday + ";INTERVAL=" + event.interval.to_s if event.reccurrent
-      new_event.exdates = event.exdate || ''
-      new_event.rdates = event.rdate || ''
+      new_event.exdate = event.exdate || ''
+      new_event.rdate = event.rdate || ''
 
+
+      puts new_event.occurrences :starting => Date.today, :before => Date.today + 60.day
       # Veo si ocurren coliciones
       colition = new_event.occurrences(:overlapping => list_occu, :starting => Date.today, :before => Date.today + 60.day)
+      puts "/////////////////////////"
+      puts colition
+      # Si el array colitions no esta vacio, entonces hay colicion
       if not colition.empty?
-        if self.byday == event.byday
-          enderrors.add 'Colicion:', ' el evento ocuparia el mismo espacio que otro en el mismo horario'
-        end
+          errors.add 'Colicion:', " el evento ocuparia el mismo espacio que #{new_event.description} en el mismo horario"
       end
     end
   end
