@@ -1,0 +1,11 @@
+<p>Espacios libres a las <%= Time.now.strftime '%H:%M' %>: </p>
+<ul>
+
+<% if @free_spaces.empty? %>
+  <li>No hay espacios libres</li>
+<% else %>
+  <% @free_spaces.each do |space| %>
+   <li> <%= link_to space.codigo + ' - ' + space.descripcion, '/eventos/new?espacio_id=' + space.id.to_s  %></li>
+  <% end %>
+<% end %>
+</ul>

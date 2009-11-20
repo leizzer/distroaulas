@@ -61,9 +61,6 @@
     <%= link_to "Administracion", {:controller => "administration", :action => "index"} %><br/>
     </div>
     <div class="item">
-    <%= link_to "Importar datos", '/import', :confirm => "¿Esta seguro de querer ejecutar la importacion ahora?", :action => "import"  %><br/>
-    </div>
-    <div class="item">
     <%= link_to "Salir", {:controller => "sessions", :action => "destroy"}, :id => "item" %>
     </div>
   <% end %>
