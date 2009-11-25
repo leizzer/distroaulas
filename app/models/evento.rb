@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+
+# -*- coding: utf-8 -*-
 class Evento < ActiveRecord::Base
   require 'ri_cal'
 
@@ -92,10 +94,11 @@ class Evento < ActiveRecord::Base
       new_event.rdates = event.rdate.split(',').collect{|e| DateTime.parse e} || ''
       calendar.add_subcomponent new_event
     end
+
     calendar.events.each do |event|
       # puts new_event.occurrences :starting => Date.today, :before => Date.today + 60.day
       # Veo si ocurren coliciones
-      colition = event.occurrences(:overlapping => [self.dtstart, self.dtend], :starting => Date.today, :before => Date.today + 60.day)
+      colition = event.occurrences(:overlapping => [self.dtstart, self.dtend], :starting => self.dtstart - 1.day, :before => Date.today + 60.day)
       # puts "/////////////////////////"
       # puts colition
       # Si el array colitions no esta vacio, entonces hay colicion
