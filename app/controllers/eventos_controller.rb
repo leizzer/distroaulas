@@ -174,14 +174,25 @@ class EventosController < ApplicationController
       if opt[:all]
         events_list = Evento.find :all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f'"
         events_list += Evento.find :all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1]}
+        events_list += Evento.find :all, :conditions => "reccurrent = 't' AND rdate <> ''"
+        events_list += Evento.find :all, :conditions => "reccurrent = 't' AND exdate <> ''"
       else
         events_list = Evento.find :all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f'" if opt[:year] == 0
         events_list += Evento.find :all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1]}
+        events_list += Evento.find :all, :conditions => "reccurrent = 't' AND rdate <> ''"
+        events_list += Evento.find :all, :conditions => "reccurrent = 't' AND exdate <> ''"
       end
     else
       # Buscar eventos segun un espacio
-      events_list = Evento.find(:all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f' AND espacio_id = #{opt[:space]}") + Evento.find(:all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1], :espacio_id => opt[:space]})
+      events_list = Evento.find(:all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f' AND espacio_id = #{opt[:space]}") 
+      events_list += Evento.find(:all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1], :espacio_id => opt[:space]})
+      events_list += Evento.find :all, :conditions => "reccurrent = 't' AND rdate <> ''"
+      events_list += Evento.find :all, :conditions => "reccurrent = 't' AND exdate <> ''"
+
     end
+
+    # Elimina duplicados
+    events_list.uniq!
 
     # Carga al calendario
     events_list.each do |event|
@@ -192,7 +203,7 @@ class EventosController < ApplicationController
       new_event.location = event.espacio_id.to_s
       new_event.rrule = "FREQ=" + event.freq + ";BYDAY=" + event.byday + ";INTERVAL=" + event.interval.to_s if event.reccurrent
       new_event.exdates = event.exdate.to_a
-      new_event.rdates = event.rdate.to_a
+      new_event.rdates =  event.rdate.split(',').collect{|e| DateTime.parse e} || ''
       new_event.comment = event.id.to_s
 
       # Analisis de ocurrencia

@@ -47,7 +47,7 @@ class Evento < ActiveRecord::Base
     if self.dtend < self.dtstart
       errors.add('Inicio y fin',  "El inicio es mas temprano que el fin. El rango no es valido.")
     end
-
+    
     # Valida que si es recurrente, el byday que se especifica corresponda a la fecha de comienzo.
     if self.reccurrent
       if self.dtstart.strftime("%a").upcase[0..1] != self.byday
