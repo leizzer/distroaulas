@@ -90,15 +90,24 @@ class Evento < ActiveRecord::Base
       new_event.dtend = event.dtend #.strftime '%Y%m%dT%H%M00'
       new_event.location = event.espacio_id.to_s
       new_event.rrule = "FREQ=" + event.freq + ";BYDAY=" + event.byday + ";INTERVAL=" + event.interval.to_s if event.reccurrent
-      new_event.exdates = event.exdate.split(',').collect{|e| DateTime.parse e} || ''
-      new_event.rdates = event.rdate.split(',').collect{|e| DateTime.parse e} || ''
+      new_event.exdates = event.exdate.split(',').collect{|e| DateTime.parse e} || []
+      new_event.rdates = event.rdate.split(',').collect{|e| DateTime.parse e} || []
       calendar.add_subcomponent new_event
     end
 
     calendar.events.each do |event|
       # puts new_event.occurrences :starting => Date.today, :before => Date.today + 60.day
       # Veo si ocurren coliciones
-      colition = event.occurrences(:overlapping => [self.dtstart, self.dtend], :starting => self.dtstart - 1.day, :before => Date.today + 60.day)
+      colition = event.occurrences :overlapping => [self.dtstart, self.dtend], :starting => self.dtstart - 1.day, :before => Date.today + 60.day
+
+      # Si tiene rdatdes el evento self, me fijo que estas no colicionen
+      if not self.rdate.empty?
+        self_event.rdate.each do |date| # rdates no tiene accessor, solo es un metodo que carga en rdate
+          par = []
+          self_event.occurrences(:starting => date.first, :count => 1).each {|o| par = [o.dtstart, o.dtend]}
+          colition += event.occurrences(:overlapping => par, :starting => par[0] - 1.day, :before => par[1] + 1.day)
+        end
+      end
       # puts "/////////////////////////"
       # puts colition
       # Si el array colitions no esta vacio, entonces hay colicion
