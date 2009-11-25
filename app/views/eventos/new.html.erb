@@ -20,8 +20,8 @@
   <p>
     <%= label :evento, :reccurrent, "Se repite periodicamente?" %>
     <%= f.check_box :reccurrent, :onchange => "if (document.getElementById('evento_reccurrent').checked == true){
-                                                  document.getElementById('evento_freq_daily').disabled = false;
                                                   document.getElementById('evento_freq_weekly').disabled = false;
+                                                  document.getElementById('evento_freq_weekly').checked = true;
                                                   document.getElementById('evento_byday_mo').disabled = false;
                                                   document.getElementById('evento_byday_tu').disabled = false;
                                                   document.getElementById('evento_byday_we').disabled = false;
@@ -30,8 +30,8 @@
                                                   document.getElementById('evento_byday_sa').disabled = false;
                                                   document.getElementById('evento_byday_su').disabled = false;
                                                }else{
-                                                  document.getElementById('evento_freq_daily').disabled = true;
                                                   document.getElementById('evento_freq_weekly').disabled = true;
+                                                  document.getElementById('evento_freq_weekly').checked = false;
                                                   document.getElementById('evento_byday_mo').disabled = true;
                                                   document.getElementById('evento_byday_tu').disabled = true;
                                                   document.getElementById('evento_byday_we').disabled = true;
@@ -43,8 +43,8 @@
   </p>
   <p>
     <%= label :evento, :freq, "Frecuencia", :disabled => "true" %><br />
-    <%= f.radio_button :freq, "DAILY", :disabled => "true" %> Diario <br/>
-    <%= f.radio_button :freq, "WEEKLY", :disabled => "true" %> Semanal
+    <!-- la opcion de diario fue eliminada !-->
+    <%= f.radio_button :freq, "WEEKLY", :disabled => "true", :checked => "true" %> Semanal
   </p>
   <p>
     <%= label :evento, :byday, "Dia de la semana" %><br />

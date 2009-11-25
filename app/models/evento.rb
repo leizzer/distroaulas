@@ -105,7 +105,7 @@ class Evento < ActiveRecord::Base
         self_event.rdate.each do |date| # rdates no tiene accessor, solo es un metodo que carga en rdate
           par = []
           self_event.occurrences(:starting => date.first, :count => 1).each {|o| par = [o.dtstart, o.dtend]}
-          colition += event.occurrences(:overlapping => par, :starting => par[0] - 1.day, :before => par[1] + 1.day)
+          colition += event.occurrences :overlapping => par, :starting => par[0] - 1.day, :before => par[1] + 1.day
         end
       end
       # puts "/////////////////////////"
