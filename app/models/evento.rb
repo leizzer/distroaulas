@@ -98,14 +98,14 @@ class Evento < ActiveRecord::Base
     calendar.events.each do |event|
       # puts new_event.occurrences :starting => Date.today, :before => Date.today + 60.day
       # Veo si ocurren coliciones
-      colition = event.occurrences :overlapping => [self.dtstart, self.dtend], :starting => self.dtstart - 1.day, :before => Date.today + 60.day
+      colition = event.occurrences :overlapping => [self.dtstart, self.dtend], :starting => self.dtstart - 1.day, :count => 1
 
       # Si tiene rdatdes el evento self, me fijo que estas no colicionen
       if not self.rdate.empty?
         self_event.rdate.each do |date| # rdates no tiene accessor, solo es un metodo que carga en rdate
           par = []
           self_event.occurrences(:starting => date.first, :count => 1).each {|o| par = [o.dtstart, o.dtend]}
-          colition += event.occurrences :overlapping => par, :starting => par[0] - 1.day, :before => par[1] + 1.day
+          colition += event.occurrences :overlapping => par, :starting => par[0] - 1.day, :count => 1
         end
       end
       # puts "/////////////////////////"
