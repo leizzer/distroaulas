@@ -47,7 +47,7 @@ class Evento < ActiveRecord::Base
     if self.dtend < self.dtstart
       errors.add('Inicio y fin',  "El inicio es mas temprano que el fin. El rango no es valido.")
     end
-    
+
     # Valida que si es recurrente, el byday que se especifica corresponda a la fecha de comienzo.
     if self.reccurrent
       if self.dtstart.strftime("%a").upcase[0..1] != self.byday
@@ -99,6 +99,17 @@ class Evento < ActiveRecord::Base
       # puts new_event.occurrences :starting => Date.today, :before => Date.today + 60.day
       # Veo si ocurren coliciones
       colition = event.occurrences :overlapping => [self.dtstart, self.dtend], :starting => self.dtstart - 1.day, :count => 1
+
+      # Si el evento tiene intervalo mayor a 1, podrian estarse comparando en blancos, pero a la semana siguiente podria haber overlap
+      if self.interval.to_i > 1
+        occu = []
+        event.occurrences(:starting => self.dtstart - 1.day, :count => 10).each do |o|
+          occu << [o.dtstart, o.dtend]
+        end
+        occu.each do |arry|
+          colition += self_event.occurrences :overlapping => arry, :starting => self.dtstart - 1.day, :count => 10
+        end
+      end
 
       # Si tiene rdatdes el evento self, me fijo que estas no colicionen
       if not self.rdate.empty?
