@@ -4,8 +4,15 @@
   <%= f.error_messages %>
 
   <p>
-    <%= label :evento, :description, "Descripcion << Materia" %><br />
+    <%= label :evento, :description, "Asunto/Razon del evento: " %>
     <%= @evento.description %>
+  </p>
+
+  <p>
+    <%= "Fecha: #{@evento.dtstart.strftime('%d-%m-%Y')}" %>
+  </p>
+  <p>
+    <%= "De: #{@evento.dtstart.strftime '%H:%M'} a  #{@evento.dtend.strftime '%H:%M'}" %>
   </p>
 
   <p>
@@ -16,49 +23,11 @@
   <p>
     <%= label :evento, :exdate, "Agreagar Ocaciones Especiales" %><br />
     <%= select_datetime DateTime.now %> <br />
-    <%= button_to_function "Agregar Exepcion", "document.getElementById('evento_exdate').value=document.getElementById('evento_exdate').value + document.getElementById('date_year').value + document.getElementById('date_month').value + document.getElementById('date_day').value + '#{@evento.dtstart.strftime 'T%H%M00'}' +  ',';" %>
+    <%= button_to_function "Agregar Exepcion", "document.getElementById('evento_exdate').value=document.getElementById('evento_exdate').value + document.getElementById('date_day').value + '-' + document.getElementById('date_month').value + '-' + document.getElementById('date_year').value + '#{@evento.dtstart.strftime 'T%H:%M:00'}' +  ', ';" %>
     <%= f.text_area :exdate, :rows => 3 %> <br />
 
-    <%= button_to_function "Agregar Ocurrencia", "document.getElementById('evento_rdate').value=document.getElementById('evento_rdate').value + document.getElementById('date_year').value + document.getElementById('date_month').value + document.getElementById('date_day').value + 'T' + document.getElementById('date_hour').value + document.getElementById('date_minute').value + '00,';" %>
+    <%= button_to_function "Agregar Ocurrencia", "document.getElementById('evento_rdate').value=document.getElementById('evento_rdate').value + document.getElementById('date_day').value + '-' + document.getElementById('date_month').value + '-' + document.getElementById('date_year').value + 'T' + document.getElementById('date_hour').value + ':' + document.getElementById('date_minute').value + ':00, ';" %>
     <%= f.text_area :rdate, :rows => 3 %>
-  </p>
-
-  <hr />
-
-  <p>
-    <%= label :evento, :dtstart, "Hora de inicio del evento" %><br />
-    <%= @evento.dtstart %>
-  </p>
-
-  <p>
-    <%= label :evento, :dtend, "Hora de fin" %><br />
-    <%= @evento.dtend %>
-  </p>
-
-  <p>
-    <%= label :evento, :reccurrent, "Se repite periodicamente?" %>
-    <%= @evento.reccurrent %>
-  </p>
-
-  <p>
-    <%= label :evento, :freq, "Frecuencia" %><br />
-    <%= f.radio_button :freq, "WEEKLY", {:disabled => true} %> Semanal
-  </p>
-
-  <p>
-    <%= label :evento, :byday, "Dia de la semana" %><br />
-    <%= f.radio_button :byday, "MO", {:disabled => true} %> LUN
-    <%= f.radio_button :byday, "TU", {:disabled => true} %> MAR
-    <%= f.radio_button :byday, "WE", {:disabled => true} %> MIE
-    <%= f.radio_button :byday, "TH", {:disabled => true} %> JUE
-    <%= f.radio_button :byday, "FR", {:disabled => true} %> VIE
-    <%= f.radio_button :byday, "SA", {:disabled => true} %> SAB
-    <%= f.radio_button :byday, "SU", {:disabled => true} %> DOM
-  </p>
-
-  <p>
-    <%= label :evento, :interval, "Cantidad de ocurrencias a omitir" %><br />
-    <%= f.text_field :interval, {:disabled => true} %>
   </p>
 
   <p>

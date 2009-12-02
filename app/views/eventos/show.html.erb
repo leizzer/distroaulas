@@ -17,7 +17,8 @@
 
 <p>
   <b>Es recurrente?</b>
-  <%=h @evento.reccurrent %>
+  <%=h "Si" if @evento.reccurrent %>
+  <%=h "No" if not @evento.reccurrent %>
 </p>
 
 <p>
@@ -60,6 +61,23 @@
   <% end %>
 </p>
 
+<% if not @evento.rdate.empty? %>
+  <p><b>Ocurrencias excepcionales</b></p>
+  <ul>
+  <% @evento.rdate.split(',').each do |date| %>
+    <li><%=h DateTime.parse date %></li>
+  <% end %>
+  </ul>
+<% end %>
+<% if not @evento.exdate.empty? %>
+  <p><b>Excepciones (dias que no hay ocurrencia)</b></p>
+  <ul>
+  <% @evento.exdate.split(',').each do |date| %>
+    <li><%=h DateTime.parse date %></li>
+  <% end %>
+  </ul>
+
+<% end %>
 
 <%= link_to 'Editar', edit_evento_path(@evento) %> |
 <%= link_to 'Atras', eventos_path %>
