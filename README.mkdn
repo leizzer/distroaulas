@@ -24,7 +24,7 @@ Have a nice day.
         Interfaz
         -[50%] Diseñar la interface basica
                -- quitar restos de ingles
-        -[] Bug: Nuevo Evento - Si el evento choca con otro, al redirigirte para que cargues otra vez, si habias puesto que era recurrente te lo deja selaccionado pero los radiobotones [suena chistoso] te los deja desabilitados y si le das "guardar" asi explota.
+        -[done] Bug: Nuevo Evento - Si el evento choca con otro, al redirigirte para que cargues otra vez, si habias puesto que era recurrente te lo deja selaccionado pero los radiobotones [suena chistoso] te los deja desabilitados y si le das "guardar" asi explota.
         -[] Ponerle fin a la ocurrencia de los eventos, una fecha limite, para que cuando se termine el cuatrimestre no molesten. (asi dijo Dario, por mi parte preferiria un boton para romper todos los eventos recurrentes de aca para atras. [los no recurrentes no])
 
 

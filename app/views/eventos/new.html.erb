@@ -1,3 +1,5 @@
+<%= javascript_include_tag "nuevo_evento_disabled" %>
+
 <% form_for(@evento) do |f| %>
   <%= f.error_messages %>
 
@@ -19,27 +21,7 @@
   </p>
   <p>
     <%= label :evento, :reccurrent, "Se repite periodicamente?" %>
-    <%= f.check_box :reccurrent, :onchange => "if (document.getElementById('evento_reccurrent').checked == true){
-                                                  document.getElementById('evento_freq_weekly').disabled = false;
-                                                  document.getElementById('evento_freq_weekly').checked = true;
-                                                  document.getElementById('evento_byday_mo').disabled = false;
-                                                  document.getElementById('evento_byday_tu').disabled = false;
-                                                  document.getElementById('evento_byday_we').disabled = false;
-                                                  document.getElementById('evento_byday_th').disabled = false;
-                                                  document.getElementById('evento_byday_fr').disabled = false;
-                                                  document.getElementById('evento_byday_sa').disabled = false;
-                                                  document.getElementById('evento_byday_su').disabled = false;
-                                               }else{
-                                                  document.getElementById('evento_freq_weekly').disabled = true;
-                                                  document.getElementById('evento_freq_weekly').checked = false;
-                                                  document.getElementById('evento_byday_mo').disabled = true;
-                                                  document.getElementById('evento_byday_tu').disabled = true;
-                                                  document.getElementById('evento_byday_we').disabled = true;
-                                                  document.getElementById('evento_byday_th').disabled = true;
-                                                  document.getElementById('evento_byday_fr').disabled = true;
-                                                  document.getElementById('evento_byday_sa').disabled = true;
-                                                  document.getElementById('evento_byday_su').disabled = true;
-                                               }" %>
+    <%= f.check_box :reccurrent, :onchange => "newEventDisabled();" %>
   </p>
   <p>
     <%= label :evento, :freq, "Frecuencia", :disabled => "true" %><br />
@@ -68,5 +50,7 @@
     <%= f.submit 'Crear' %>
   </p>
 <% end %>
+
+<%= javascript_tag "newEventDisabled();" %>
 
 <%= link_to 'Atras', eventos_path %>
