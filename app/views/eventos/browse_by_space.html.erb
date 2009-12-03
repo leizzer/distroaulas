@@ -1,14 +1,29 @@
 <div id="free-spaces-block">
   <%= render :partial => "free_spaces", :object => @free_spaces %>
 </div>
+
+<% form_tag do %>
+  <p>
+    Fecha <br/> <%= select_date @search_by_date %>
+  </p
+  <p>
+    Espacio <br /> <%= select :espacio, :espacio_id, options_for_select([['Todos', 'all']], :selected => @espacio_selected) + options_for_select(Espacio.all.collect{ |e| [e.codigo, e.id] }, :selected => @espacio_selected.to_i) %>
+  </p>
+  <p><%= submit_tag(value = 'Buscar') %></p>
+<% end %>
 <div id="week-container">
-<% Espacio.all.each do |espacio| %>
-  <%  weekly_calendar(@events.find_all{|e| e.location == espacio.id}, :date => Date.today, :include_24_hours => false, :title => espacio.codigo) do |w|  %>
-    <%  w.week(:business_hours => params[:business_hours]) do |event,truncate|  %>
-      <!-- <%=  event.starts_at.strftime('%I:%M%p') %> -->
-     <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>
-     <% end -%>
-  <% end -%>
+<% if @espacio_selected.nil? or @espacio_selected == 'all' %>
+  <% show_espacios = Espacio.all %>
+<% else %>
+  <% show_espacios = [Espacio.find :first, :conditions => {:id => @espacio_selected}] %>
+<% end %>
+<% show_espacios.each do |espacio| %>
+    <% weekly_calendar(@events.find_all{|e| e.location == espacio.id}, :date => Date.today, :include_24_hours => false, :title => espacio.codigo) do |w|  %>
+      <%  w.week(:business_hours => params[:business_hours]) do |event,truncate|  %>
+        <!-- <%=  event.starts_at.strftime('%I:%M%p') %> -->
+       <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>
+       <% end -%>
+    <% end -%>
   <hr>
 <% end %>
 </div>

@@ -21,6 +21,9 @@
   <% if not current_user.nil? %>
 
     <div class="item">
+    <%= link_to "Home", "/" %><br/>
+    </div>
+    <div class="item">
     <%= link_to "Eventos", {:controller => "eventos", :action => "index"}, :id => "item" %><br/>
     </div>
     <div class="item">
