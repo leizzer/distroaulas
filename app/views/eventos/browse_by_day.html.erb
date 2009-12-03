@@ -1,4 +1,3 @@
-<p>Filtrar por fecha y carrera</p>
 <% form_tag do %>
   <p>
   Fecha <br /> <%= select_date @search_by_date %>
@@ -64,16 +63,4 @@
 <br>
 <%= render :partial => 'free_spaces', :object => @free_spaces %>
 <hr>
-<!--
-<%= @calendar.export %>
-<hr>
-<% @calendar.events.each do |event| %>
-  <p>
-  DTSTART: <%= event.dtstart %><br>
-  DTEND: <%= event.dtend %><br>
-  DESC: <%= event.description %><br>
-  RECCURR: <%= event.rrule %><br>
-  Espacio: <%= Espacio.find(:first, :conditions => {:id => event.location}).codigo %></p>
-<% end %>
--->
 <%= link_to 'Volver al indice', root_path %>

@@ -2,15 +2,18 @@
   <%= render :partial => "free_spaces", :object => @free_spaces %>
 </div>
 
-<% form_tag do %>
-  <p>
-    Fecha <br/> <%= select_date @search_by_date %>
-  </p>
-  <p>
-    Espacio <br /> <%= select :espacio, :espacio_id, options_for_select([['Todos', 'all']], :selected => @espacio_selected) + options_for_select(Espacio.all.collect{ |e| [e.codigo, e.id] }, :selected => @espacio_selected.to_i) %>
-  </p>
-  <p><%= submit_tag(value = 'Buscar') %></p>
-<% end %>
+<div class="floating-block">
+  <% form_tag do %>
+    <p>
+      Fecha <br/> <%= select_date @search_by_date %>
+    </p>
+    <p>
+      Espacio <br /> <%= select :espacio, :espacio_id, options_for_select([['Todos', 'all']], :selected => @espacio_selected) + options_for_select(Espacio.all.collect{ |e| [e.codigo, e.id] }, :selected => @espacio_selected.to_i) %>
+    </p>
+    <p><%= submit_tag(value = 'Buscar') %></p>
+  <% end %>
+</div>
+<br/>
 <div id="week-container">
 <% if @espacio_selected.nil? or @espacio_selected == 'all' %>
   <% show_espacios = Espacio.all %>
@@ -18,7 +21,7 @@
   <% show_espacios = [Espacio.find :first, :conditions => {:id => @espacio_selected}] %>
 <% end %>
 <% show_espacios.each do |espacio| %>
-    <% weekly_calendar(@events.find_all{|e| e.location == espacio.id}, :date => Date.today, :include_24_hours => false, :title => espacio.codigo) do |w|  %>
+    <% weekly_calendar(@events.find_all{|e| e.location == espacio.id}, :date => @search_by_date, :include_24_hours => false, :title => espacio.codigo) do |w|  %>
       <%  w.week(:business_hours => true) do |event,truncate|  %>
         <!-- <%=  event.starts_at.strftime('%I:%M%p') %> -->
        <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>
@@ -27,19 +30,4 @@
   <hr>
 <% end %>
 </div>
-<br>
-<br>
-<hr>
-<!--
-<%= @calendar.export %>
-<hr>
-<% @calendar.events.each do |event| %>
-  <p>
-  DTSTART: <%= event.dtstart %><br>
-  DTEND: <%= event.dtend %><br>
-  DESC: <%= event.description %><br>
-  RECCURR: <%= event.rrule %><br>
-  Espacio: <%= Espacio.find(:first, :conditions => {:id => event.location}).codigo %></p>
-<% end %>
--->
 <%= link_to 'Volver al indice', root_path %>

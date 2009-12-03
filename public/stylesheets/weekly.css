@@ -1,6 +1,7 @@
 /* -- WeeklyBuilder -- */
 /* layout */
 #week-container {
+  clear: both;
 }
 
 #week{background:#FFF;width:100%;height:100%;border:1px solid #ccc;overflow:hidden;max-width:1022px;}

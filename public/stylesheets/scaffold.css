@@ -68,6 +68,17 @@ a:hover { color: #666666; }
 
 }
 
+.floating-block{
+  margin-left: 80px;
+  float: left;
+  display: block;
+}
+
+#free-spaces-block{
+  float: left;
+  display: block;
+}
+
 #contenido {
   position: relative;
   min-width: 800px;
