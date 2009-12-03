@@ -172,7 +172,7 @@ class EventosController < ApplicationController
       temp = SimpEvent.new
       temp.starts_at = event.dtstart
       temp.ends_at = event.dtend
-      temp.name = event.description + ' - ' +  Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo
+      temp.name = event.description # + ' - ' +  Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo
       temp.original_id = event.comment[0].to_i
       temp.location = event.location.to_i
       if not params[:espacio].nil? and params[:espacio][:espacio_id] != 'all'
