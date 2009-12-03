@@ -5,7 +5,7 @@
 <% form_tag do %>
   <p>
     Fecha <br/> <%= select_date @search_by_date %>
-  </p
+  </p>
   <p>
     Espacio <br /> <%= select :espacio, :espacio_id, options_for_select([['Todos', 'all']], :selected => @espacio_selected) + options_for_select(Espacio.all.collect{ |e| [e.codigo, e.id] }, :selected => @espacio_selected.to_i) %>
   </p>
@@ -19,7 +19,7 @@
 <% end %>
 <% show_espacios.each do |espacio| %>
     <% weekly_calendar(@events.find_all{|e| e.location == espacio.id}, :date => Date.today, :include_24_hours => false, :title => espacio.codigo) do |w|  %>
-      <%  w.week(:business_hours => params[:business_hours]) do |event,truncate|  %>
+      <%  w.week(:business_hours => true) do |event,truncate|  %>
         <!-- <%=  event.starts_at.strftime('%I:%M%p') %> -->
        <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>
        <% end -%>

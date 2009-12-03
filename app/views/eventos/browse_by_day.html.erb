@@ -1,8 +1,14 @@
-<p>Filtrat por fecha y carrera</p>
+<p>Filtrar por fecha y carrera</p>
 <% form_tag do %>
-  <%= select_date @search_by_date %>
-  <%= collection_select :carrera, :carrera_id, Carrera.all, :codigo, :nombre %>
-  <%= submit_tag(value = 'Buscar') %> <%= link_to 'Ir a hoy', '/eventos/browse_by_day?start_day=' + Time.now.strftime('%Y-%m-%d') %>
+  <p>
+  Fecha <br /> <%= select_date @search_by_date %>
+  <%= link_to 'Ir a hoy', '/eventos/browse_by_day?start_day=' + Time.now.strftime('%Y-%m-%d') %>
+  </p>
+  <p>
+    Carrera <br /> 
+    <%= select :carrera, :carrera_id, options_for_select(Carrera.all.collect{ |c| [c.nombre, c.codigo] }, :selected => @carrera_selected.to_i) %>
+  </p>
+  <%= submit_tag(value = 'Buscar') %>
 <% end %>
 <hr />
 <div id="week-container">

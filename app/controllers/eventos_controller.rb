@@ -108,14 +108,17 @@ class EventosController < ApplicationController
       end
     end
     @events = []
+    if not params[:carrera].nil?
+      @carrera_selected = params[:carrera][:carrera_id]
+    end
 
     # busqueda de los eventos por año, los del año "0" son los eventos no recurrentes en este momento, pero eso esta mal, deberian ser los que no estan
     # asignados a una materia. Lo de que sean recurrentes o no recurrentes, ya no es tan asi en esta busqueda y debemos cambiarlo, pero me termino de avivar recien
     # y ya es tarde
+    @free_spaces = Espacio.all
     6.times do |an|
       @calendar = nil
       @calendar = get_calendar :date => @search_by_date, :career => (params.include? :carrera) ? params[:carrera][:carrera_id] : nil, :year => an
-      @free_spaces = Espacio.all
       @calendar.events.each do |event|
 
         temp = SimpEvent.new

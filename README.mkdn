@@ -13,13 +13,15 @@ Have a nice day.
 
         Busquedas
         - [done] Realizar las busquedas de eventos por la Carrera y aÃ±o de la materia
-        -[] Modificar Evento por espacio (que no muestre solo los espacios libres sino el espacio que busco):
+        - [done] Modificar Evento por espacio (que no muestre solo los espacios libres sino el espacio que busco):
             -- Poner Combobox para filtrar espacios (o ahora que lo pinenso.. checkbox seria interesante tambien)
+		(NADA DE CHECKS)
             -- Poner Combobox's para especificar fecha
             -- Poner la vista de 24 horas en estos espacios
-        -[] En el Home en vez de mostrar espacios libres en el momento actual (como muestra ahora, pero si se 
+        -[error] En el Home en vez de mostrar espacios libres en el momento actual (como muestra ahora, pero si se 
 	    modifica Evento por Espacio de seguro hay que retocar algo)
-        -[] Mantener las selecciones de los combobox de Eventos por Dia.
+            No se entiende el enunciado (En vez de mostrar [...] Â<missing part>)
+        -[done] Mantener las selecciones de los combobox de Eventos por Dia.
 
 
         Interfaz
