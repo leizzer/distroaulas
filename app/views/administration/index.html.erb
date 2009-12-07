@@ -6,7 +6,7 @@ usuarios privilegiados, podran tomar accion efectiva en la aplicacion.</p>
 <ul>
   <li>Cantidad de eventos cargados: <%= Evento.all.count %></li>
   <li>Cantidad de eventos no recurrentes: <%= Evento.find(:all, :conditions => {:reccurrent => false}).count %></li>
-  <li>Eventos caducados (solo eventos no recurrentes): <%= Evento.find(:all, :conditions => "dtstart < '#{Date.today}' AND reccurrent = 'f'").count %></li>  
+  <li>Eventos caducados (solo eventos no recurrentes): <%= Evento.find(:all, :conditions => "dtstart < '#{Date.today}' AND reccurrent = 'f'").count %></li>
 </ul>
 <h3>Informacion sobre base de datos externa (extdb)</h3>
 <ul>
@@ -15,13 +15,17 @@ usuarios privilegiados, podran tomar accion efectiva en la aplicacion.</p>
   <li>Materias existentes: <%= Materia.all.count %></li>
 </ul>
 
-<h3>Acciones</h3>
-<%= link_to 'Ver lista de usuarios', '/users' if current_user.tipo == 'u'%> <br />
+<h2>Acciones</h2>
+<h3>Usuarios</h3>
+<%= link_to 'Ver lista de usuarios', '/users' if current_user.tipo == 'u'%>
 <%= link_to 'Administrar usuarios', '/users' if current_user.tipo == 'a'%> <br />
+<h3>Eventos</h3>
+<%= link_to 'Limpiar eventos recurrentes', '/administration/clean_reccur', :confirm => "Se borraran todos las declaraciones de eventos recurrentes. \n?Desea continuar?" if current_user.tipo == 'a' %> <br />
 <%= link_to 'Limpiar eventos caducados', '/administration/clean_events', :confirm => "Se borraran todos los eventos no recurrentes que se dieron desde hoy hacia atras. \n¿Esta seguro de proceder?" if current_user.tipo == 'a' %> <br />
+<h3>Base de Datos Externa</h3>
 <%= link_to 'Destruir todas las materias', '/administration/destroy_subjects', :confirm => "¿Esta seguro?" if current_user.tipo == 'a' %> <br />
 <%= link_to 'Destruir todos los planes', '/administration/destroy_plans' , :confirm => "¿Esta seguro?" if current_user.tipo == 'a' %> <br />
 <%= link_to 'Destruir todas las carreras', '/administration/destroy_careers' , :confirm => "¿Esta seguro?" if current_user.tipo == 'a' %> <br />
-<%= link_to '*DESTRUIR BASE DE DATOS EXTERNA*', '/administration/destroy_extdb' , :confirm => "¿Esta seguro?" if current_user.tipo == 'a' %> <br />
 <%= link_to 'Importar base de datos externa', '/import' , :confirm => "¿Esta seguro?" if current_user.tipo == 'a' %> <br />
+<%= link_to '*DESTRUIR BASE DE DATOS EXTERNA*', '/administration/destroy_extdb' , :confirm => "¿Esta seguro?" if current_user.tipo == 'a' %> <br /> <br />
 

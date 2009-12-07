@@ -8,7 +8,13 @@ class AdministrationController < ApplicationController
     if counter > 0
       flash[:notice] = "Se han borrado #{counter} eventos de la base de datos"
     end
-    redirect_back_or_default('/administration')
+    redirect_back_or_default '/administration'
+  end
+
+  def clean_reccur
+    counter = Evento.delete Evento.find(:all, :conditions => {:reccurrent => 't'})
+    flash[:notice] = "Se han borrado #{counter} eventos recurrentes."
+    redirect_back_or_default '/administration'
   end
 
   def destroy_subjects
@@ -16,7 +22,7 @@ class AdministrationController < ApplicationController
     if counter > 0
       flash[:notice] = "Se han borrado #{counter} materias de la base de datos"
     end
-    redirect_back_or_default('/administration')
+    redirect_back_or_default '/administration'
   end
 
   def destroy_plans
@@ -24,7 +30,7 @@ class AdministrationController < ApplicationController
     if counter > 0
       flash[:notice] = "Se han borrado #{counter} planes de la base de datos"
     end
-    redirect_back_or_default('/administration')
+    redirect_back_or_default '/administration'
   end
 
   def destroy_careers
@@ -32,19 +38,14 @@ class AdministrationController < ApplicationController
     if counter > 0
       flash[:notice] = "Se han borrado #{counter} carreras de la base de datos"
     end
-    redirect_back_or_default('/administration')
-  end 
+    redirect_back_or_default '/administration'
+  end
 
   def destroy_extdb
     counter_m = Materia.delete_all
     counter_p = Plan.delete_all
     counter_c = Carrera.delete_all
     flash[:notice] = "Se han borrado #{counter_m} materias, #{counter_p} planes y #{counter_c} carreras de la base de datos" if counter_m + counter_p + counter_c > 0
-    redirect_back_or_default('/administration')
+    redirect_back_or_default '/administration'
   end
-
-  def destroy_all
-  end
-
-  
 end

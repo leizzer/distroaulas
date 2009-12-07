@@ -94,7 +94,7 @@ class Evento < ActiveRecord::Base
       new_event.rdates = event.rdate.split(',').collect{|e| DateTime.parse e} || []
       calendar.add_subcomponent new_event
     end
-    debugger
+
     calendar.events.each do |event|
       # puts new_event.occurrences :starting => Date.today, :before => Date.today + 60.day
       # Veo si ocurren coliciones

@@ -15,11 +15,11 @@ Have a nice day.
         - [done] Realizar las busquedas de eventos por la Carrera y año de la materia
         - [done] Modificar Evento por espacio (que no muestre solo los espacios libres sino el espacio que busco):
             -- Poner Combobox para filtrar espacios (o ahora que lo pinenso.. checkbox seria interesante tambien)
-		(NADA DE CHECKS)
+                (NADA DE CHECKS)
             -- Poner Combobox's para especificar fecha
             -- Poner la vista de 24 horas en estos espacios
-        -[error] En el Home en vez de mostrar espacios libres en el momento actual (como muestra ahora, pero si se 
-	    modifica Evento por Espacio de seguro hay que retocar algo)
+        -[error] En el Home en vez de mostrar espacios libres en el momento actual (como muestra ahora, pero si se
+            modifica Evento por Espacio de seguro hay que retocar algo)
             No se entiende el enunciado (En vez de mostrar [...] �<missing part>)
         -[done] Mantener las selecciones de los combobox de Eventos por Dia.
 
@@ -27,12 +27,12 @@ Have a nice day.
         Interfaz
         - [done] Diseñar la interface basica
                -- quitar restos de ingles
-        - [done] Bug: Nuevo Evento - Si el evento choca con otro, al redirigirte para que cargues otra vez, 
-	  si habias puesto que era recurrente te lo deja selaccionado pero los radiobotones [suena chistoso] 
-	  te los deja desabilitados y si le das "guardar" asi explota.
-        - [] Ponerle fin a la ocurrencia de los eventos, una fecha limite, para que cuando se termine el 
-	  cuatrimestre no molesten. (asi dijo Dario, por mi parte preferiria un boton para romper todos 
-	  los eventos recurrentes de aca para atras. [los no recurrentes no])
+        - [done] Bug: Nuevo Evento - Si el evento choca con otro, al redirigirte para que cargues otra vez,
+          si habias puesto que era recurrente te lo deja selaccionado pero los radiobotones [suena chistoso]
+          te los deja desabilitados y si le das "guardar" asi explota.
+        - [done] Ponerle fin a la ocurrencia de los eventos, una fecha limite, para que cuando se termine el
+          cuatrimestre no molesten. (asi dijo Dario, por mi parte preferiria un boton para romper todos
+          los eventos recurrentes de aca para atras. [los no recurrentes no]) << se decidio poner un link para borrar todo en administracion
 
 
         - Testeo
@@ -43,8 +43,8 @@ Have a nice day.
                 > Testear bien las busquedas
                 > Buscar un beta tester
 
-        - Deploy: donde mocos vamos a poner esto? Necesitamos PostgreSQL y un servidor web que corra Rails. 
-	  Bajo windows no es posible,
+        - Deploy: donde mocos vamos a poner esto? Necesitamos PostgreSQL y un servidor web que corra Rails.
+          Bajo windows no es posible,
           podemos armar una maquina con lo que necesitamos sobre un linux o largarnos a llorar.
 
 #Groso el magit. Uso:
