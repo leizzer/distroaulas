@@ -28,7 +28,17 @@
         <% else %>
           <%=h 'Ninguno' %>
         <% end %></td>
-    <td><%=h evento.byday %></td>
+    <td><%=h case evento.byday
+        when "MO" then "Lunes"
+        when "TU" then "Martes"
+        when "WE" then "Miercoles"
+        when "TH" then "Jueves"
+        when "FR" then "Viernes"
+        when "SA" then "Sabado"
+        when "SU" then "Domingo"
+        else "No se repite"
+      end %>
+    </td>
     <td><%=h evento.interval %>
         <% if evento.freq == 'WEEKLY' %>
           <%= ' Semana/s' %>

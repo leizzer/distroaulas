@@ -1,16 +1,16 @@
 <div id="free-spaces-block">
-  <%= render :partial => "free_spaces", :object => @free_spaces %>
+  <%= render :partial => "free_spaces" %>
 </div>
 
 <div class="floating-block">
   <% form_tag do %>
     <p>
-      Fecha <br/> <%= select_date @search_by_date %>
+      Fecha <br/> <%= select_datetime @search_by_date %>
     </p>
     <p>
       Espacio <br /> <%= select :espacio, :espacio_id, options_for_select([['Todos', 'all']], :selected => @espacio_selected) + options_for_select(Espacio.all.collect{ |e| [e.codigo, e.id] }, :selected => @espacio_selected.to_i) %>
     </p>
-    <p><%= submit_tag(value = 'Buscar') %></p>
+    <p><%= submit_tag(value = 'Buscar') %> <%= link_to 'Ir a hoy ahora', root_path %></p>
   <% end %>
 </div>
 <br/>
@@ -30,4 +30,3 @@
   <hr>
 <% end %>
 </div>
-<%= link_to 'Volver al indice', root_path %>

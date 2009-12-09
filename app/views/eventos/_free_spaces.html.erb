@@ -1,4 +1,4 @@
-<p>Espacios libres a las <%= Time.now.strftime '%H:%M' %>: </p>
+<p>Espacios libres <%= @search_by_date.nil? ? Time.now : @search_by_date.strftime('el %d-%m-%Y a las %H:%M') %>: </p>
 <ul>
 
 <% if @free_spaces.empty? %>
