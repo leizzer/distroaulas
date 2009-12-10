@@ -134,7 +134,7 @@ class EventosController < ApplicationController
     end
  end
 
-  
+
   # Busca las materias de una carrera para ofrecerla en un combo en el new de eventos
   def get_materias
     @lista_materias = Materia.find :all, :conditions => {:codigo_carrera => params[:carrera_id]}
@@ -146,11 +146,7 @@ class EventosController < ApplicationController
   # Busqueda de de eventos por espacio asignado
   def browse_by_space
     if params[:date].nil?
-      if params[:start_date].nil?
-        @search_by_date = DateTime.now
-      else
-        @search_by_date = params[:start_date].to_date
-      end
+      @search_by_date = DateTime.now
     else
       if @search_by_date.nil?
         begin
@@ -210,7 +206,7 @@ class EventosController < ApplicationController
       end
     else
       # Buscar eventos segun un espacio
-      events_list = Evento.find(:all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f' AND espacio_id = #{opt[:space]}") 
+      events_list = Evento.find(:all, :conditions => "dtstart > '#{opt[:date]}' AND '#{opt[:date] + 1.day}' > dtstart AND reccurrent = 'f' AND espacio_id = #{opt[:space]}")
       events_list += Evento.find(:all, :conditions => { :reccurrent => true, :byday => opt[:date].strftime("%a").upcase[0..1], :espacio_id => opt[:space]})
       events_list += Evento.find :all, :conditions => "reccurrent = 't' AND rdate <> ''"
       events_list += Evento.find :all, :conditions => "reccurrent = 't' AND exdate <> ''"
