@@ -69,12 +69,13 @@ a:hover { color: #666666; }
 }
 
 .floating-block{
-  margin-left: 80px;
+  margin-left: 5px;
   float: left;
   display: block;
 }
 
 #free-spaces-block{
+  margin-left: 25px;
   float: left;
   display: block;
 }
