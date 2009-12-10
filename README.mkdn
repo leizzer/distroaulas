@@ -18,9 +18,7 @@ Have a nice day.
                 (NADA DE CHECKS)
             -- Poner Combobox's para especificar fecha
             -- Poner la vista de 24 horas en estos espacios
-        -[error] En el Home en vez de mostrar espacios libres en el momento actual (como muestra ahora, pero si se
-            modifica Evento por Espacio de seguro hay que retocar algo)
-            No se entiende el enunciado (En vez de mostrar [...] Â<missing part>)
+        -[done] En el Home en vez de mostrar espacios libres en el momento actual
         -[done] Mantener las selecciones de los combobox de Eventos por Dia.
 
 
