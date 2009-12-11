@@ -1,0 +1,27 @@
+A continuacion se especifica la estructura de los archivos necesaria para la importacion.
+En todos los casos la estructura se basa en columnas, donde cada columna representa un
+campo, cada columna se separa con punto y coma (;). No hay cabeceras, pero en este
+archivo se especifica que campo representa cada columna. Las columnas no tienen ancho
+fijo y no les afecta el espacio al final o al inicio.
+
+
+Carreras.txt
+
+Codigo Carrera ; Nombre Carrera
+
+
+Planes.txt
+
+Codigo Carrera ; Codigo Plan ; Nombre
+
+
+Materias.txt
+
+Codigo Carrera ; Codigo Plan ; Codigo Materia ; Nombre
+
+
+Los espacios son indiferentes, es importante tener en cuenta que el ; separa cada
+campo. Para poder llegar a esto, utilize el programa Excel para generar un CSV
+con los datos que desea importar. Note que si hay mas columnas no se contaran
+en la importacion, pero no hay garantias de que sea exitosa en estas circunstancias.
+

@@ -108,6 +108,9 @@ class EventosController < ApplicationController
       end
     end
     @events = []
+    if params.include? :business_hours
+      @business_hours = params[:business_hours]
+    end
     if not params[:carrera].nil?
       @carrera_selected = params[:carrera][:carrera_id]
     end

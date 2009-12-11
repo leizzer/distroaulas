@@ -1,7 +1,0 @@
-Pretendo poner en este archivo cosas que encontre como hacer:
-
-- Manipular datos antes de guardarlos
-
-en el modelo coloar un "before_save :<metodo>".
-En el mismo modelo definir <metodo> y su logica.
-Los datos del evento estan en self.<campo>.
