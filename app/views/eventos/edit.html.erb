@@ -22,11 +22,11 @@
 
   <p>
     <%= label :evento, :exdate, "Agreagar Ocaciones Especiales" %><br />
-    <%= select_datetime DateTime.now %> <br />
-    <%= button_to_function "Agregar Exepcion", "document.getElementById('evento_exdate').value=document.getElementById('evento_exdate').value + document.getElementById('date_day').value + '-' + document.getElementById('date_month').value + '-' + document.getElementById('date_year').value + '#{@evento.dtstart.strftime 'T%H:%M:00'}' +  ', ';" %>
+    <%= select_datetime DateTime.now %> <br /> <br />
+    <%= button_to_function "Agregar Exepcion", "document.getElementById('evento_exdate').value=document.getElementById('evento_exdate').value + document.getElementById('date_day').value + '-' + document.getElementById('date_month').value + '-' + document.getElementById('date_year').value + '#{@evento.dtstart.strftime ' %H:%M:00'}' +  " + '"\n"' + ";" %>
     <%= f.text_area :exdate, :rows => 3 %> <br />
 
-    <%= button_to_function "Agregar Ocurrencia", "document.getElementById('evento_rdate').value=document.getElementById('evento_rdate').value + document.getElementById('date_day').value + '-' + document.getElementById('date_month').value + '-' + document.getElementById('date_year').value + 'T' + document.getElementById('date_hour').value + ':' + document.getElementById('date_minute').value + ':00, ';" %>
+    <%= button_to_function "Agregar Ocurrencia", "document.getElementById('evento_rdate').value=document.getElementById('evento_rdate').value + document.getElementById('date_day').value + '-' + document.getElementById('date_month').value + '-' + document.getElementById('date_year').value + ' ' + document.getElementById('date_hour').value + ':' + document.getElementById('date_minute').value + ':00' + " + '"\n"' + ";" %>
     <%= f.text_area :rdate, :rows => 3 %>
   </p>
 

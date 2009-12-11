@@ -71,8 +71,8 @@ class Evento < ActiveRecord::Base
     self_event.dtend = self.dtend #.strftime '%Y%m%dT%H%M00'
     self_event.location = self.espacio_id.to_s
     self_event.rrule = "FREQ=" + self.freq + ";BYDAY=" + self.byday + ";INTERVAL=" + self.interval.to_s if self.reccurrent
-    self_event.exdates = self.exdate.split(',').collect{|e| DateTime.parse e} || ''
-    self_event.rdates = self.rdate.split(',').collect{|e| DateTime.parse e} || ''
+    self_event.exdates = self.exdate.split('\n').collect{|e| DateTime.parse e} || ''
+    self_event.rdates = self.rdate.split('\n').collect{|e| DateTime.parse e} || ''
 
 
     # Saco la lista de ocurrencias del evento actual en los proximos 60
