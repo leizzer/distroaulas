@@ -4,9 +4,11 @@
   <%= link_to 'Ir a hoy', '/eventos/browse_by_day?start_day=' + Time.now.strftime('%Y-%m-%d') %>
   </p>
   <p>
-    Carrera <br /> 
+    Carrera <br />
     <%= select :carrera, :carrera_id, options_for_select(Carrera.all.collect{ |c| [c.nombre, c.codigo] }, :selected => @carrera_selected.to_i) %>
   </p>
+  <%= label :ver_horas, "Ver 24 Horas" %>
+  <%= check_box_tag :ver_horas %>
   <%= submit_tag(value = 'Buscar') %>
 <% end %>
 <hr />
@@ -56,7 +58,7 @@
 </div>
 <hr />
 <div id="week-container">
-<%  weekly_calendar(@events.reject { |e| e.anio != 5}, :date => @search_by_date, :include_24_hours => false, :title => '5º Año') do |w|  %>
+<%  weekly_calendar(@events.reject { |e| e.anio != 5}, :date => @search_by_date, :include_24_hours => @ver_horas, :title => '5º Año') do |w|  %>
   <%  w.week(:business_hours => params[:business_hours]) do |event,truncate|  %>
     <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>
   <% end -%>
