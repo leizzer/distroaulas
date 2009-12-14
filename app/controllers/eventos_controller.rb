@@ -136,8 +136,8 @@ class EventosController < ApplicationController
         @free_spaces.delete(Espacio.find_by_id event.location.to_i) if DateTime.now.strftime('%H%M').to_i.between? event.dtstart.strftime('%H%M').to_i, event.dtend.strftime('%H%M').to_i
       end
     end
-    @ver_horas = params[:ver_horas] == "1" ? true : false
-    redirect_to "/eventos/browse_by_day?business_hours=#{@ver_horas}&start_date=#{@search_by_date}"
+    @ver_horas = params[:ver_horas] == "1" ? false : true
+    redirect_to "/eventos/browse_by_day?business_hours=#{@ver_horas}&start_date=#{@search_by_date}" unless params[:ver_horas].nil?
  end
 
 

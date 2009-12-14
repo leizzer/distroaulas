@@ -58,7 +58,7 @@
 </div>
 <hr />
 <div id="week-container">
-<%  weekly_calendar(@events.reject { |e| e.anio != 5}, :date => @search_by_date, :include_24_hours => @ver_horas, :title => '5º Año') do |w|  %>
+<%  weekly_calendar(@events.reject { |e| e.anio != 5}, :date => @search_by_date, :include_24_hours => false, :title => '5º Año') do |w|  %>
   <%  w.week(:business_hours => params[:business_hours]) do |event,truncate|  %>
     <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>
   <% end -%>
