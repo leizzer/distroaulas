@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091119124056) do
+ActiveRecord::Schema.define(:version => 20091221191535) do
 
   create_table "carreras", :force => true do |t|
     t.integer  "codigo"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20091119124056) do
     t.string   "rdate",                      :default => ""
     t.boolean  "reccurrent"
     t.integer  "materia_id"
+    t.datetime "renddate"
   end
 
   create_table "materias", :force => true do |t|

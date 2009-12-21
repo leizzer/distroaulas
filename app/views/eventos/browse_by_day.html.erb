@@ -7,8 +7,8 @@
     Carrera <br />
     <%= select :carrera, :carrera_id, options_for_select(Carrera.all.collect{ |c| [c.nombre, c.codigo] }, :selected => @carrera_selected.to_i) %>
   </p>
-  <%= label :ver_horas, "Ver 24 Horas" %>
-  <%= check_box_tag :ver_horas %>
+  <!-- <%= label :ver_horas, "Ver 24 Horas" %>
+   <%= check_box_tag :ver_horas %> -->
   <%= submit_tag(value = 'Buscar') %>
 <% end %>
 <hr />

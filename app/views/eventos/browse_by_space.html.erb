@@ -23,7 +23,7 @@
 <% end %>
 <% show_espacios.each do |espacio| %>
     <% weekly_calendar(@events.find_all{|e| e.location == espacio.id}, :date => @search_by_date, :include_24_hours => false, :title => espacio.codigo) do |w|  %>
-      <%  w.week(:business_hours => true) do |event,truncate|  %>
+      <%  w.week(:business_hours => false) do |event,truncate|  %>
         <!-- <%=  event.starts_at.strftime('%I:%M%p') %> -->
        <%=  link_to truncate(event.name,truncate), '/eventos/' + event.original_id.to_s  %>
        <% end -%>

@@ -70,7 +70,7 @@ class Evento < ActiveRecord::Base
     self_event.dtstart = self.dtstart #.strftime '%Y%m%dT%H%M00'
     self_event.dtend = self.dtend #.strftime '%Y%m%dT%H%M00'
     self_event.location = self.espacio_id.to_s
-    self_event.rrule = "FREQ=" + self.freq + ";BYDAY=" + self.byday + ";INTERVAL=" + self.interval.to_s if self.reccurrent
+    self_event.rrule = "FREQ=" + self.freq + ";BYDAY=" + self.byday + ";INTERVAL=" + self.interval.to_s + ";UNTIL=" + self.renddate.strftime('%Y%m%dT%H%M00') if self.reccurrent
     self_event.exdates = self.exdate.split('\n').collect{|e| DateTime.parse e} || ''
     self_event.rdates = self.rdate.split('\n').collect{|e| DateTime.parse e} || ''
 
@@ -89,7 +89,7 @@ class Evento < ActiveRecord::Base
       new_event.dtstart = event.dtstart #.strftime '%Y%m%dT%H%M00'
       new_event.dtend = event.dtend #.strftime '%Y%m%dT%H%M00'
       new_event.location = event.espacio_id.to_s
-      new_event.rrule = "FREQ=" + event.freq + ";BYDAY=" + event.byday + ";INTERVAL=" + event.interval.to_s if event.reccurrent
+      new_event.rrule = "FREQ=" + event.freq + ";BYDAY=" + event.byday + ";INTERVAL=" + event.interval.to_s + ";UNTIL=" + event.renddate.strftime ('%Y%m%dT%H%M00') if event.reccurrent
       new_event.exdates = event.exdate.split(',').collect{|e| DateTime.parse e} || []
       new_event.rdates = event.rdate.split(',').collect{|e| DateTime.parse e} || []
       calendar.add_subcomponent new_event

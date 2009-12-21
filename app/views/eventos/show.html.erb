@@ -22,6 +22,11 @@
 </p>
 
 <p>
+  <b>Fin de recurrencia:</b>
+  <%=h @evento.renddate.to_s[0..15] if @evento.reccurrent %>
+  <%=h 'No se repite' if not @evento.reccurrent %>
+
+<p>
   <b>Frecuencia:</b>
   <% if @evento.freq == "DAILY" %>
     Diario (se repite todos los dias)

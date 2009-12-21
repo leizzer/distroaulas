@@ -24,6 +24,10 @@
     <%= f.check_box :reccurrent, :onchange => "newEventDisabled();" %>
   </p>
   <p>
+    <%= label :evento, :renddate, "Fin de la recurrencia" %><br />
+    <%= f.datetime_select :renddate, :disabled => "true" %>
+  </p>
+  <p>
     <%= label :evento, :freq, "Frecuencia", :disabled => "true" %><br />
     <!-- la opcion de diario fue eliminada !-->
     <%= f.radio_button :freq, "WEEKLY", :disabled => "true", :checked => "true" %> Semanal

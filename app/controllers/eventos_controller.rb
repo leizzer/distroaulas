@@ -229,7 +229,7 @@ class EventosController < ApplicationController
       new_event.dtstart = event.dtstart.strftime '%Y%m%dT%H%M00'
       new_event.dtend = event.dtend.strftime '%Y%m%dT%H%M00'
       new_event.location = event.espacio_id.to_s
-      new_event.rrule = "FREQ=" + event.freq + ";BYDAY=" + event.byday + ";INTERVAL=" + event.interval.to_s if event.reccurrent
+      new_event.rrule = "FREQ=" + event.freq + ";BYDAY=" + event.byday + ";INTERVAL=" + event.interval.to_s + ";UNTIL=" + event.renddate.strftime('%Y%m%dT%H%M00') if event.reccurrent
       new_event.exdates = event.exdate.to_a
       new_event.rdates =  event.rdate.split(',').collect{|e| DateTime.parse e} || ''
       new_event.comment = event.id.to_s
