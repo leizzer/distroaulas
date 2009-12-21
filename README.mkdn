@@ -5,13 +5,18 @@ This application is for administration purpose on a private institution.
 Have a nice day.
 
 
+#Notas
+
+El cliente mostro aceptacion y gran entusiasmo al ver la aplicacion. La fecha
+para la puesta en produccion es el 1 de Febrero de 2010. En la semana del 28
+Cesar va a preparar el linux que tanto queremos, asi que podes ver de configurarlo.
+
 #ToDo
 
-        Modelo [finished]
-
-        Busquedas [finished]
-
-        Interfaz [finished]
+	Small Tasks
+		- Hacer una interface para un historico
+		- Crear una tabla de volcado para el historico (una tabla para pasar los eventos que no se usan)
+		- Crear algunas vistas basicas para el historico
 
         Testeo
                 - Buscar un beta tester
