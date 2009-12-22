@@ -1,2 +1,6 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+Distroaulas es una aplicacion desarrollada por alumnos pasantes de la Universidad Catolica de Santiago del Estero.
+La aplicacion se realizo debido a la necesidad de mantener registro de la asignacion de espacios (aulas) a los docentes de la institucion, y asi saber quienes estan ocupando o ocupara un espacio en un determinado momento.
+
+Distroaulas fue realizada por:
+- Cristian Re [leizzer]
+- Matias Toselli [Rayko]
