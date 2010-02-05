@@ -151,39 +151,41 @@ class EventosController < ApplicationController
 
   # Busqueda de de eventos por espacio asignado
   def browse_by_space
-    if params[:date].nil?
-      @search_by_date = DateTime.now
-    else
-      if @search_by_date.nil?
-        begin
-          @search_by_date = DateTime.parse(params[:date][:year] + '-' + params[:date][:month] + '-' + params[:date][:day] + ' ' + params[:date][:hour] + ':' + params[:date][:minute])
-        rescue => e
-          @search_by_date = DateTime.now
+    #unless params.nil?
+      if params[:date].nil?
+        @search_by_date = DateTime.now
+      else
+        if @search_by_date.nil?
+          begin
+            @search_by_date = DateTime.parse(params[:date][:year] + '-' + params[:date][:month] + '-' + params[:date][:day] + ' ' + params[:date][:hour] + ':' + params[:date][:minute])
+          rescue => e
+            @search_by_date = DateTime.now
+          end
         end
       end
-    end
 
-    @events = []
-    @free_spaces = Espacio.all
-    # get_calendar obtiene un calendario para un dia dado. El parametro all hace que no discrimine por materias
-    @calendar = get_calendar :date => @search_by_date.to_date, :all => true
-    if not params[:espacio].nil?
-      @espacio_selected = params[:espacio][:espacio_id]
-    end
-    @calendar.events.each do |event|
-      temp = SimpEvent.new
-      temp.starts_at = event.dtstart
-      temp.ends_at = event.dtend
-      temp.name = event.description # + ' - ' +  Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo
-      temp.original_id = event.comment[0].to_i
-      temp.location = event.location.to_i
-      if not params[:espacio].nil? and params[:espacio][:espacio_id] != 'all'
-        @events.push temp if temp.location == params[:espacio][:espacio_id].to_i
-      else
-        @events.push temp
+      @events = []
+      @free_spaces = Espacio.all
+      # get_calendar obtiene un calendario para un dia dado. El parametro all hace que no discrimine por materias
+      @calendar = get_calendar :date => @search_by_date.to_date, :all => true
+      if not params[:espacio].nil?
+        @espacio_selected = params[:espacio][:espacio_id]
       end
-      @free_spaces.delete(Espacio.find_by_id event.location.to_i) if @search_by_date.strftime('%H%M').to_i.between? event.dtstart.strftime('%H%M').to_i, event.dtend.strftime('%H%M').to_i
-    end
+      @calendar.events.each do |event|
+        temp = SimpEvent.new
+        temp.starts_at = event.dtstart
+        temp.ends_at = event.dtend
+        temp.name = event.description # + ' - ' +  Espacio.find(:first, :conditions => {:id => event.location.to_i}).codigo
+        temp.original_id = event.comment[0].to_i
+        temp.location = event.location.to_i
+        if not params[:espacio].nil? and params[:espacio][:espacio_id] != 'all'
+          @events.push temp if temp.location == params[:espacio][:espacio_id].to_i
+        else
+          @events.push temp
+        end
+        @free_spaces.delete(Espacio.find_by_id event.location.to_i) if @search_by_date.strftime('%H%M').to_i.between? event.dtstart.strftime('%H%M').to_i, event.dtend.strftime('%H%M').to_i
+      end
+   # end
   end
 
   # Obtiene un calendario segun los parametros que recibe
